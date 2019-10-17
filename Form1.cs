@@ -63,19 +63,20 @@ namespace QLNH
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < dsnv.Tables[0].Rows.Count; i++)
-                if (iDBox.Text == dsnv.Tables[0].Rows[i].ItemArray[2].ToString())
-                    if (passBox.Text == dsnv.Tables[0].Rows[i].ItemArray[3].ToString())
-                    {
-                        MessageBox.Show("Đăng nhập thành công"); return;
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sai mật khẩu"); return;
-                    }
-            MessageBox.Show("Sai tài khoản");
-
+            if (iDBox.Text == "")
+            { MessageBox.Show("Vui lòng nhập tên tài khoản!");}
+            else if (passBox.Text == "")
+                { MessageBox.Show("Vui lòng nhập mật khẩu!"); return; }
+            else
+            {
+                for (int i = 0; i < dsnv.Tables[0].Rows.Count; i++)
+                    if (iDBox.Text == dsnv.Tables[0].Rows[i].ItemArray[2].ToString())
+                       if (passBox.Text == dsnv.Tables[0].Rows[i].ItemArray[3].ToString())
+                          { MessageBox.Show("Đăng nhập thành công"); return; }
+                       else
+                          { MessageBox.Show("Sai mật khẩu"); return; }
+                MessageBox.Show("Sai tài khoản");
+            }
         }
     }
 }

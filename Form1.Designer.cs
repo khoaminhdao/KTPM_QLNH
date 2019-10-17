@@ -35,9 +35,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(315, 275);
+            this.button1.Location = new System.Drawing.Point(246, 299);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 36);
+            this.button1.Size = new System.Drawing.Size(85, 36);
             this.button1.TabIndex = 0;
             this.button1.Text = "Đăng nhập";
             this.button1.UseVisualStyleBackColor = true;
@@ -45,29 +45,35 @@
             // 
             // iDBox
             // 
-            this.iDBox.Location = new System.Drawing.Point(266, 112);
+            this.iDBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.iDBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iDBox.Location = new System.Drawing.Point(221, 144);
             this.iDBox.Name = "iDBox";
-            this.iDBox.Size = new System.Drawing.Size(207, 20);
+            this.iDBox.Size = new System.Drawing.Size(136, 27);
             this.iDBox.TabIndex = 1;
             // 
             // passBox
             // 
-            this.passBox.Location = new System.Drawing.Point(266, 175);
+            this.passBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passBox.Location = new System.Drawing.Point(221, 224);
             this.passBox.Name = "passBox";
-            this.passBox.PasswordChar = '*';
-            this.passBox.Size = new System.Drawing.Size(207, 20);
+            this.passBox.Size = new System.Drawing.Size(136, 27);
             this.passBox.TabIndex = 2;
+            this.passBox.UseSystemPasswordChar = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(633, 450);
             this.Controls.Add(this.passBox);
             this.Controls.Add(this.iDBox);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "QLNH";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
