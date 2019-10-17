@@ -51,7 +51,23 @@ namespace QLNH
 
         }
 
-
+        private void Check_Login (string id, string pass)
+        {
+            if (id == "")
+            { MessageBox.Show("Vui lòng nhập tên tài khoản!"); }
+            else if (pass == "")
+            { MessageBox.Show("Vui lòng nhập mật khẩu!"); return; }
+            else
+            {
+                for (int i = 0; i < dsnv.Tables[0].Rows.Count; i++)
+                    if (id == dsnv.Tables[0].Rows[i].ItemArray[2].ToString())
+                        if (pass == dsnv.Tables[0].Rows[i].ItemArray[3].ToString())
+                        { MessageBox.Show("Đăng nhập thành công"); return; }
+                        else
+                        { MessageBox.Show("Sai mật khẩu"); return; }
+                MessageBox.Show("Sai tài khoản");
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -63,20 +79,7 @@ namespace QLNH
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (iDBox.Text == "")
-            { MessageBox.Show("Vui lòng nhập tên tài khoản!");}
-            else if (passBox.Text == "")
-                { MessageBox.Show("Vui lòng nhập mật khẩu!"); return; }
-            else
-            {
-                for (int i = 0; i < dsnv.Tables[0].Rows.Count; i++)
-                    if (iDBox.Text == dsnv.Tables[0].Rows[i].ItemArray[2].ToString())
-                       if (passBox.Text == dsnv.Tables[0].Rows[i].ItemArray[3].ToString())
-                          { MessageBox.Show("Đăng nhập thành công"); return; }
-                       else
-                          { MessageBox.Show("Sai mật khẩu"); return; }
-                MessageBox.Show("Sai tài khoản");
-            }
+            Check_Login(iDBox.Text, passBox.Text);
         }
     }
 }
