@@ -18,10 +18,10 @@ namespace QLNH
             InitializeComponent();
         }
 
-        OleDbConnection strcon = new OleDbConnection();
+        static OleDbConnection strcon = new OleDbConnection();
         DataSet dsnv = new DataSet();
 
-        public void Open_DataAccess()
+        public static void Open_DataAccess()
 
         {
 
@@ -33,21 +33,37 @@ namespace QLNH
 
         }
 
-        public DataSet Load_Data()
-
+        public static DataSet Load_Data(string table, string danhsachthamso)
         {
             DataSet dsHienThi = new DataSet();
 
-            string s = "select MaNV, TenNV, TaiKhoan, MatKhau from NhanVien";
+            string s = "select " + danhsachthamso + " from " + table;
 
             Open_DataAccess();
 
             OleDbDataAdapter daShowData = new OleDbDataAdapter(s, strcon);
 
-            daShowData.Fill(dsHienThi, "NhanVien");
+            daShowData.Fill(dsHienThi, table);
 
             strcon.Close();
             return dsHienThi;
+
+        }
+
+        public static void Add_Data(string table, string danhsachthamso)
+        {
+            OleDbCommand cmd = new OleDbCommand();
+            DataSet ds = new DataSet();
+
+            string s = "insert into " + table + " values(' " + danhsachthamso + "')";
+
+            Open_DataAccess();
+
+            cmd.CommandText = s;
+            cmd.ExecuteNonQuery();
+
+            strcon.Close();
+           
 
         }
 
@@ -72,7 +88,7 @@ namespace QLNH
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            dsnv = Load_Data();
+            dsnv = Load_Data("NhanVien", "MaNV, TenNV, TaiKhoan, MatKhau");
 
             //dataGridView1.DataSource = ds.Tables[0];
         }
@@ -80,6 +96,13 @@ namespace QLNH
         private void Button1_Click(object sender, EventArgs e)
         {
             Check_Login(iDBox.Text, passBox.Text);
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Log_KH lgkh = new Log_KH();
+            lgkh.Show();
+            this.Hide();
         }
     }
 }

@@ -9,3 +9,4 @@ C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.exe
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.pdb
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.Form1.resources
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.csproj.ResolveComReference.cache
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.Log_KH.resources
