@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 
+
 namespace QLNH
 {
     public partial class Form1 : Form
@@ -19,13 +20,11 @@ namespace QLNH
         }
 
         static OleDbConnection strcon = new OleDbConnection();
+        static string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + @"\DATA\Data.mdb";
         DataSet dsnv = new DataSet();
 
         public static void Open_DataAccess()
-
         {
-
-            string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + @"\DATA\Data.mdb";
 
             strcon.ConnectionString = s;
 
@@ -52,19 +51,40 @@ namespace QLNH
 
         public static void Add_Data(string table, string danhsachthamso)
         {
-            OleDbCommand cmd = new OleDbCommand();
-            DataSet ds = new DataSet();
 
-            string s = "insert into " + table + " values(' " + danhsachthamso + "')";
+            string l = "insert into " + table + "(MaBan, Ten, SDT, ThoiGian) values(' " + danhsachthamso + "')";
 
             Open_DataAccess();
 
-            cmd.CommandText = s;
-            cmd.ExecuteNonQuery();
+           
+            using (OleDbConnection connection = new OleDbConnection(s))
+            using (OleDbCommand command = new OleDbCommand(l, strcon))
+            {
+                connection.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                reader.Close();
+            }
+       
+            strcon.Close();
+        }
+
+        public static void Update_Data(string table, string danhsach, string dk)
+        {
+
+            string l = "update " + table + " set " + danhsach + " where " + dk;
+
+            Open_DataAccess();
+
+
+            using (OleDbConnection connection = new OleDbConnection(s))
+            using (OleDbCommand command = new OleDbCommand(l, strcon))
+            {
+                connection.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                reader.Close();
+            }
 
             strcon.Close();
-           
-
         }
 
         private void Check_Login (string id, string pass)
