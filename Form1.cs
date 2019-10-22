@@ -49,10 +49,10 @@ namespace QLNH
 
         }
 
-        public static void Add_Data(string table, string danhsachthamso)
+        public static void Add_Data(string table, string danhsachcot, string danhsachthamso)
         {
 
-            string l = "insert into " + table + "(MaBan, Ten, SDT, ThoiGian) values(' " + danhsachthamso + "')";
+            string l = "insert into " + table + "(" + danhsachcot + ") values(' " + danhsachthamso + "')";
 
             Open_DataAccess();
 

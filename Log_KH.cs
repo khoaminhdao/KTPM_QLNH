@@ -36,8 +36,9 @@ namespace QLNH
                     if (dsb.Tables[0].Rows[i].ItemArray[2].ToString() == "Trống" && int.Parse(dsb.Tables[0].Rows[i].ItemArray[1].ToString()) >= int.Parse(txtSoNg.Text))
                     {
                         s = i.ToString() + "','";
-                        Form1.Update_Data("DatBan", "TinhTrang = 'Được Đặt'", "MaBan = " + i);
+                        Form1.Update_Data("Ban", "TinhTrang = 'Được Đặt'", "MaBan = " + i);
                         dat = true;
+                        break;
                     }
                     else if (dsb.Tables[0].Rows[i].ItemArray[2].ToString() == "Được Đặt")
                     {
@@ -48,7 +49,7 @@ namespace QLNH
                     }
                 if (dat == true)
                 {
-                    Form1.Add_Data("DatBan", s + txtTen.Text + "','" + txtSDT.Text + "','" + dateTimePicker1.Value.ToShortDateString());
+                    Form1.Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian", s + txtTen.Text + "','" + txtSDT.Text + "','" + dateTimePicker1.Value.ToShortDateString());
                     MessageBox.Show("Đặt bàn thành công!");
                 }
                 else
