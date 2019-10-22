@@ -59,5 +59,14 @@ namespace QLNH
             
         }
 
+        private void TxtTen_TextChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(sender.ToString());
+        }
+
+        private void Log_KH_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
     }
 }

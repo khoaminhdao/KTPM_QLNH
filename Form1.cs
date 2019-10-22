@@ -121,8 +121,10 @@ namespace QLNH
         private void Button2_Click(object sender, EventArgs e)
         {
             Log_KH lgkh = new Log_KH();
+            Hide();
             lgkh.Show();
-            this.Hide();
+           
         }
+
     }
 }
