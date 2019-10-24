@@ -45,7 +45,6 @@
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(147, 20);
             this.txtTen.TabIndex = 0;
-            this.txtTen.TextChanged += new System.EventHandler(this.TxtTen_TextChanged);
             // 
             // label1
             // 
@@ -135,7 +134,6 @@
             this.Controls.Add(this.txtTen);
             this.Name = "Log_KH";
             this.Text = "Log_KH";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Log_KH_FormClosing);
             this.Load += new System.EventHandler(this.Log_KH_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

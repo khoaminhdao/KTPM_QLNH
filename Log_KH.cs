@@ -45,7 +45,7 @@ namespace QLNH
                         DataSet dsd = Form1.Load_Data("DatBan", "MaBan, ThoiGian");
                         for (int j = 0; j < dsd.Tables[0].Rows.Count; j++)
                             MessageBox.Show(dsb.Tables[0].Rows[i].ItemArray[1].ToString());
-                        
+
                     }
                 if (dat == true)
                 {
@@ -56,7 +56,7 @@ namespace QLNH
                     MessageBox.Show("Không có bàn phù hợp yêu cầu!");
 
             }
-            
+
         }
 
         private void TxtTen_TextChanged(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace QLNH
 
         private void Log_KH_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
         }
     }
 }

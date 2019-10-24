@@ -56,7 +56,7 @@ namespace QLNH
 
             Open_DataAccess();
 
-           
+
             using (OleDbConnection connection = new OleDbConnection(s))
             using (OleDbCommand command = new OleDbCommand(l, strcon))
             {
@@ -64,7 +64,7 @@ namespace QLNH
                 OleDbDataReader reader = command.ExecuteReader();
                 reader.Close();
             }
-       
+
             strcon.Close();
         }
 
@@ -87,7 +87,7 @@ namespace QLNH
             strcon.Close();
         }
 
-        private void Check_Login (string id, string pass)
+        private void Check_Login(string id, string pass)
         {
             if (id == "")
             { MessageBox.Show("Vui lòng nhập tên tài khoản!"); }
@@ -107,7 +107,7 @@ namespace QLNH
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             dsnv = Load_Data("NhanVien", "MaNV, TenNV, TaiKhoan, MatKhau");
 
             //dataGridView1.DataSource = ds.Tables[0];
@@ -122,8 +122,9 @@ namespace QLNH
         {
             Log_KH lgkh = new Log_KH();
             Hide();
-            lgkh.Show();
-           
+            lgkh.ShowDialog();
+            Show();
+
         }
 
     }
