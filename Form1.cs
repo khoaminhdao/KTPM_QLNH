@@ -87,6 +87,39 @@ namespace QLNH
             strcon.Close();
         }
 
+        public Boolean checkAlpha (string s)
+        {
+            if (s.Length == 0)
+                return false;
+            for (int i = 0; i < s.Length; i++)
+                if (!char.IsLetter(s[i]))
+                    return false;
+            return true;
+        }
+
+        public Boolean checkNum(string s)
+        {
+            if (s.Length == 0)
+                return false;
+            for (int i = 0; i < s.Length; i++)
+                if (!char.IsDigit(s[i]))
+                    return false;
+            return true;
+        }
+
+        public Boolean checkSDT (string s)
+        {
+            int maxNum = 10;
+            if (rdBan.Checked)
+                maxNum = 11;
+            if (s.Length != maxNum)
+                return false;
+            if (s[0] != '0')
+                return false;
+            if (!checkNum(s))
+                return false;
+            return true;
+        }
         private void Check_Login(string id, string pass)
         {
             if (id == "")
@@ -108,24 +141,75 @@ namespace QLNH
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            dsnv = Load_Data("NhanVien", "MaNV, TenNV, TaiKhoan, MatKhau");
+            dsnv = Load_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
+            timePk.MinDate = DateTime.Now.Date;
+            timePk.MaxDate = DateTime.Now.Date.AddMonths(1);
 
             //dataGridView1.DataSource = ds.Tables[0];
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void BtDN_Click(object sender, EventArgs e)
         {
-            Check_Login(iDBox.Text, passBox.Text);
+            Check_Login(txtTK.Text, txtMK.Text);
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void BtKH_Click(object sender, EventArgs e)
         {
-            Log_KH lgkh = new Log_KH();
-            Hide();
-            lgkh.ShowDialog();
-            Show();
+            txtTK.Visible = txtMK.Visible = lbTK.Visible = lbMK.Visible = btDN.Visible = false;
+            txtTen.Visible = txtSDT.Visible = timePk.Visible = txtSN.Visible = lbTen.Visible = lbSDT.Visible = lbTG.Visible = lbSN.Visible = groupBox1.Visible = btDatBan.Visible = true;
 
         }
 
+        private void BtNV_Click(object sender, EventArgs e)
+        {
+            txtTen.Visible = txtSDT.Visible = timePk.Visible = txtSN.Visible = lbTen.Visible = lbSDT.Visible = lbTG.Visible = lbSN.Visible = groupBox1.Visible = btDatBan.Visible = false;
+            txtTK.Visible = txtMK.Visible = lbTK.Visible = lbMK.Visible = btDN.Visible = true;
+        }
+
+        private void BtDatBan_Click(object sender, EventArgs e)
+        {
+            String maban = "";
+            String ten = txtTen.Text;
+            String soDT = txtSDT.Text;
+            String soNg = txtSN.Text;
+            if (timePk.Value.CompareTo(DateTime.Now.AddHours(3)) != 1)
+                MessageBox.Show("Bạn phải đặt trước ít nhất 3 tiếng!");
+            else if (!checkAlpha (ten))
+                MessageBox.Show("Vui lòng nhập tên chính xác");
+            else if (!checkSDT (soDT))
+                MessageBox.Show("Vui lòng nhập đúng số điện thoại");
+            else if (!checkNum (soNg))
+                MessageBox.Show("Vui lòng nhập số người chính xác");
+            else
+            {
+                DataSet dsb = Load_Data("Ban", "MaBan, SoNguoi, TinhTrang, Dat");
+                Boolean dat = false;
+                for (int i = 0; i < dsb.Tables[0].Rows.Count; i++)
+                    if (int.Parse(dsb.Tables[0].Rows[i].ItemArray[1].ToString()) >= int.Parse(soNg))
+                        if (dsb.Tables[0].Rows[i].ItemArray[3].ToString() == "False")
+                        {
+                            maban = (i + 1).ToString();
+                            Update_Data("Ban", "TinhTrang = 'Được Đặt'", "MaBan = " + (i + 1));
+                            dat = true;
+                            break;
+                        }
+                        else
+                        {
+                            DataSet dsd = Load_Data("DatBan", "MaBan, Ngay, Gio");
+                            for (int j = 0; j < dsd.Tables[0].Rows.Count; j++)
+                                if (dsd.Tables[0].Rows[j].ItemArray[0].ToString() == (i + 1).ToString())
+                                    if ()
+
+                        }
+                        if (dat == true)
+                        {
+                            Add_Data("DatBan", "MaBan, Ten, SDT, Ngay, Gio, SoNguoi", maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToShortDateString() + "','" + timePk.Value.ToShortTimeString() + "','" + soNg);
+                            MessageBox.Show("Đặt bàn thành công!");
+                        }
+                        else
+                            MessageBox.Show("Không có bàn phù hợp yêu cầu!");
+
+            }
+        }
     }
 }
