@@ -21,7 +21,7 @@ namespace QLNH
 
         static OleDbConnection strcon = new OleDbConnection();
         static string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + @"\DATA\Data.mdb";
-        DataSet dsnv = new DataSet();
+        public static String MSNV;
 
         public static void Open_DataAccess()
         {
@@ -122,6 +122,7 @@ namespace QLNH
         }
         private void Check_Login(string id, string pass)
         {
+            DataSet dsnv = Load_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
             if (id == "")
             { MessageBox.Show("Vui lòng nhập tên tài khoản!"); }
             else if (pass == "")
@@ -129,9 +130,17 @@ namespace QLNH
             else
             {
                 for (int i = 0; i < dsnv.Tables[0].Rows.Count; i++)
-                    if (id == dsnv.Tables[0].Rows[i].ItemArray[2].ToString())
-                        if (pass == dsnv.Tables[0].Rows[i].ItemArray[3].ToString())
-                        { MessageBox.Show("Đăng nhập thành công"); return; }
+                    if (id == dsnv.Tables[0].Rows[i].ItemArray[1].ToString())
+                        if (pass == dsnv.Tables[0].Rows[i].ItemArray[2].ToString())
+                        {
+                            MessageBox.Show("Đăng nhập thành công");
+                            MSNV = dsnv.Tables[0].Rows[i].ItemArray[0].ToString();
+                            MenuNV menu = new MenuNV();
+                            Hide();
+                            menu.ShowDialog();
+                            Show();
+                            return;
+                        }
                         else
                         { MessageBox.Show("Sai mật khẩu"); return; }
                 MessageBox.Show("Sai tài khoản");
@@ -140,12 +149,8 @@ namespace QLNH
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            dsnv = Load_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
             timePk.MinDate = DateTime.Now.Date;
             timePk.MaxDate = DateTime.Now.Date.AddMonths(1);
-
-            //dataGridView1.DataSource = ds.Tables[0];
         }
 
         private void BtDN_Click(object sender, EventArgs e)
@@ -183,25 +188,29 @@ namespace QLNH
             else
             {
                 DataSet dsb = Load_Data("Ban", "MaBan, SoNguoi, TinhTrang, Dat");
-                Boolean dat = false;
-                for (int i = 0; i < dsb.Tables[0].Rows.Count; i++)
+                int i, j;
+                for (i = 0; i < dsb.Tables[0].Rows.Count; i++)
                     if (int.Parse(dsb.Tables[0].Rows[i].ItemArray[1].ToString()) >= int.Parse(soNg))
                         if (dsb.Tables[0].Rows[i].ItemArray[3].ToString() == "False")
                         {
-                            maban = (i + 1).ToString();
+                            maban = dsb.Tables[0].Rows[i].ItemArray[0].ToString();
                             Update_Data("Ban", "TinhTrang = 'Được Đặt'", "MaBan = " + (i + 1));
-                            dat = true;
                             break;
                         }
                         else
                         {
                             DataSet dsd = Load_Data("DatBan", "MaBan, Ngay, Gio");
-                            for (int j = 0; j < dsd.Tables[0].Rows.Count; j++)
-                                if (dsd.Tables[0].Rows[j].ItemArray[0].ToString() == (i + 1).ToString())
-                                    if ()
-
+                            for (j = 0; j < dsd.Tables[0].Rows.Count; j++)
+                                if (dsd.Tables[0].Rows[j].ItemArray[0].ToString() == dsb.Tables[0].Rows[i].ItemArray[0].ToString())
+                                    if (dsd.Tables[0].Rows[j].ItemArray[1].ToString() == timePk.Value.ToShortDateString() && (dsd.Tables[0].Rows[j].ItemArray[2].ToString() == timePk.Value.ToShortTimeString()))
+                                        break;
+                            if (j == dsd.Tables[0].Rows.Count)
+                            {
+                                maban = dsb.Tables[0].Rows[i].ItemArray[0].ToString();
+                                break;
+                            }
                         }
-                        if (dat == true)
+                        if (i != dsb.Tables[0].Rows.Count)
                         {
                             Add_Data("DatBan", "MaBan, Ten, SDT, Ngay, Gio, SoNguoi", maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToShortDateString() + "','" + timePk.Value.ToShortTimeString() + "','" + soNg);
                             MessageBox.Show("Đặt bàn thành công!");
@@ -210,6 +219,12 @@ namespace QLNH
                             MessageBox.Show("Không có bàn phù hợp yêu cầu!");
 
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Bạn muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                e.Cancel = true;
         }
     }
 }

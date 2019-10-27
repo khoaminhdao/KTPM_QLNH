@@ -46,8 +46,8 @@
             this.lbTen = new System.Windows.Forms.Label();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdDD = new System.Windows.Forms.RadioButton();
             this.rdBan = new System.Windows.Forms.RadioButton();
+            this.rdDD = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -246,6 +246,17 @@
             this.groupBox1.Text = "Định dạng";
             this.groupBox1.Visible = false;
             // 
+            // rdBan
+            // 
+            this.rdBan.AutoSize = true;
+            this.rdBan.Location = new System.Drawing.Point(118, 19);
+            this.rdBan.Name = "rdBan";
+            this.rdBan.Size = new System.Drawing.Size(135, 17);
+            this.rdBan.TabIndex = 1;
+            this.rdBan.TabStop = true;
+            this.rdBan.Text = "Bàn (8 số + 3 mã vùng)";
+            this.rdBan.UseVisualStyleBackColor = true;
+            // 
             // rdDD
             // 
             this.rdDD.AutoSize = true;
@@ -257,17 +268,6 @@
             this.rdDD.TabStop = true;
             this.rdDD.Text = "Di Động (10 số)";
             this.rdDD.UseVisualStyleBackColor = true;
-            // 
-            // rdBan
-            // 
-            this.rdBan.AutoSize = true;
-            this.rdBan.Location = new System.Drawing.Point(118, 19);
-            this.rdBan.Name = "rdBan";
-            this.rdBan.Size = new System.Drawing.Size(135, 17);
-            this.rdBan.TabIndex = 1;
-            this.rdBan.TabStop = true;
-            this.rdBan.Text = "Bàn (8 số + 3 mã vùng)";
-            this.rdBan.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -297,6 +297,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "QLNH";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
