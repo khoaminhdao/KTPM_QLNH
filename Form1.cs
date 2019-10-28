@@ -87,7 +87,7 @@ namespace QLNH
             strcon.Close();
         }
 
-        public Boolean checkAlpha (string s)
+        public static Boolean checkAlpha (string s)
         {
             if (s.Length == 0)
                 return false;
@@ -97,7 +97,7 @@ namespace QLNH
             return true;
         }
 
-        public Boolean checkNum(string s)
+        public static Boolean checkNum(string s)
         {
             if (s.Length == 0)
                 return false;
@@ -177,46 +177,46 @@ namespace QLNH
             String ten = txtTen.Text;
             String soDT = txtSDT.Text;
             String soNg = txtSN.Text;
-            if (timePk.Value.CompareTo(DateTime.Now.AddHours(3)) != 1)
-                MessageBox.Show("Bạn phải đặt trước ít nhất 3 tiếng!");
-            else if (!checkAlpha (ten))
+            if (timePk.Value.CompareTo(DateTime.Now.AddHours(3)) != 1) //-1 -> t1 < t2 //1 -> t1 > t2
+               MessageBox.Show("Bạn phải đặt trước ít nhất 3 tiếng!");
+            else if (!checkAlpha(ten))
                 MessageBox.Show("Vui lòng nhập tên chính xác");
-            else if (!checkSDT (soDT))
+            else if (!checkSDT(soDT))
                 MessageBox.Show("Vui lòng nhập đúng số điện thoại");
-            else if (!checkNum (soNg))
+            else if (!checkNum(soNg))
                 MessageBox.Show("Vui lòng nhập số người chính xác");
             else
             {
                 DataSet dsb = Load_Data("Ban", "MaBan, SoNguoi, TinhTrang, Dat");
                 int i, j;
                 for (i = 0; i < dsb.Tables[0].Rows.Count; i++)
+                {
                     if (int.Parse(dsb.Tables[0].Rows[i].ItemArray[1].ToString()) >= int.Parse(soNg))
                         if (dsb.Tables[0].Rows[i].ItemArray[3].ToString() == "False")
                         {
                             maban = dsb.Tables[0].Rows[i].ItemArray[0].ToString();
-                            Update_Data("Ban", "TinhTrang = 'Được Đặt'", "MaBan = " + (i + 1));
+                            Update_Data("Ban", "Dat = True", "MaBan = " + (i + 1));
                             break;
                         }
                         else
                         {
-                            DataSet dsd = Load_Data("DatBan", "MaBan, Ngay, Gio");
+                            DataSet dsd = Load_Data("DatBan", "MaBan, ThoiGian");
                             for (j = 0; j < dsd.Tables[0].Rows.Count; j++)
-                                if (dsd.Tables[0].Rows[j].ItemArray[0].ToString() == dsb.Tables[0].Rows[i].ItemArray[0].ToString())
-                                    if (dsd.Tables[0].Rows[j].ItemArray[1].ToString() == timePk.Value.ToShortDateString() && (dsd.Tables[0].Rows[j].ItemArray[2].ToString() == timePk.Value.ToShortTimeString()))
-                                        break;
+                                if (dsd.Tables[0].Rows[j].ItemArray[0].ToString() == dsb.Tables[0].Rows[i].ItemArray[0].ToString() && (timePk.Value.CompareTo(DateTime.Parse(dsd.Tables[0].Rows[j].ItemArray[1].ToString()).AddHours(3)) == -1 || DateTime.Parse(dsd.Tables[0].Rows[j].ItemArray[1].ToString()).CompareTo(timePk.Value.AddHours(3)) == -1))
+                                    break;
                             if (j == dsd.Tables[0].Rows.Count)
                             {
                                 maban = dsb.Tables[0].Rows[i].ItemArray[0].ToString();
                                 break;
                             }
                         }
-                        if (i != dsb.Tables[0].Rows.Count)
-                        {
-                            Add_Data("DatBan", "MaBan, Ten, SDT, Ngay, Gio, SoNguoi", maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToShortDateString() + "','" + timePk.Value.ToShortTimeString() + "','" + soNg);
-                            MessageBox.Show("Đặt bàn thành công!");
-                        }
-                        else
-                            MessageBox.Show("Không có bàn phù hợp yêu cầu!");
+                }
+                if (i != dsb.Tables[0].Rows.Count)
+                {
+                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi", maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToString() + "','" + soNg);
+                    MessageBox.Show("Đặt bàn thành công!");
+                }
+                else MessageBox.Show("Không có bàn phù hợp yêu cầu!");
 
             }
         }

@@ -96,12 +96,38 @@ namespace QLNH
         private void ADD_VALUE()
         {
             int vt = txtTenNv.Text.LastIndexOf(" ");
+            int i;
             String maNV = txtMaNv.Text;
-            String ho = txtTenNv.Text.Substring(0, vt);
-            String ten = txtTenNv.Text.Substring(vt + 1);
-            String qT = txtQuocTich.Text;
-            Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, QuocTich", maNV + "','" + ho + "','" + ten + "','" + qT);
-            dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
+            if (maNV == "")
+                MessageBox.Show("Mã nhân viên không được trống!!");
+            else
+            {
+                for (i = 0; i < dataGridView1.Rows.Count; i++)
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maNV)
+                    { MessageBox.Show("Mã nhân viên đã tồn tại"); break; }
+                if (i == dataGridView1.Rows.Count)
+                {
+                    if (txtTenNv.Text == "")
+                        MessageBox.Show("Vui lòng nhập tên nhân viên");
+                    else
+                    {
+                        String ho = txtTenNv.Text.Substring(0, vt);
+                        String ten = txtTenNv.Text.Substring(vt + 1);
+                        String nS = datetime.Value.ToShortDateString();
+                        String gT = cbGioiTinh.Text;
+                        String tD = cbTrinhDo.Text;
+                        String qT = txtQuocTich.Text;
+                        String cV = cbChucVu.Text;
+
+
+                        Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich", maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT);
+                        Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + ten. + maNV + "','" + "123");
+
+                        dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
+
+                    }
+                }
+            }
         }
 
 
