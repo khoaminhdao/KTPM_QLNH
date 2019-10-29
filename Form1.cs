@@ -52,7 +52,7 @@ namespace QLNH
         public static void Add_Data(string table, string danhsachcot, string danhsachthamso)
         {
 
-            string l = "insert into " + table + "(" + danhsachcot + ") values(' " + danhsachthamso + "')";
+            string l = "insert into " + table + "(" + danhsachcot + ") values('" + danhsachthamso + "')";
 
             Open_DataAccess();
 

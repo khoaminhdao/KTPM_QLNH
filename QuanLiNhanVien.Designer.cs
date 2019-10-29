@@ -251,6 +251,7 @@
             // 
             this.txtMaNv.Location = new System.Drawing.Point(151, 33);
             this.txtMaNv.Name = "txtMaNv";
+            this.txtMaNv.ReadOnly = true;
             this.txtMaNv.Size = new System.Drawing.Size(177, 26);
             this.txtMaNv.TabIndex = 76;
             // 

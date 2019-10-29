@@ -121,17 +121,28 @@ namespace QLNH
 
 
                         Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich", maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT);
-                        Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + ten. + maNV + "','" + "123");
+                        Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + ten.ToLower() + maNV + "','" + "123");
+                        
 
                         dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
-
+                        set_Ma();
                     }
                 }
             }
         }
 
 
-
+        public void set_Ma ()
+        {
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                if (int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()) != i)
+                {
+                    txtMaNv.Text = i.ToString();
+                    return;
+                }
+            txtMaNv.Text = (dataGridView1.Rows.Count).ToString();
+        }
 
         private void btLuu_Click(object sender, EventArgs e)
         {
@@ -142,6 +153,7 @@ namespace QLNH
         private void QuanLiNhanVien_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
+            set_Ma();
         }
 
         private void btXoa_Click(object sender, EventArgs e)
