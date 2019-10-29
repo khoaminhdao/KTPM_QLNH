@@ -21,13 +21,13 @@ namespace QLNH
 
         private void MenuNV_Load(object sender, EventArgs e)
         {
-            DataSet dsnv = Form1.Load_Data("NhanVien", "MaNV, Ten, ChucVu");
+            DataTable dsnv = Form1.Load_Data("NhanVien", "MaNV, Ten, ChucVu");
             String ten = "";
-            for (int i = 0; i < dsnv.Tables[0].Rows.Count; i++)
-                if (dsnv.Tables[0].Rows[i].ItemArray[0].ToString() == Form1.MSNV)
+            for (int i = 0; i < dsnv.Rows.Count; i++)
+                if (dsnv.Rows[i].ItemArray[0].ToString() == Form1.MSNV)
                 {
-                    ten = dsnv.Tables[0].Rows[i].ItemArray[1].ToString();
-                    if (dsnv.Tables[0].Rows[i].ItemArray[2].ToString() == "Quản lí")
+                    ten = dsnv.Rows[i].ItemArray[1].ToString();
+                    if (dsnv.Rows[i].ItemArray[2].ToString() == "Quản lí")
                         QL = true;
                     break;
                 }
