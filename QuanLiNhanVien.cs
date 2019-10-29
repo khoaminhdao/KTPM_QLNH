@@ -98,42 +98,32 @@ namespace QLNH
             int vt = txtTenNv.Text.LastIndexOf(" ");
             int i;
             String maNV = txtMaNv.Text;
-            if (maNV == "")
-                MessageBox.Show("Mã nhân viên không được trống!!");
+              
+            if (txtTenNv.Text == "")
+                MessageBox.Show("Vui lòng nhập tên nhân viên");
             else
             {
-                for (i = 0; i < dataGridView1.Rows.Count; i++)
-                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maNV)
-                    { MessageBox.Show("Mã nhân viên đã tồn tại"); break; }
-                if (i == dataGridView1.Rows.Count)
-                {
-                    if (txtTenNv.Text == "")
-                        MessageBox.Show("Vui lòng nhập tên nhân viên");
-                    else
-                    {
-                        String ho = txtTenNv.Text.Substring(0, vt);
-                        String ten = txtTenNv.Text.Substring(vt + 1);
-                        String nS = datetime.Value.ToShortDateString();
-                        String gT = cbGioiTinh.Text;
-                        String tD = cbTrinhDo.Text;
-                        String qT = txtQuocTich.Text;
-                        String cV = cbChucVu.Text;
+                String ho = txtTenNv.Text.Substring(0, vt);
+                String ten = txtTenNv.Text.Substring(vt + 1);
+                String nS = datetime.Value.ToShortDateString();
+                String gT = cbGioiTinh.Text;
+                String tD = cbTrinhDo.Text;
+                String qT = txtQuocTich.Text;
+                String cV = cbChucVu.Text;
 
 
-                        Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich", maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT);
-                        Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + ten.ToLower() + maNV + "','" + "123");
-                        
+                Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich", maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT);
+                Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + ten.ToLower() + maNV + "','" + "123");
 
-                        dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
-                        set_Ma();
-                    }
-                }
+                set_Ma();
             }
+            
         }
 
 
         public void set_Ma ()
         {
+            dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 if (int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()) != i)
@@ -152,7 +142,6 @@ namespace QLNH
 
         private void QuanLiNhanVien_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich").Tables[0];
             set_Ma();
         }
 
