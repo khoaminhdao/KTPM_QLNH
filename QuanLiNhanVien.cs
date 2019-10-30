@@ -103,6 +103,19 @@ namespace QLNH
             return true;
         }
 
+        public static string RemoveUnicode(string text)
+        {
+            string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ", "đ", "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+            "í","ì","ỉ","ĩ","ị", "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ", "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự", "ý","ỳ","ỷ","ỹ","ỵ",};
+            string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "d", "e","e","e","e","e","e","e","e","e","e","e",
+            "i","i","i","i","i", "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o", "u","u","u","u","u","u","u","u","u","u","u", "y","y","y","y","y",};
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                text = text.Replace(arr1[i], arr2[i]);
+                //text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+            }
+            return text;
+        }
         private void ADD_VALUE()
         {
             
@@ -120,7 +133,9 @@ namespace QLNH
 
 
                 Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich", maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT);
-                Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + ten.ToLower() + maNV + "','" + "123");
+
+                if (cV == "Quản lí" || cV == "Phục vụ")
+                    Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + RemoveUnicode(ten.ToLower()) + maNV + "','" + "123");
 
                 set_Ma();
             }

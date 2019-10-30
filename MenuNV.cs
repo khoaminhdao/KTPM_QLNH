@@ -51,5 +51,10 @@ namespace QLNH
             else
                 MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
         }
+
+        private void BtQLTD_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
