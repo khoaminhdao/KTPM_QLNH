@@ -24,3 +24,4 @@ C:\Users\Huy Bac\Desktop\KTPM_QLNH\obj\Debug\QLNH.pdb
 C:\Users\Huy Bac\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiNhanVien.resources
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiNhanVien.resources
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.MenuNV.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiThucDon.resources

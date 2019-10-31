@@ -35,10 +35,10 @@
             this.btXoa = new System.Windows.Forms.Button();
             this.btLuu = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtQuocTich = new System.Windows.Forms.TextBox();
+            this.txtDonGia = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtTenNv = new System.Windows.Forms.TextBox();
-            this.txtMaNv = new System.Windows.Forms.TextBox();
+            this.txtTenMa = new System.Windows.Forms.TextBox();
+            this.txtMaMa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grbttnv.SuspendLayout();
@@ -53,10 +53,10 @@
             this.grbttnv.Controls.Add(this.btXoa);
             this.grbttnv.Controls.Add(this.btLuu);
             this.grbttnv.Controls.Add(this.label4);
-            this.grbttnv.Controls.Add(this.txtQuocTich);
+            this.grbttnv.Controls.Add(this.txtDonGia);
             this.grbttnv.Controls.Add(this.label10);
-            this.grbttnv.Controls.Add(this.txtTenNv);
-            this.grbttnv.Controls.Add(this.txtMaNv);
+            this.grbttnv.Controls.Add(this.txtTenMa);
+            this.grbttnv.Controls.Add(this.txtMaMa);
             this.grbttnv.Controls.Add(this.label2);
             this.grbttnv.Controls.Add(this.label1);
             this.grbttnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -99,6 +99,7 @@
             this.btThoat.TabIndex = 88;
             this.btThoat.Text = "Thoát";
             this.btThoat.UseVisualStyleBackColor = true;
+            this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
             // 
             // btSua
             // 
@@ -109,6 +110,7 @@
             this.btSua.TabIndex = 88;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
+            this.btSua.Click += new System.EventHandler(this.btSua_Click);
             // 
             // btXoa
             // 
@@ -119,6 +121,7 @@
             this.btXoa.TabIndex = 88;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
             // btLuu
             // 
@@ -129,6 +132,7 @@
             this.btLuu.TabIndex = 88;
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = true;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 
             // label4
             // 
@@ -139,37 +143,37 @@
             this.label4.TabIndex = 86;
             this.label4.Text = "Chức Năng";
             // 
-            // txtQuocTich
+            // txtDonGia
             // 
-            this.txtQuocTich.Location = new System.Drawing.Point(151, 114);
-            this.txtQuocTich.Name = "txtQuocTich";
-            this.txtQuocTich.Size = new System.Drawing.Size(177, 26);
-            this.txtQuocTich.TabIndex = 85;
+            this.txtDonGia.Location = new System.Drawing.Point(151, 114);
+            this.txtDonGia.Name = "txtDonGia";
+            this.txtDonGia.Size = new System.Drawing.Size(148, 26);
+            this.txtDonGia.TabIndex = 85;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 117);
+            this.label10.Location = new System.Drawing.Point(9, 114);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(68, 20);
             this.label10.TabIndex = 84;
             this.label10.Text = "Đơn Giá";
             // 
-            // txtTenNv
+            // txtTenMa
             // 
-            this.txtTenNv.Location = new System.Drawing.Point(151, 72);
-            this.txtTenNv.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTenNv.Name = "txtTenNv";
-            this.txtTenNv.Size = new System.Drawing.Size(177, 26);
-            this.txtTenNv.TabIndex = 79;
+            this.txtTenMa.Location = new System.Drawing.Point(151, 72);
+            this.txtTenMa.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTenMa.Name = "txtTenMa";
+            this.txtTenMa.Size = new System.Drawing.Size(148, 26);
+            this.txtTenMa.TabIndex = 79;
             // 
-            // txtMaNv
+            // txtMaMa
             // 
-            this.txtMaNv.Location = new System.Drawing.Point(151, 33);
-            this.txtMaNv.Name = "txtMaNv";
-            this.txtMaNv.ReadOnly = true;
-            this.txtMaNv.Size = new System.Drawing.Size(177, 26);
-            this.txtMaNv.TabIndex = 76;
+            this.txtMaMa.Location = new System.Drawing.Point(151, 33);
+            this.txtMaMa.Name = "txtMaMa";
+            this.txtMaMa.ReadOnly = true;
+            this.txtMaMa.Size = new System.Drawing.Size(148, 26);
+            this.txtMaMa.TabIndex = 76;
             // 
             // label2
             // 
@@ -197,6 +201,7 @@
             this.Controls.Add(this.grbttnv);
             this.Name = "QuanLiThucDon";
             this.Text = "QuanLiThucDon";
+            this.Load += new System.EventHandler(this.QuanLiThucDon_Load);
             this.grbttnv.ResumeLayout(false);
             this.grbttnv.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -213,10 +218,10 @@
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtQuocTich;
+        private System.Windows.Forms.TextBox txtDonGia;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtTenNv;
-        private System.Windows.Forms.TextBox txtMaNv;
+        private System.Windows.Forms.TextBox txtTenMa;
+        private System.Windows.Forms.TextBox txtMaMa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
