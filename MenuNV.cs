@@ -58,8 +58,7 @@ namespace QLNH
             {
                 QuanLiThucDon qltd = new QuanLiThucDon();
                 Hide();
-                qltd.ShowDialog();
-                Show();
+                qltd.Show();
             }
             else
                 MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");

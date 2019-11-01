@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -78,7 +78,7 @@ namespace QLNH
                 String maMA = txtMaMa.Text;
                 String donGia = txtDonGia.Text;
                 
-                Form1.Update_Data("ThucDon", "'MaMA = '" + maMA + "', TenMA = '" + tenMA , "DonGia = '" + donGia);
+                Form1.Update_Data("ThucDon", "TenMA = '" + tenMA + "', DonGia = '" + donGia + "'", "MaMA = " + maMA);
                 set_Ma();
             }
         }
