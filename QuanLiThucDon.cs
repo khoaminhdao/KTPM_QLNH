@@ -54,7 +54,7 @@ namespace QLNH
                     txtMaMa.Text = (i + 1).ToString();
                     return;
                 }
-            txtMaMa.Text = (dataGridView1.Rows.Count).ToString();
+            txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
             txtTenMa.Text = txtDonGia.Text = "";
         }
 
@@ -85,7 +85,7 @@ namespace QLNH
 
         private void buThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btXoa_Click(object sender, EventArgs e)

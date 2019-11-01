@@ -154,7 +154,8 @@ namespace QLNH
                             MSNV = dsnv.Rows[i].ItemArray[0].ToString();
                             MenuNV menu = new MenuNV();
                             Hide();
-                            menu.Show();
+                            menu.ShowDialog();
+                            Show();
                             return;
                         }
                         else
