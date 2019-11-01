@@ -38,11 +38,13 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chàoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(624, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(832, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -51,21 +53,22 @@
             this.chàoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.đăngXuấtToolStripMenuItem});
             this.chàoToolStripMenuItem.Name = "chàoToolStripMenuItem";
-            this.chàoToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.chàoToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.chàoToolStripMenuItem.Text = "Chào, ";
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng Xuất";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.ĐăngXuấtToolStripMenuItem_Click);
             // 
             // btQLNV
             // 
-            this.btQLNV.Location = new System.Drawing.Point(88, 97);
+            this.btQLNV.Location = new System.Drawing.Point(117, 119);
+            this.btQLNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btQLNV.Name = "btQLNV";
-            this.btQLNV.Size = new System.Drawing.Size(178, 67);
+            this.btQLNV.Size = new System.Drawing.Size(237, 82);
             this.btQLNV.TabIndex = 1;
             this.btQLNV.Text = "Quản lý nhân viên";
             this.btQLNV.UseVisualStyleBackColor = true;
@@ -73,9 +76,10 @@
             // 
             // btQLTD
             // 
-            this.btQLTD.Location = new System.Drawing.Point(337, 97);
+            this.btQLTD.Location = new System.Drawing.Point(449, 119);
+            this.btQLTD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btQLTD.Name = "btQLTD";
-            this.btQLTD.Size = new System.Drawing.Size(178, 67);
+            this.btQLTD.Size = new System.Drawing.Size(237, 82);
             this.btQLTD.TabIndex = 2;
             this.btQLTD.Text = "Quản lý thực đơn";
             this.btQLTD.UseVisualStyleBackColor = true;
@@ -83,15 +87,17 @@
             // 
             // MenuNV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 450);
+            this.ClientSize = new System.Drawing.Size(832, 554);
             this.Controls.Add(this.btQLTD);
             this.Controls.Add(this.btQLNV);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MenuNV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuNV";
             this.Load += new System.EventHandler(this.MenuNV_Load);
             this.menuStrip1.ResumeLayout(false);

@@ -151,12 +151,10 @@ namespace QLNH
                     if (id == dsnv.Rows[i].ItemArray[1].ToString())
                         if (pass == dsnv.Rows[i].ItemArray[2].ToString())
                         {
-                            MessageBox.Show("Đăng nhập thành công");
                             MSNV = dsnv.Rows[i].ItemArray[0].ToString();
                             MenuNV menu = new MenuNV();
                             Hide();
-                            menu.ShowDialog();
-                            Show();
+                            menu.Show();
                             return;
                         }
                         else

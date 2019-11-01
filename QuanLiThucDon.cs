@@ -54,7 +54,7 @@ namespace QLNH
                     txtMaMa.Text = (i + 1).ToString();
                     return;
                 }
-            txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
+            txtMaMa.Text = (dataGridView1.Rows.Count).ToString();
             txtTenMa.Text = txtDonGia.Text = "";
         }
 
@@ -68,48 +68,51 @@ namespace QLNH
             set_Ma();
         }
 
-        private void btXoa_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
-            else
-            {
-                Form1.Delete_Data("ThucDon", "MaMA = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                set_Ma();
-            }
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Không có dữ liệu", "Thông báo");
-            //}
-
-        }
 
         private void btSua_Click(object sender, EventArgs e)
         {
             if (check_input())
             {
-                String maMA = txtMaMa.Text;
+
                 String tenMA = txtTenMa.Text;
+                String maMA = txtMaMa.Text;
                 String donGia = txtDonGia.Text;
-
-
-                Form1.Update_Data("ThucDon", "'TenMA = '" + tenMA + "', DonGia = '" + donGia, "MaMA = '" + maMA);
+                
+                Form1.Update_Data("ThucDon", "'MaMA = '" + maMA + "', TenMA = '" + tenMA , "DonGia = '" + donGia);
                 set_Ma();
             }
         }
 
-        private void btThoat_Click(object sender, EventArgs e)
+        private void buThoat_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
-        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btXoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
+                else
+                {
+                    Form1.Delete_Data("ThucDon", "MaMA = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    set_Ma();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Không có dữ liệu", "Thông báo");
+            }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
             txtMaMa.Text = dr.Cells[0].Value.ToString();
             txtTenMa.Text = dr.Cells[1].Value.ToString();
             txtDonGia.Text = dr.Cells[2].Value.ToString();
-           
         }
     }
+    
 }
