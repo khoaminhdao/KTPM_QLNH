@@ -33,10 +33,17 @@ namespace QLNH
             if (check_input())
             {
                 String maMA = txtMaMa.Text;
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maMA)
+                    {
+                        MessageBox.Show("Mã món ăn đã tồn tại, nhấn sửa để cập nhật thông tin!");
+                        return;
+                    }
+               
                 String tenMA = txtTenMa.Text;
                 String donGia = txtDonGia.Text;
 
-                Form1.Add_Data("ThucDon", "MaMA, TenMA, DonGia", maMA + "','" + tenMA + "','" + donGia);
+                Form1.Add_Data("ThucDon", "MaMA, TenMA, DonGia", "'" + maMA + "','" + tenMA + "','" + donGia + "'");
 
                 set_Ma();
             }

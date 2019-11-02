@@ -52,7 +52,7 @@ namespace QLNH
         public static void Add_Data(string table, string danhsachcot, string danhsachthamso)
         {
 
-            string l = "insert into " + table + "(" + danhsachcot + ") values('" + danhsachthamso + "')";
+            string l = "insert into " + table + "(" + danhsachcot + ") values(" + danhsachthamso + ")";
 
             Open_DataAccess();
 
@@ -204,33 +204,26 @@ namespace QLNH
                 MessageBox.Show("Vui lòng nhập số người chính xác");
             else
             {
-                DataTable dsb = Load_Data("Ban", "MaBan, SoNguoi, TinhTrang, Dat");
+                DataTable dsb = Load_Data("Ban", "MaBan, SucChua, TinhTrang");
+                DataTable dsd = Load_Data("DatBan", "MaBan, ThoiGian");
                 int i, j;
                 for (i = 0; i < dsb.Rows.Count; i++)
                 {
                     if (int.Parse(dsb.Rows[i].ItemArray[1].ToString()) >= int.Parse(soNg))
-                        if (dsb.Rows[i].ItemArray[3].ToString() == "False")
+                    {
+                        for (j = 0; j < dsd.Rows.Count; j++)
+                            if (dsd.Rows[j].ItemArray[0].ToString() == dsb.Rows[i].ItemArray[0].ToString() && (timePk.Value.CompareTo(DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()).AddHours(3)) == -1 || DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()).CompareTo(timePk.Value.AddHours(3)) == -1))
+                                break;
+                        if (j == dsd.Rows.Count)
                         {
                             maban = dsb.Rows[i].ItemArray[0].ToString();
-                            Update_Data("Ban", "Dat = True", "MaBan = " + (i + 1));
                             break;
                         }
-                        else
-                        {
-                            DataTable dsd = Load_Data("DatBan", "MaBan, ThoiGian");
-                            for (j = 0; j < dsd.Rows.Count; j++)
-                                if (dsd.Rows[j].ItemArray[0].ToString() == dsb.Rows[i].ItemArray[0].ToString() && (timePk.Value.CompareTo(DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()).AddHours(3)) == -1 || DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()).CompareTo(timePk.Value.AddHours(3)) == -1))
-                                    break;
-                            if (j == dsd.Rows.Count)
-                            {
-                                maban = dsb.Rows[i].ItemArray[0].ToString();
-                                break;
-                            }
-                        }
+                    }
                 }
                 if (i != dsb.Rows.Count)
                 {
-                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi", maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToString() + "','" + soNg);
+                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi","'" + maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToString() + "','" + soNg + "'");
                     MessageBox.Show("Đặt bàn thành công!");
                 }
                 else MessageBox.Show("Không có bàn phù hợp yêu cầu!");

@@ -64,5 +64,18 @@ namespace QLNH
             else
                 MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
         }
+
+        private void BtQLB_Click(object sender, EventArgs e)
+        {
+            if (QL == true)
+            {
+                QuanLiBan qlb = new QuanLiBan();
+                Hide();
+                qlb.ShowDialog();
+                Show();
+            }
+            else
+                MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
+        }
     }
 }

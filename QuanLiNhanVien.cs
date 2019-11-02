@@ -46,8 +46,15 @@ namespace QLNH
             
             if (check_input())
             {
-                int vt = txtTenNv.Text.LastIndexOf(" ");
                 String maNV = txtMaNv.Text;
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maNV)
+                    {
+                        MessageBox.Show("Mã nhân viên đã tồn tại, nhấn sửa để cập nhật thông tin!");
+                        return;
+                    }
+                int vt = txtTenNv.Text.LastIndexOf(" ");
+               
                 String ho = txtTenNv.Text.Substring(0, vt);
                 String ten = txtTenNv.Text.Substring(vt + 1);
                 String nS = datetime.Value.ToShortDateString();
@@ -57,10 +64,10 @@ namespace QLNH
                 String cV = cbChucVu.Text;
 
 
-                Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich", maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT);
+                Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam", "'" + maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT + "','" + DateTime.Now.ToShortDateString() + "'");
 
                 if (cV == "Quản lí" || cV == "Phục vụ")
-                    Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau", maNV + "','" + RemoveUnicode(ten.ToLower()) + maNV + "','" + "123");
+                    Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau","'" + maNV + "','" + RemoveUnicode(ten.ToLower()) + maNV + "','" + "123'");
 
                 set_Ma();
             }
@@ -70,7 +77,7 @@ namespace QLNH
 
         public void set_Ma ()
         {
-            dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich");
+            dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
                 if (int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()) != i + 1)
@@ -90,6 +97,7 @@ namespace QLNH
         private void QuanLiNhanVien_Load(object sender, EventArgs e)
         {
             set_Ma();
+            cbChucVu.SelectedIndex = cbGioiTinh.SelectedIndex = cbTrinhDo.SelectedIndex = 0;
         }
 
         private void btXoa_Click(object sender, EventArgs e)
