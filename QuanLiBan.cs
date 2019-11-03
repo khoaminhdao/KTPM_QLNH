@@ -17,7 +17,7 @@ namespace QLNH
             InitializeComponent();
         }
 
-        public bool check_input()
+        public bool Check_Input()
         {
             if (txtSucChua.Text == "")
             {
@@ -30,7 +30,7 @@ namespace QLNH
         private void ADD_VALUE()
         {
 
-            if (check_input())
+            if (Check_Input())
             {
                 String maBan = txtMaBan.Text;
                 for (int i = 0; i < dataGridView1.RowCount; i++)
@@ -45,13 +45,13 @@ namespace QLNH
 
                 Form1.Add_Data("Ban", "MaBan, SucChua, TinhTrang, Dat", "'" + maBan + "','" + sucChua + "','" + tinhTrang + "',False");
 
-                set_Ma();
+                Set_Ma();
             }
 
         }
 
 
-        public void set_Ma()
+        public void Set_Ma()
         {
             dataGridView1.DataSource = Form1.Load_Data("Ban", "MaBan, SucChua, TinhTrang");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -72,14 +72,14 @@ namespace QLNH
 
         private void QuanLiBan_Load(object sender, EventArgs e)
         {
-            set_Ma();
+            Set_Ma();
             cbTT.SelectedIndex = 0;
         }
 
 
         private void btSua_Click(object sender, EventArgs e)
         {
-            if (check_input())
+            if (Check_Input())
             {
 
                 String sucChua = txtSucChua.Text;
@@ -87,7 +87,7 @@ namespace QLNH
                 String tinhTrang = cbTT.Text;
 
                 Form1.Update_Data("Ban", "sucChua = '" + sucChua + "', TinhTrang = '" + tinhTrang + "'", "MaBan = " + maBan);
-                set_Ma();
+                Set_Ma();
             }
         }
 
@@ -105,7 +105,7 @@ namespace QLNH
                 else
                 {
                     Form1.Delete_Data("Ban", "MaBan = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    set_Ma();
+                    Set_Ma();
                 }
             }
             catch (Exception)
@@ -122,16 +122,16 @@ namespace QLNH
             cbTT.Text = dr.Cells[2].Value.ToString();
 
             DataTable dsd = Form1.Load_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi");
-            DataTable dtCTHD = new DataTable("temp", "MaBan, Ten, SDT, ThoiGian, SoNguoi");
-            dtCTHD.Columns.Add("MaBan", typeof(Int32));
-            dtCTHD.Columns.Add("Ten", typeof(string));
-            dtCTHD.Columns.Add("SDT", typeof(string));
-            dtCTHD.Columns.Add("ThoiGian", typeof(DateTime));
-            dtCTHD.Columns.Add("SoNguoi", typeof(Int32));
+            DataTable temp = new DataTable();
+            temp.Columns.Add("MaBan", typeof(Int32));
+            temp.Columns.Add("Ten", typeof(string));
+            temp.Columns.Add("SDT", typeof(string));
+            temp.Columns.Add("ThoiGian", typeof(DateTime));
+            temp.Columns.Add("SoNguoi", typeof(Int32));
             for (int i = 0; i < dsd.Rows.Count; i++)
                 if (dsd.Rows[i].ItemArray[0].ToString() == txtMaBan.Text)
-                    dtCTHD.ImportRow(dsd.Rows[i]);
-            dataGridView2.DataSource = dtCTHD;
+                    temp.ImportRow(dsd.Rows[i]);
+            dataGridView2.DataSource = temp;
         }
     }
 }

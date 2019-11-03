@@ -34,6 +34,7 @@
             this.btQLNV = new System.Windows.Forms.Button();
             this.btQLTD = new System.Windows.Forms.Button();
             this.btQLB = new System.Windows.Forms.Button();
+            this.btQLHD = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +86,7 @@
             // 
             // btQLB
             // 
-            this.btQLB.Location = new System.Drawing.Point(220, 221);
+            this.btQLB.Location = new System.Drawing.Point(88, 222);
             this.btQLB.Name = "btQLB";
             this.btQLB.Size = new System.Drawing.Size(178, 67);
             this.btQLB.TabIndex = 3;
@@ -93,11 +94,22 @@
             this.btQLB.UseVisualStyleBackColor = true;
             this.btQLB.Click += new System.EventHandler(this.BtQLB_Click);
             // 
+            // btQLHD
+            // 
+            this.btQLHD.Location = new System.Drawing.Point(337, 222);
+            this.btQLHD.Name = "btQLHD";
+            this.btQLHD.Size = new System.Drawing.Size(178, 67);
+            this.btQLHD.TabIndex = 4;
+            this.btQLHD.Text = "Quản lý hóa đơn";
+            this.btQLHD.UseVisualStyleBackColor = true;
+            this.btQLHD.Click += new System.EventHandler(this.BtQLHD_Click);
+            // 
             // MenuNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 450);
+            this.Controls.Add(this.btQLHD);
             this.Controls.Add(this.btQLB);
             this.Controls.Add(this.btQLTD);
             this.Controls.Add(this.btQLNV);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Button btQLNV;
         private System.Windows.Forms.Button btQLTD;
         private System.Windows.Forms.Button btQLB;
+        private System.Windows.Forms.Button btQLHD;
     }
 }

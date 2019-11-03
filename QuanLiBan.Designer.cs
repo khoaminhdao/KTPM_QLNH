@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grbttnv = new System.Windows.Forms.GroupBox();
+            this.cbTT = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btThoat = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
@@ -40,8 +42,6 @@
             this.txtMaBan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbTT = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
@@ -67,14 +67,35 @@
             this.grbttnv.Controls.Add(this.label2);
             this.grbttnv.Controls.Add(this.label1);
             this.grbttnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbttnv.Location = new System.Drawing.Point(11, 11);
+            this.grbttnv.Location = new System.Drawing.Point(11, 13);
             this.grbttnv.Margin = new System.Windows.Forms.Padding(2);
             this.grbttnv.Name = "grbttnv";
             this.grbttnv.Padding = new System.Windows.Forms.Padding(2);
-            this.grbttnv.Size = new System.Drawing.Size(644, 320);
+            this.grbttnv.Size = new System.Drawing.Size(644, 283);
             this.grbttnv.TabIndex = 3;
             this.grbttnv.TabStop = false;
             this.grbttnv.Text = "Thông tin bàn";
+            // 
+            // cbTT
+            // 
+            this.cbTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTT.FormattingEnabled = true;
+            this.cbTT.Items.AddRange(new object[] {
+            "Trống",
+            "Đang sử dụng"});
+            this.cbTT.Location = new System.Drawing.Point(508, 28);
+            this.cbTT.Name = "cbTT";
+            this.cbTT.Size = new System.Drawing.Size(117, 28);
+            this.cbTT.TabIndex = 91;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(411, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 20);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "Tình trạng";
             // 
             // dataGridView1
             // 
@@ -193,37 +214,16 @@
             this.label1.TabIndex = 73;
             this.label1.Text = "Mã Bàn";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(411, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 20);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "Tình trạng";
-            // 
-            // cbTT
-            // 
-            this.cbTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTT.FormattingEnabled = true;
-            this.cbTT.Items.AddRange(new object[] {
-            "Trống",
-            "Đang sử dụng"});
-            this.cbTT.Location = new System.Drawing.Point(508, 28);
-            this.cbTT.Name = "cbTT";
-            this.cbTT.Size = new System.Drawing.Size(117, 28);
-            this.cbTT.TabIndex = 91;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(7, 335);
+            this.groupBox1.Location = new System.Drawing.Point(11, 312);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(644, 320);
+            this.groupBox1.Size = new System.Drawing.Size(644, 283);
             this.groupBox1.TabIndex = 92;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đặt bàn";
@@ -261,7 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 620);
+            this.ClientSize = new System.Drawing.Size(662, 602);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbttnv);
             this.Name = "QuanLiBan";

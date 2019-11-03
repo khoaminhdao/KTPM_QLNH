@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GoiMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoiMon.Designer.cs">
+      <DependentUpon>GoiMon.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuNV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLiHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLiHoaDon.Designer.cs">
+      <DependentUpon>QuanLiHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLiBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +93,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GoiMon.resx">
+      <DependentUpon>GoiMon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuNV.resx">
       <DependentUpon>MenuNV.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="QuanLiBan.resx">
       <DependentUpon>QuanLiBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLiHoaDon.resx">
+      <DependentUpon>QuanLiHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLiNhanVien.resx">
       <DependentUpon>QuanLiNhanVien.cs</DependentUpon>

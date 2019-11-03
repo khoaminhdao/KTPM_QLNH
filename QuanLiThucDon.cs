@@ -17,7 +17,7 @@ namespace QLNH
             InitializeComponent();
         }
 
-        public bool check_input()
+        public bool Check_Input()
         {
             if (txtTenMa.Text == "")
             {
@@ -30,7 +30,7 @@ namespace QLNH
         private void ADD_VALUE()
         {
 
-            if (check_input())
+            if (Check_Input())
             {
                 String maMA = txtMaMa.Text;
                 for (int i = 0; i < dataGridView1.RowCount; i++)
@@ -45,13 +45,13 @@ namespace QLNH
 
                 Form1.Add_Data("ThucDon", "MaMA, TenMA, DonGia", "'" + maMA + "','" + tenMA + "','" + donGia + "'");
 
-                set_Ma();
+                Set_Ma();
             }
 
         }
 
 
-        public void set_Ma()
+        public void Set_Ma()
         {
             dataGridView1.DataSource = Form1.Load_Data("ThucDon", "MaMA, TenMA, DonGia");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -72,13 +72,13 @@ namespace QLNH
 
         private void QuanLiThucDon_Load(object sender, EventArgs e)
         {
-            set_Ma();
+            Set_Ma();
         }
 
 
         private void btSua_Click(object sender, EventArgs e)
         {
-            if (check_input())
+            if (Check_Input())
             {
 
                 String tenMA = txtTenMa.Text;
@@ -86,7 +86,7 @@ namespace QLNH
                 String donGia = txtDonGia.Text;
                 
                 Form1.Update_Data("ThucDon", "TenMA = '" + tenMA + "', DonGia = '" + donGia + "'", "MaMA = " + maMA);
-                set_Ma();
+                Set_Ma();
             }
         }
 
@@ -104,7 +104,7 @@ namespace QLNH
                 else
                 {
                     Form1.Delete_Data("ThucDon", "MaMA = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    set_Ma();
+                    Set_Ma();
                 }
             }
             catch (Exception)

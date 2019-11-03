@@ -77,5 +77,18 @@ namespace QLNH
             else
                 MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
         }
+
+        private void BtQLHD_Click(object sender, EventArgs e)
+        {
+            if (QL == true)
+            {
+                QuanLiHoaDon qlhd = new QuanLiHoaDon();
+                Hide();
+                qlhd.ShowDialog();
+                Show();
+            }
+            else
+                MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
+        }
     }
 }
