@@ -43,7 +43,7 @@ namespace QLNH
                 String sucChua = txtSucChua.Text;
                 String tinhTrang = cbTT.Text;
 
-                Form1.Add_Data("Ban", "MaBan, SucChua, TinhTrang, Dat", "'" + maBan + "','" + sucChua + "','" + tinhTrang + "',False");
+                Form1.Add_Data("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','" + tinhTrang + "'");
 
                 Set_Ma();
             }

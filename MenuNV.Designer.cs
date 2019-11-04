@@ -35,6 +35,7 @@
             this.btQLTD = new System.Windows.Forms.Button();
             this.btQLB = new System.Windows.Forms.Button();
             this.btQLHD = new System.Windows.Forms.Button();
+            this.btGoiMon = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,11 +105,22 @@
             this.btQLHD.UseVisualStyleBackColor = true;
             this.btQLHD.Click += new System.EventHandler(this.BtQLHD_Click);
             // 
+            // btGoiMon
+            // 
+            this.btGoiMon.Location = new System.Drawing.Point(202, 327);
+            this.btGoiMon.Name = "btGoiMon";
+            this.btGoiMon.Size = new System.Drawing.Size(178, 67);
+            this.btGoiMon.TabIndex = 5;
+            this.btGoiMon.Text = "Gọi Món";
+            this.btGoiMon.UseVisualStyleBackColor = true;
+            this.btGoiMon.Click += new System.EventHandler(this.BtGoiMon_Click);
+            // 
             // MenuNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 450);
+            this.Controls.Add(this.btGoiMon);
             this.Controls.Add(this.btQLHD);
             this.Controls.Add(this.btQLB);
             this.Controls.Add(this.btQLTD);
@@ -136,5 +148,6 @@
         private System.Windows.Forms.Button btQLTD;
         private System.Windows.Forms.Button btQLB;
         private System.Windows.Forms.Button btQLHD;
+        private System.Windows.Forms.Button btGoiMon;
     }
 }
