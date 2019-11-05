@@ -31,9 +31,7 @@
             this.btDN = new System.Windows.Forms.Button();
             this.txtTK = new System.Windows.Forms.TextBox();
             this.txtMK = new System.Windows.Forms.TextBox();
-            this.btKH = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btNV = new System.Windows.Forms.Button();
             this.lbTK = new System.Windows.Forms.Label();
             this.lbMK = new System.Windows.Forms.Label();
             this.btDatBan = new System.Windows.Forms.Button();
@@ -48,230 +46,187 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdBan = new System.Windows.Forms.RadioButton();
             this.rdDD = new System.Windows.Forms.RadioButton();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cbTime = new System.Windows.Forms.ComboBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btDN
             // 
+            this.btDN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btDN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDN.Location = new System.Drawing.Point(588, 334);
-            this.btDN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btDN.Location = new System.Drawing.Point(3, 316);
             this.btDN.Name = "btDN";
-            this.btDN.Size = new System.Drawing.Size(141, 44);
+            this.btDN.Size = new System.Drawing.Size(349, 36);
             this.btDN.TabIndex = 0;
             this.btDN.Text = "Đăng nhập";
             this.btDN.UseVisualStyleBackColor = true;
-            this.btDN.Visible = false;
             this.btDN.Click += new System.EventHandler(this.BtDN_Click);
             // 
             // txtTK
             // 
+            this.txtTK.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.txtTK.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txtTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTK.Location = new System.Drawing.Point(520, 175);
-            this.txtTK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTK.HideSelection = false;
+            this.txtTK.Location = new System.Drawing.Point(29, 65);
             this.txtTK.Name = "txtTK";
-            this.txtTK.Size = new System.Drawing.Size(263, 32);
+            this.txtTK.Size = new System.Drawing.Size(198, 27);
             this.txtTK.TabIndex = 1;
-            this.txtTK.Visible = false;
             // 
             // txtMK
             // 
             this.txtMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMK.Location = new System.Drawing.Point(520, 249);
-            this.txtMK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMK.Location = new System.Drawing.Point(29, 166);
             this.txtMK.Name = "txtMK";
-            this.txtMK.Size = new System.Drawing.Size(265, 32);
+            this.txtMK.Size = new System.Drawing.Size(198, 27);
             this.txtMK.TabIndex = 2;
             this.txtMK.UseSystemPasswordChar = true;
-            this.txtMK.Visible = false;
-            // 
-            // btKH
-            // 
-            this.btKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btKH.Location = new System.Drawing.Point(144, 85);
-            this.btKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btKH.Name = "btKH";
-            this.btKH.Size = new System.Drawing.Size(179, 59);
-            this.btKH.TabIndex = 3;
-            this.btKH.Text = "Khách Hàng";
-            this.btKH.UseVisualStyleBackColor = true;
-            this.btKH.Click += new System.EventHandler(this.BtKH_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(-2, -3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 48);
+            this.label1.Size = new System.Drawing.Size(123, 39);
             this.label1.TabIndex = 4;
             this.label1.Text = "Bạn là:";
-            // 
-            // btNV
-            // 
-            this.btNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btNV.Location = new System.Drawing.Point(563, 86);
-            this.btNV.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btNV.Name = "btNV";
-            this.btNV.Size = new System.Drawing.Size(179, 58);
-            this.btNV.TabIndex = 5;
-            this.btNV.Text = "Nhân Viên";
-            this.btNV.UseVisualStyleBackColor = true;
-            this.btNV.Click += new System.EventHandler(this.BtNV_Click);
             // 
             // lbTK
             // 
             this.lbTK.AutoSize = true;
             this.lbTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTK.Location = new System.Drawing.Point(388, 175);
-            this.lbTK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTK.Location = new System.Drawing.Point(18, 40);
             this.lbTK.Name = "lbTK";
-            this.lbTK.Size = new System.Drawing.Size(110, 26);
+            this.lbTK.Size = new System.Drawing.Size(93, 22);
             this.lbTK.TabIndex = 6;
             this.lbTK.Text = "Tài Khoản";
-            this.lbTK.Visible = false;
             // 
             // lbMK
             // 
             this.lbMK.AutoSize = true;
             this.lbMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMK.Location = new System.Drawing.Point(388, 252);
-            this.lbMK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbMK.Location = new System.Drawing.Point(18, 141);
             this.lbMK.Name = "lbMK";
-            this.lbMK.Size = new System.Drawing.Size(105, 26);
+            this.lbMK.Size = new System.Drawing.Size(86, 22);
             this.lbMK.TabIndex = 7;
             this.lbMK.Text = "Mật Khẩu";
-            this.lbMK.Visible = false;
             // 
             // btDatBan
             // 
+            this.btDatBan.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btDatBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDatBan.Location = new System.Drawing.Point(173, 486);
-            this.btDatBan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btDatBan.Location = new System.Drawing.Point(3, 309);
             this.btDatBan.Name = "btDatBan";
-            this.btDatBan.Size = new System.Drawing.Size(112, 53);
+            this.btDatBan.Size = new System.Drawing.Size(349, 43);
             this.btDatBan.TabIndex = 18;
             this.btDatBan.Text = "Đặt bàn";
             this.btDatBan.UseVisualStyleBackColor = true;
-            this.btDatBan.Visible = false;
             this.btDatBan.Click += new System.EventHandler(this.BtDatBan_Click);
             // 
             // timePk
             // 
-            this.timePk.CustomFormat = "HH:mm dd/MM/yyyy";
+            this.timePk.CustomFormat = "dd/MM/yyyy";
             this.timePk.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timePk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timePk.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.timePk.Location = new System.Drawing.Point(127, 338);
-            this.timePk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.timePk.Location = new System.Drawing.Point(195, 177);
             this.timePk.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
             this.timePk.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.timePk.Name = "timePk";
-            this.timePk.Size = new System.Drawing.Size(227, 32);
+            this.timePk.Size = new System.Drawing.Size(124, 27);
             this.timePk.TabIndex = 17;
-            this.timePk.Visible = false;
+            this.timePk.Value = new System.DateTime(2019, 11, 4, 0, 0, 0, 0);
+            this.timePk.ValueChanged += new System.EventHandler(this.TimePk_ValueChanged);
             // 
             // txtSDT
             // 
             this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.Location = new System.Drawing.Point(127, 246);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSDT.Location = new System.Drawing.Point(115, 87);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(227, 32);
+            this.txtSDT.Size = new System.Drawing.Size(171, 27);
             this.txtSDT.TabIndex = 16;
-            this.txtSDT.Visible = false;
             // 
             // txtSN
             // 
             this.txtSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSN.Location = new System.Drawing.Point(127, 407);
-            this.txtSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSN.Location = new System.Drawing.Point(115, 228);
             this.txtSN.Name = "txtSN";
-            this.txtSN.Size = new System.Drawing.Size(227, 32);
+            this.txtSN.Size = new System.Drawing.Size(171, 27);
             this.txtSN.TabIndex = 15;
-            this.txtSN.Visible = false;
             // 
             // lbSDT
             // 
             this.lbSDT.AutoSize = true;
             this.lbSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSDT.Location = new System.Drawing.Point(8, 252);
-            this.lbSDT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbSDT.Location = new System.Drawing.Point(24, 92);
             this.lbSDT.Name = "lbSDT";
-            this.lbSDT.Size = new System.Drawing.Size(55, 26);
+            this.lbSDT.Size = new System.Drawing.Size(47, 22);
             this.lbSDT.TabIndex = 14;
             this.lbSDT.Text = "SĐT";
-            this.lbSDT.Visible = false;
             // 
             // lbTG
             // 
             this.lbTG.AutoSize = true;
             this.lbTG.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTG.Location = new System.Drawing.Point(5, 343);
-            this.lbTG.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTG.Location = new System.Drawing.Point(24, 177);
             this.lbTG.Name = "lbTG";
-            this.lbTG.Size = new System.Drawing.Size(100, 26);
+            this.lbTG.Size = new System.Drawing.Size(85, 22);
             this.lbTG.TabIndex = 13;
             this.lbTG.Text = "Thời gian";
-            this.lbTG.Visible = false;
             // 
             // lbSN
             // 
             this.lbSN.AutoSize = true;
             this.lbSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSN.Location = new System.Drawing.Point(5, 407);
-            this.lbSN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbSN.Location = new System.Drawing.Point(24, 228);
             this.lbSN.Name = "lbSN";
-            this.lbSN.Size = new System.Drawing.Size(98, 26);
+            this.lbSN.Size = new System.Drawing.Size(81, 22);
             this.lbSN.TabIndex = 12;
             this.lbSN.Text = "Số người";
-            this.lbSN.Visible = false;
             // 
             // lbTen
             // 
             this.lbTen.AutoSize = true;
             this.lbTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTen.Location = new System.Drawing.Point(8, 178);
-            this.lbTen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTen.Location = new System.Drawing.Point(24, 34);
             this.lbTen.Name = "lbTen";
-            this.lbTen.Size = new System.Drawing.Size(48, 26);
+            this.lbTen.Size = new System.Drawing.Size(42, 22);
             this.lbTen.TabIndex = 11;
             this.lbTen.Text = "Tên";
-            this.lbTen.Visible = false;
             // 
             // txtTen
             // 
             this.txtTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTen.Location = new System.Drawing.Point(127, 175);
-            this.txtTen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTen.Location = new System.Drawing.Point(115, 34);
             this.txtTen.Name = "txtTen";
-            this.txtTen.Size = new System.Drawing.Size(227, 32);
+            this.txtTen.Size = new System.Drawing.Size(171, 27);
             this.txtTen.TabIndex = 10;
-            this.txtTen.Visible = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rdBan);
             this.groupBox1.Controls.Add(this.rdDD);
-            this.groupBox1.Location = new System.Drawing.Point(37, 287);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(43, 120);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(345, 46);
+            this.groupBox1.Size = new System.Drawing.Size(276, 37);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Định dạng";
-            this.groupBox1.Visible = false;
             // 
             // rdBan
             // 
             this.rdBan.AutoSize = true;
-            this.rdBan.Location = new System.Drawing.Point(157, 23);
-            this.rdBan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdBan.Location = new System.Drawing.Point(118, 19);
             this.rdBan.Name = "rdBan";
-            this.rdBan.Size = new System.Drawing.Size(177, 21);
+            this.rdBan.Size = new System.Drawing.Size(135, 17);
             this.rdBan.TabIndex = 1;
             this.rdBan.TabStop = true;
             this.rdBan.Text = "Bàn (8 số + 3 mã vùng)";
@@ -281,49 +236,118 @@
             // 
             this.rdDD.AutoSize = true;
             this.rdDD.Checked = true;
-            this.rdDD.Location = new System.Drawing.Point(11, 23);
-            this.rdDD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdDD.Location = new System.Drawing.Point(8, 19);
             this.rdDD.Name = "rdDD";
-            this.rdDD.Size = new System.Drawing.Size(129, 21);
+            this.rdDD.Size = new System.Drawing.Size(99, 17);
             this.rdDD.TabIndex = 0;
             this.rdDD.TabStop = true;
             this.rdDD.Text = "Di Động (10 số)";
             this.rdDD.UseVisualStyleBackColor = true;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(5, 39);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(363, 388);
+            this.tabControl1.TabIndex = 20;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.cbTime);
+            this.tabPage1.Controls.Add(this.lbTen);
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.txtTen);
+            this.tabPage1.Controls.Add(this.btDatBan);
+            this.tabPage1.Controls.Add(this.lbSN);
+            this.tabPage1.Controls.Add(this.timePk);
+            this.tabPage1.Controls.Add(this.lbTG);
+            this.tabPage1.Controls.Add(this.txtSDT);
+            this.tabPage1.Controls.Add(this.lbSDT);
+            this.tabPage1.Controls.Add(this.txtSN);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(355, 355);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Khách Hàng";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cbTime
+            // 
+            this.cbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTime.FormattingEnabled = true;
+            this.cbTime.Items.AddRange(new object[] {
+            "09:00",
+            "09:30",
+            "10:00",
+            "10:30",
+            "11:00",
+            "11:30",
+            "12:00",
+            "12:30",
+            "13:00",
+            "13:30",
+            "14:00",
+            "14:30",
+            "15:00",
+            "15:30",
+            "16:00",
+            "16:30",
+            "17:00",
+            "17:30",
+            "18:00",
+            "18:30",
+            "19:00",
+            "19:30",
+            "20:00",
+            "20:30",
+            "21:00"});
+            this.cbTime.Location = new System.Drawing.Point(120, 180);
+            this.cbTime.Name = "cbTime";
+            this.cbTime.Size = new System.Drawing.Size(69, 24);
+            this.cbTime.TabIndex = 20;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lbTK);
+            this.tabPage2.Controls.Add(this.lbMK);
+            this.tabPage2.Controls.Add(this.btDN);
+            this.tabPage2.Controls.Add(this.txtTK);
+            this.tabPage2.Controls.Add(this.txtMK);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(355, 355);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Nhân Viên";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(844, 554);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btDatBan);
-            this.Controls.Add(this.timePk);
-            this.Controls.Add(this.txtSDT);
-            this.Controls.Add(this.txtSN);
-            this.Controls.Add(this.lbSDT);
-            this.Controls.Add(this.lbTG);
-            this.Controls.Add(this.lbSN);
-            this.Controls.Add(this.lbTen);
-            this.Controls.Add(this.txtTen);
-            this.Controls.Add(this.lbMK);
-            this.Controls.Add(this.lbTK);
-            this.Controls.Add(this.btNV);
+            this.ClientSize = new System.Drawing.Size(366, 423);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btKH);
-            this.Controls.Add(this.txtMK);
-            this.Controls.Add(this.txtTK);
-            this.Controls.Add(this.btDN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QLNH";
+            this.Text = "Đăng Nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,9 +358,7 @@
         private System.Windows.Forms.Button btDN;
         private System.Windows.Forms.TextBox txtTK;
         private System.Windows.Forms.TextBox txtMK;
-        private System.Windows.Forms.Button btKH;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btNV;
         private System.Windows.Forms.Label lbTK;
         private System.Windows.Forms.Label lbMK;
         private System.Windows.Forms.Button btDatBan;
@@ -351,6 +373,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdBan;
         private System.Windows.Forms.RadioButton rdDD;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ComboBox cbTime;
     }
 }
 

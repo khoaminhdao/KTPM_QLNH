@@ -125,6 +125,17 @@ namespace QLNH
             return true;
         }
 
+        public Boolean CheckGioHopLe (DateTime a, DateTime b)
+        {
+            //Trả về true khi a, b cách nhau hơn 3 tiếng
+
+            if (a.CompareTo(b) == -1 && b.CompareTo(a.AddHours(3)) == -1)
+                return false;
+            if (b.CompareTo(a) == -1 && a.CompareTo(b.AddHours(3)) == -1)
+                return false;
+            return true;
+        }
+
         public Boolean checkSDT (string s)
         {
             int maxNum = 10;
@@ -164,28 +175,43 @@ namespace QLNH
             }
         }
 
+        private void setTime ()
+        {
+            int gio = DateTime.Now.Hour;
+            int phut = DateTime.Now.Minute;
+
+            if (gio < 19)
+            {
+                String s = gio + 3 + ":";
+
+                if (phut < 30)
+                    s += "00";
+                else
+                    s += "30";
+
+                while (cbTime.Items[0].ToString() != s)
+                {
+                    cbTime.Items.RemoveAt(0);
+                }
+
+                cbTime.SelectedIndex = 0;
+
+            }
+            else
+                timePk.MinDate = DateTime.Now.Date.AddDays(1);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             timePk.MinDate = DateTime.Now.Date;
             timePk.MaxDate = DateTime.Now.Date.AddMonths(1);
+
+            setTime();
         }
 
         private void BtDN_Click(object sender, EventArgs e)
         {
             Check_Login(txtTK.Text, txtMK.Text);
-        }
-
-        private void BtKH_Click(object sender, EventArgs e)
-        {
-            txtTK.Visible = txtMK.Visible = lbTK.Visible = lbMK.Visible = btDN.Visible = false;
-            txtTen.Visible = txtSDT.Visible = timePk.Visible = txtSN.Visible = lbTen.Visible = lbSDT.Visible = lbTG.Visible = lbSN.Visible = groupBox1.Visible = btDatBan.Visible = true;
-
-        }
-
-        private void BtNV_Click(object sender, EventArgs e)
-        {
-            txtTen.Visible = txtSDT.Visible = timePk.Visible = txtSN.Visible = lbTen.Visible = lbSDT.Visible = lbTG.Visible = lbSN.Visible = groupBox1.Visible = btDatBan.Visible = false;
-            txtTK.Visible = txtMK.Visible = lbTK.Visible = lbMK.Visible = btDN.Visible = true;
         }
 
         private void BtDatBan_Click(object sender, EventArgs e)
@@ -194,6 +220,9 @@ namespace QLNH
             String ten = txtTen.Text;
             String soDT = txtSDT.Text;
             String soNg = txtSN.Text;
+            int gio = int.Parse(cbTime.Text.Substring(0, 2));
+            int phut = int.Parse(cbTime.Text.Substring(3));
+
             if (timePk.Value.CompareTo(DateTime.Now.AddHours(3)) != 1) //-1 -> t1 < t2 //1 -> t1 > t2
                MessageBox.Show("Bạn phải đặt trước ít nhất 3 tiếng!");
             else if (!checkAlpha(ten))
@@ -223,7 +252,7 @@ namespace QLNH
                 }
                 if (i != dsb.Rows.Count)
                 {
-                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi","'" + maban + "','" + ten + "','" + soDT + "','" + timePk.Value.ToString() + "','" + soNg + "'");
+                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi","'" + maban + "','" + ten + "','" + soDT + "','" + timePk.Value.AddHours(gio).AddMinutes(phut) + "','" + soNg + "'");
                     MessageBox.Show("Đặt bàn thành công!");
                 }
                 else MessageBox.Show("Không có bàn phù hợp yêu cầu!");
@@ -235,6 +264,12 @@ namespace QLNH
         {
             if (MessageBox.Show("Bạn muốn thoát?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 e.Cancel = true;
+        }
+
+        private void TimePk_ValueChanged(object sender, EventArgs e)
+        {
+            if (timePk.Value.CompareTo(DateTime.Now.Date) == 0)
+                setTime();
         }
     }
 }
