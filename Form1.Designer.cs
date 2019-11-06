@@ -60,10 +60,10 @@
             // 
             this.btDN.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btDN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDN.Location = new System.Drawing.Point(3, 316);
+            this.btDN.Location = new System.Drawing.Point(3, 310);
             this.btDN.Name = "btDN";
             this.btDN.Size = new System.Drawing.Size(349, 36);
-            this.btDN.TabIndex = 0;
+            this.btDN.TabIndex = 2;
             this.btDN.Text = "Đăng nhập";
             this.btDN.UseVisualStyleBackColor = true;
             this.btDN.Click += new System.EventHandler(this.BtDN_Click);
@@ -77,15 +77,15 @@
             this.txtTK.Location = new System.Drawing.Point(29, 65);
             this.txtTK.Name = "txtTK";
             this.txtTK.Size = new System.Drawing.Size(198, 27);
-            this.txtTK.TabIndex = 1;
+            this.txtTK.TabIndex = 0;
             // 
             // txtMK
             // 
             this.txtMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMK.Location = new System.Drawing.Point(29, 166);
+            this.txtMK.Location = new System.Drawing.Point(29, 178);
             this.txtMK.Name = "txtMK";
             this.txtMK.Size = new System.Drawing.Size(198, 27);
-            this.txtMK.TabIndex = 2;
+            this.txtMK.TabIndex = 1;
             this.txtMK.UseSystemPasswordChar = true;
             // 
             // label1
@@ -95,7 +95,7 @@
             this.label1.Location = new System.Drawing.Point(-2, -3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 39);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Bạn là:";
             // 
             // lbTK
@@ -105,14 +105,14 @@
             this.lbTK.Location = new System.Drawing.Point(18, 40);
             this.lbTK.Name = "lbTK";
             this.lbTK.Size = new System.Drawing.Size(93, 22);
-            this.lbTK.TabIndex = 6;
+            this.lbTK.TabIndex = 0;
             this.lbTK.Text = "Tài Khoản";
             // 
             // lbMK
             // 
             this.lbMK.AutoSize = true;
             this.lbMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMK.Location = new System.Drawing.Point(18, 141);
+            this.lbMK.Location = new System.Drawing.Point(18, 153);
             this.lbMK.Name = "lbMK";
             this.lbMK.Size = new System.Drawing.Size(86, 22);
             this.lbMK.TabIndex = 7;
@@ -122,10 +122,10 @@
             // 
             this.btDatBan.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btDatBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDatBan.Location = new System.Drawing.Point(3, 309);
+            this.btDatBan.Location = new System.Drawing.Point(3, 303);
             this.btDatBan.Name = "btDatBan";
             this.btDatBan.Size = new System.Drawing.Size(349, 43);
-            this.btDatBan.TabIndex = 18;
+            this.btDatBan.TabIndex = 7;
             this.btDatBan.Text = "Đặt bàn";
             this.btDatBan.UseVisualStyleBackColor = true;
             this.btDatBan.Click += new System.EventHandler(this.BtDatBan_Click);
@@ -141,7 +141,7 @@
             this.timePk.MinDate = new System.DateTime(2019, 1, 1, 0, 0, 0, 0);
             this.timePk.Name = "timePk";
             this.timePk.Size = new System.Drawing.Size(124, 27);
-            this.timePk.TabIndex = 17;
+            this.timePk.TabIndex = 5;
             this.timePk.Value = new System.DateTime(2019, 11, 4, 0, 0, 0, 0);
             this.timePk.ValueChanged += new System.EventHandler(this.TimePk_ValueChanged);
             // 
@@ -151,7 +151,7 @@
             this.txtSDT.Location = new System.Drawing.Point(115, 87);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(171, 27);
-            this.txtSDT.TabIndex = 16;
+            this.txtSDT.TabIndex = 2;
             // 
             // txtSN
             // 
@@ -159,7 +159,7 @@
             this.txtSN.Location = new System.Drawing.Point(115, 228);
             this.txtSN.Name = "txtSN";
             this.txtSN.Size = new System.Drawing.Size(171, 27);
-            this.txtSN.TabIndex = 15;
+            this.txtSN.TabIndex = 6;
             // 
             // lbSDT
             // 
@@ -168,7 +168,7 @@
             this.lbSDT.Location = new System.Drawing.Point(24, 92);
             this.lbSDT.Name = "lbSDT";
             this.lbSDT.Size = new System.Drawing.Size(47, 22);
-            this.lbSDT.TabIndex = 14;
+            this.lbSDT.TabIndex = 0;
             this.lbSDT.Text = "SĐT";
             // 
             // lbTG
@@ -178,7 +178,7 @@
             this.lbTG.Location = new System.Drawing.Point(24, 177);
             this.lbTG.Name = "lbTG";
             this.lbTG.Size = new System.Drawing.Size(85, 22);
-            this.lbTG.TabIndex = 13;
+            this.lbTG.TabIndex = 1;
             this.lbTG.Text = "Thời gian";
             // 
             // lbSN
@@ -188,7 +188,7 @@
             this.lbSN.Location = new System.Drawing.Point(24, 228);
             this.lbSN.Name = "lbSN";
             this.lbSN.Size = new System.Drawing.Size(81, 22);
-            this.lbSN.TabIndex = 12;
+            this.lbSN.TabIndex = 2;
             this.lbSN.Text = "Số người";
             // 
             // lbTen
@@ -198,7 +198,7 @@
             this.lbTen.Location = new System.Drawing.Point(24, 34);
             this.lbTen.Name = "lbTen";
             this.lbTen.Size = new System.Drawing.Size(42, 22);
-            this.lbTen.TabIndex = 11;
+            this.lbTen.TabIndex = 0;
             this.lbTen.Text = "Tên";
             // 
             // txtTen
@@ -207,7 +207,7 @@
             this.txtTen.Location = new System.Drawing.Point(115, 34);
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(171, 27);
-            this.txtTen.TabIndex = 10;
+            this.txtTen.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -217,7 +217,7 @@
             this.groupBox1.Location = new System.Drawing.Point(43, 120);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 37);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Định dạng";
             // 
@@ -252,8 +252,8 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 39);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(363, 388);
-            this.tabControl1.TabIndex = 20;
+            this.tabControl1.Size = new System.Drawing.Size(363, 382);
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -271,7 +271,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(355, 355);
+            this.tabPage1.Size = new System.Drawing.Size(355, 349);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Khách Hàng";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -309,7 +309,7 @@
             this.cbTime.Location = new System.Drawing.Point(120, 180);
             this.cbTime.Name = "cbTime";
             this.cbTime.Size = new System.Drawing.Size(69, 24);
-            this.cbTime.TabIndex = 20;
+            this.cbTime.TabIndex = 4;
             // 
             // tabPage2
             // 
@@ -321,7 +321,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(355, 355);
+            this.tabPage2.Size = new System.Drawing.Size(355, 349);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Nhân Viên";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -332,7 +332,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(366, 423);
+            this.ClientSize = new System.Drawing.Size(374, 423);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

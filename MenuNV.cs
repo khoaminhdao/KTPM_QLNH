@@ -17,21 +17,24 @@ namespace QLNH
             InitializeComponent();
         }
 
-        bool QL = false; 
+        public static String ten = "";
 
         private void MenuNV_Load(object sender, EventArgs e)
         {
             DataTable dsnv = Form1.Load_Data("NhanVien", "MaNV, Ten, ChucVu");
-            String ten = "";
             for (int i = 0; i < dsnv.Rows.Count; i++)
                 if (dsnv.Rows[i].ItemArray[0].ToString() == Form1.MSNV)
                 {
                     ten = dsnv.Rows[i].ItemArray[1].ToString();
-                    if (dsnv.Rows[i].ItemArray[2].ToString() == "Quản lí")
-                        QL = true;
-                    break;
+                    if (dsnv.Rows[i].ItemArray[2].ToString() != "Quản lí")
+                    {
+                        GoiMon gm = new GoiMon();
+                        this.Close();
+                        gm.ShowDialog();
+                    }
+                    else
+                        chàoToolStripMenuItem.Text += ten;
                 }
-            chàoToolStripMenuItem.Text += ten;
         }
 
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,54 +44,34 @@ namespace QLNH
 
         private void BtQLNV_Click(object sender, EventArgs e)
         {
-            if (QL == true)
-            {
                 QuanLiNhanVien qlnv = new QuanLiNhanVien();
                 Hide();
                 qlnv.ShowDialog();
-                Show();
-            }
-            else
-                MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
+                Show();  
         }
 
         private void BtQLTD_Click(object sender, EventArgs e)
-        {
-            if (QL == true)
-            {
+        {    
                 QuanLiThucDon qltd = new QuanLiThucDon();
                 Hide();
                 qltd.ShowDialog();
-                Show();
-            }
-            else
-                MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
+                Show();   
         }
 
         private void BtQLB_Click(object sender, EventArgs e)
-        {
-            if (QL == true)
-            {
+        { 
                 QuanLiBan qlb = new QuanLiBan();
                 Hide();
                 qlb.ShowDialog();
-                Show();
-            }
-            else
-                MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
+                Show();  
         }
 
         private void BtQLHD_Click(object sender, EventArgs e)
         {
-            if (QL == true)
-            {
                 QuanLiHoaDon qlhd = new QuanLiHoaDon();
                 Hide();
                 qlhd.ShowDialog();
-                Show();
-            }
-            else
-                MessageBox.Show("Chỉ quản lí mới truy cập được chức năng này!");
+                Show();   
         }
 
         private void BtGoiMon_Click(object sender, EventArgs e)
@@ -97,6 +80,12 @@ namespace QLNH
             Hide();
             gm.ShowDialog();
             Show();
+        }
+
+        private void ĐổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoiMatKhau mk = new DoiMatKhau();
+            mk.ShowDialog();
         }
     }
 }

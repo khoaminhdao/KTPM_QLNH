@@ -61,6 +61,7 @@ namespace QLNH
             using (OleDbCommand command = new OleDbCommand(l, strcon))
             {
                 connection.Open();
+
                 OleDbDataReader reader = command.ExecuteReader();
                 reader.Close();
             }
@@ -128,7 +129,11 @@ namespace QLNH
         public Boolean CheckGioHopLe (DateTime a, DateTime b)
         {
             //Trả về true khi a, b cách nhau hơn 3 tiếng
-
+            //-1 -> a < b
+            //0 -> a = b
+            //1 -> a > b
+            if (a.CompareTo(b) == 0)
+                return false;
             if (a.CompareTo(b) == -1 && b.CompareTo(a.AddHours(3)) == -1)
                 return false;
             if (b.CompareTo(a) == -1 && a.CompareTo(b.AddHours(3)) == -1)
@@ -222,10 +227,9 @@ namespace QLNH
             String soNg = txtSN.Text;
             int gio = int.Parse(cbTime.Text.Substring(0, 2));
             int phut = int.Parse(cbTime.Text.Substring(3));
+            DateTime time = timePk.Value.AddHours(gio).AddMinutes(phut);
 
-            if (timePk.Value.CompareTo(DateTime.Now.AddHours(3)) != 1) //-1 -> t1 < t2 //1 -> t1 > t2
-               MessageBox.Show("Bạn phải đặt trước ít nhất 3 tiếng!");
-            else if (!checkAlpha(ten))
+            if (!checkAlpha(ten))
                 MessageBox.Show("Vui lòng nhập tên chính xác");
             else if (!checkSDT(soDT))
                 MessageBox.Show("Vui lòng nhập đúng số điện thoại");
@@ -241,7 +245,7 @@ namespace QLNH
                     if (int.Parse(dsb.Rows[i].ItemArray[1].ToString()) >= int.Parse(soNg))
                     {
                         for (j = 0; j < dsd.Rows.Count; j++)
-                            if (dsd.Rows[j].ItemArray[0].ToString() == dsb.Rows[i].ItemArray[0].ToString() && (timePk.Value.CompareTo(DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()).AddHours(3)) == -1 || DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()).CompareTo(timePk.Value.AddHours(3)) == -1))
+                            if (dsd.Rows[j].ItemArray[0].ToString() == dsb.Rows[i].ItemArray[0].ToString() && !CheckGioHopLe(DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()), time))
                                 break;
                         if (j == dsd.Rows.Count)
                         {
@@ -252,7 +256,7 @@ namespace QLNH
                 }
                 if (i != dsb.Rows.Count)
                 {
-                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi","'" + maban + "','" + ten + "','" + soDT + "','" + timePk.Value.AddHours(gio).AddMinutes(phut) + "','" + soNg + "'");
+                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi","'" + maban + "','" + ten + "','" + soDT + "','" + time + "','" + soNg + "'");
                     MessageBox.Show("Đặt bàn thành công!");
                 }
                 else MessageBox.Show("Không có bàn phù hợp yêu cầu!");
