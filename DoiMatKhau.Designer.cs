@@ -74,6 +74,7 @@
             // 
             this.txtMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMK.Location = new System.Drawing.Point(256, 37);
+            this.txtMK.MaxLength = 12;
             this.txtMK.Name = "txtMK";
             this.txtMK.Size = new System.Drawing.Size(169, 23);
             this.txtMK.TabIndex = 3;
@@ -83,6 +84,7 @@
             // 
             this.txtnMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnMK.Location = new System.Drawing.Point(256, 83);
+            this.txtnMK.MaxLength = 12;
             this.txtnMK.Name = "txtnMK";
             this.txtnMK.Size = new System.Drawing.Size(169, 23);
             this.txtnMK.TabIndex = 4;
@@ -93,6 +95,7 @@
             // 
             this.txtaMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtaMK.Location = new System.Drawing.Point(256, 126);
+            this.txtaMK.MaxLength = 12;
             this.txtaMK.Name = "txtaMK";
             this.txtaMK.Size = new System.Drawing.Size(169, 23);
             this.txtaMK.TabIndex = 5;

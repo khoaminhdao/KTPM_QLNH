@@ -33,8 +33,8 @@ namespace QLNH
             if (Check_Input())
             {
                 String maBan = txtMaBan.Text;
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maBan)
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
+                    if (dr.Cells[0].Value.ToString() == maBan)
                     {
                         MessageBox.Show("Mã bàn đã tồn tại, nhấn sửa để cập nhật thông tin!");
                         return;
@@ -55,12 +55,20 @@ namespace QLNH
         {
             dataGridView1.DataSource = Form1.Load_Data("Ban", "MaBan, SucChua, TinhTrang");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                if (int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()) != i + 1)
+
+            int count = 1;
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                if (int.Parse(dr.Cells[0].Value.ToString()) != count)
                 {
-                    txtMaBan.Text = (i + 1).ToString();
+                    txtMaBan.Text = count.ToString();
                     return;
                 }
+                else
+                    count++;
+            }
+
             txtMaBan.Text = (dataGridView1.Rows.Count + 1).ToString();
             txtSucChua.Text = "";
         }
@@ -128,9 +136,10 @@ namespace QLNH
             temp.Columns.Add("SDT", typeof(string));
             temp.Columns.Add("ThoiGian", typeof(DateTime));
             temp.Columns.Add("SoNguoi", typeof(Int32));
-            for (int i = 0; i < dsd.Rows.Count; i++)
-                if (dsd.Rows[i].ItemArray[0].ToString() == txtMaBan.Text)
-                    temp.ImportRow(dsd.Rows[i]);
+
+            foreach (DataRow ds in dsd.Rows)
+                if (ds.ItemArray[0].ToString() == txtMaBan.Text)
+                    temp.ImportRow(ds);
             dataGridView2.DataSource = temp;
         }
     }

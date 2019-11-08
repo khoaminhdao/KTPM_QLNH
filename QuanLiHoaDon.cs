@@ -30,9 +30,9 @@ namespace QLNH
             temp.Columns.Add("MaHD", typeof(Int32));
             temp.Columns.Add("MaMA", typeof(Int32));
             temp.Columns.Add("SoLuong", typeof(Int32));
-            for (int i = 0; i < dsd.Rows.Count; i++)
-                if (dsd.Rows[i].ItemArray[0].ToString() == dataGridView1.CurrentRow.Cells[0].Value.ToString())
-                    temp.ImportRow(dsd.Rows[i]);
+            foreach (DataRow dr in dsd.Rows)
+                if (dr.ItemArray[0].ToString() == dataGridView1.CurrentRow.Cells[0].Value.ToString())
+                    temp.ImportRow(dr);
             dataGridView2.DataSource = temp;
         }
     }

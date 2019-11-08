@@ -86,7 +86,7 @@
             this.cbTT.Location = new System.Drawing.Point(508, 28);
             this.cbTT.Name = "cbTT";
             this.cbTT.Size = new System.Drawing.Size(117, 28);
-            this.cbTT.TabIndex = 91;
+            this.cbTT.TabIndex = 2;
             // 
             // label3
             // 
@@ -133,7 +133,7 @@
             this.btSua.Margin = new System.Windows.Forms.Padding(2);
             this.btSua.Name = "btSua";
             this.btSua.Size = new System.Drawing.Size(56, 38);
-            this.btSua.TabIndex = 88;
+            this.btSua.TabIndex = 5;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
             this.btSua.Click += new System.EventHandler(this.btSua_Click);
@@ -144,7 +144,7 @@
             this.buThoat.Margin = new System.Windows.Forms.Padding(2);
             this.buThoat.Name = "buThoat";
             this.buThoat.Size = new System.Drawing.Size(68, 38);
-            this.buThoat.TabIndex = 88;
+            this.buThoat.TabIndex = 6;
             this.buThoat.Text = "Thoát";
             this.buThoat.UseVisualStyleBackColor = true;
             this.buThoat.Click += new System.EventHandler(this.btThoat_Click);
@@ -155,7 +155,7 @@
             this.btXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(56, 38);
-            this.btXoa.TabIndex = 88;
+            this.btXoa.TabIndex = 4;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
             this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
@@ -166,7 +166,7 @@
             this.btLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btLuu.Name = "btLuu";
             this.btLuu.Size = new System.Drawing.Size(56, 38);
-            this.btLuu.TabIndex = 88;
+            this.btLuu.TabIndex = 3;
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = true;
             this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
@@ -184,9 +184,10 @@
             // 
             this.txtSucChua.Location = new System.Drawing.Point(278, 28);
             this.txtSucChua.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSucChua.MaxLength = 2;
             this.txtSucChua.Name = "txtSucChua";
             this.txtSucChua.Size = new System.Drawing.Size(103, 26);
-            this.txtSucChua.TabIndex = 79;
+            this.txtSucChua.TabIndex = 1;
             // 
             // txtMaBan
             // 
@@ -194,7 +195,7 @@
             this.txtMaBan.Name = "txtMaBan";
             this.txtMaBan.ReadOnly = true;
             this.txtMaBan.Size = new System.Drawing.Size(96, 26);
-            this.txtMaBan.TabIndex = 76;
+            this.txtMaBan.TabIndex = 0;
             // 
             // label2
             // 

@@ -31,7 +31,12 @@ namespace QLNH
         private void BtXN_Click(object sender, EventArgs e)
         {
             if (txtMK.Text == oldpass)
+            {
+                Form1.Update_Data("TaiKhoan", "MatKhau ='" + txtnMK.Text + "'", "MaNV = " + Form1.MSNV);
                 MessageBox.Show("Mật khẩu thay đổi thành công");
+            }
+            else
+                MessageBox.Show("Mật khẩu hiện tại không chính xác!");
         }
 
         private void TxtaMK_TextChanged(object sender, EventArgs e)

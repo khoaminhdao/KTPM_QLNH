@@ -8,7 +8,6 @@ C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.Properties.Resources.resources
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiNhanVien.resources
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiThucDon.resources
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.csproj.GenerateResource.cache
-C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.csproj.CoreCompileInputs.cache
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.exe
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.pdb
 C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiBan.resources

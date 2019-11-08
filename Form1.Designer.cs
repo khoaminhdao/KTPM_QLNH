@@ -149,6 +149,7 @@
             // 
             this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSDT.Location = new System.Drawing.Point(115, 87);
+            this.txtSDT.MaxLength = 11;
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(171, 27);
             this.txtSDT.TabIndex = 2;
@@ -157,6 +158,7 @@
             // 
             this.txtSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSN.Location = new System.Drawing.Point(115, 228);
+            this.txtSN.MaxLength = 2;
             this.txtSN.Name = "txtSN";
             this.txtSN.Size = new System.Drawing.Size(171, 27);
             this.txtSN.TabIndex = 6;
@@ -205,6 +207,7 @@
             // 
             this.txtTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTen.Location = new System.Drawing.Point(115, 34);
+            this.txtTen.MaxLength = 20;
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(171, 27);
             this.txtTen.TabIndex = 1;
@@ -305,7 +308,8 @@
             "19:30",
             "20:00",
             "20:30",
-            "21:00"});
+            "21:00",
+            "21:30"});
             this.cbTime.Location = new System.Drawing.Point(120, 180);
             this.cbTime.Name = "cbTime";
             this.cbTime.Size = new System.Drawing.Size(69, 24);

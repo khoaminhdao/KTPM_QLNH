@@ -114,7 +114,7 @@
             this.btThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btThoat.Name = "btThoat";
             this.btThoat.Size = new System.Drawing.Size(59, 38);
-            this.btThoat.TabIndex = 88;
+            this.btThoat.TabIndex = 10;
             this.btThoat.Text = "Thoát";
             this.btThoat.UseVisualStyleBackColor = true;
             this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
@@ -125,7 +125,7 @@
             this.btSua.Margin = new System.Windows.Forms.Padding(2);
             this.btSua.Name = "btSua";
             this.btSua.Size = new System.Drawing.Size(56, 38);
-            this.btSua.TabIndex = 88;
+            this.btSua.TabIndex = 9;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
             this.btSua.Click += new System.EventHandler(this.btSua_Click);
@@ -136,7 +136,7 @@
             this.btXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(56, 38);
-            this.btXoa.TabIndex = 88;
+            this.btXoa.TabIndex = 8;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
             this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
@@ -147,7 +147,7 @@
             this.btLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btLuu.Name = "btLuu";
             this.btLuu.Size = new System.Drawing.Size(56, 38);
-            this.btLuu.TabIndex = 88;
+            this.btLuu.TabIndex = 7;
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = true;
             this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
@@ -162,7 +162,7 @@
             this.cbGioiTinh.Location = new System.Drawing.Point(151, 148);
             this.cbGioiTinh.Name = "cbGioiTinh";
             this.cbGioiTinh.Size = new System.Drawing.Size(121, 28);
-            this.cbGioiTinh.TabIndex = 87;
+            this.cbGioiTinh.TabIndex = 3;
             // 
             // label4
             // 
@@ -185,9 +185,10 @@
             // txtQuocTich
             // 
             this.txtQuocTich.Location = new System.Drawing.Point(514, 70);
+            this.txtQuocTich.MaxLength = 10;
             this.txtQuocTich.Name = "txtQuocTich";
             this.txtQuocTich.Size = new System.Drawing.Size(166, 26);
-            this.txtQuocTich.TabIndex = 85;
+            this.txtQuocTich.TabIndex = 5;
             // 
             // label10
             // 
@@ -208,7 +209,7 @@
             this.cbTrinhDo.Location = new System.Drawing.Point(514, 25);
             this.cbTrinhDo.Name = "cbTrinhDo";
             this.cbTrinhDo.Size = new System.Drawing.Size(166, 28);
-            this.cbTrinhDo.TabIndex = 83;
+            this.cbTrinhDo.TabIndex = 4;
             // 
             // cbChucVu
             // 
@@ -222,7 +223,7 @@
             this.cbChucVu.Location = new System.Drawing.Point(514, 113);
             this.cbChucVu.Name = "cbChucVu";
             this.cbChucVu.Size = new System.Drawing.Size(166, 28);
-            this.cbChucVu.TabIndex = 82;
+            this.cbChucVu.TabIndex = 6;
             // 
             // label7
             // 
@@ -246,9 +247,10 @@
             // 
             this.txtTenNv.Location = new System.Drawing.Point(151, 72);
             this.txtTenNv.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTenNv.MaxLength = 30;
             this.txtTenNv.Name = "txtTenNv";
             this.txtTenNv.Size = new System.Drawing.Size(177, 26);
-            this.txtTenNv.TabIndex = 79;
+            this.txtTenNv.TabIndex = 1;
             // 
             // datetime
             // 
@@ -257,7 +259,7 @@
             this.datetime.Location = new System.Drawing.Point(151, 109);
             this.datetime.Name = "datetime";
             this.datetime.Size = new System.Drawing.Size(177, 26);
-            this.datetime.TabIndex = 78;
+            this.datetime.TabIndex = 2;
             // 
             // txtMaNv
             // 
@@ -265,7 +267,7 @@
             this.txtMaNv.Name = "txtMaNv";
             this.txtMaNv.ReadOnly = true;
             this.txtMaNv.Size = new System.Drawing.Size(177, 26);
-            this.txtMaNv.TabIndex = 76;
+            this.txtMaNv.TabIndex = 0;
             // 
             // label3
             // 

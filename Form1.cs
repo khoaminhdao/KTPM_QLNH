@@ -106,27 +106,27 @@ namespace QLNH
             strcon.Close();
         }
 
-        public static Boolean checkAlpha (string s)
+        public static Boolean CheckAlpha (string s)
         {
             if (s.Length == 0)
                 return false;
-            for (int i = 0; i < s.Length; i++)
-                if (!char.IsLetter(s[i]))
+            foreach (char i in s)
+                if (!char.IsLetter(i))
                     return false;
             return true;
         }
 
-        public static Boolean checkNum(string s)
+        public static Boolean CheckNum(string s)
         {
             if (s.Length == 0)
                 return false;
-            for (int i = 0; i < s.Length; i++)
-                if (!char.IsDigit(s[i]))
+            foreach(char i in s)
+                if (!char.IsDigit(i))
                     return false;
             return true;
         }
 
-        public Boolean CheckGioHopLe (DateTime a, DateTime b)
+        public static Boolean CheckGioHopLe (DateTime a, DateTime b)
         {
             //Trả về true khi a, b cách nhau hơn 3 tiếng
             //-1 -> a < b
@@ -141,7 +141,7 @@ namespace QLNH
             return true;
         }
 
-        public Boolean checkSDT (string s)
+        public Boolean CheckSDT (string s)
         {
             int maxNum = 10;
             if (rdBan.Checked)
@@ -150,10 +150,21 @@ namespace QLNH
                 return false;
             if (s[0] != '0')
                 return false;
-            if (!checkNum(s))
+            if (!CheckNum(s))
                 return false;
             return true;
         }
+
+        public Boolean Check_Ban (String maban, DateTime time)
+        {
+            DataTable dsd = Load_Data("DatBan", "MaBan, ThoiGian");
+
+            foreach (DataRow ds in dsd.Rows)
+                if (ds.ItemArray[0].ToString() == maban && !CheckGioHopLe(DateTime.Parse(ds.ItemArray[1].ToString()), time))
+                    return false;
+            return true;
+        }
+
         private void Check_Login(string id, string pass)
         {
             DataTable dsnv = Load_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
@@ -163,11 +174,11 @@ namespace QLNH
             { MessageBox.Show("Vui lòng nhập mật khẩu!"); return; }
             else
             {
-                for (int i = 0; i < dsnv.Rows.Count; i++)
-                    if (id == dsnv.Rows[i].ItemArray[1].ToString())
-                        if (pass == dsnv.Rows[i].ItemArray[2].ToString())
+                foreach (DataRow dr in dsnv.Rows)
+                    if (id == dr.ItemArray[1].ToString())
+                        if (pass == dr.ItemArray[2].ToString())
                         {
-                            MSNV = dsnv.Rows[i].ItemArray[0].ToString();
+                            MSNV = dr.ItemArray[0].ToString();
                             MenuNV menu = new MenuNV();
                             Hide();
                             menu.ShowDialog();
@@ -180,7 +191,7 @@ namespace QLNH
             }
         }
 
-        private void setTime ()
+        private void SetTime ()
         {
             int gio = DateTime.Now.Hour;
             int phut = DateTime.Now.Minute;
@@ -211,7 +222,7 @@ namespace QLNH
             timePk.MinDate = DateTime.Now.Date;
             timePk.MaxDate = DateTime.Now.Date.AddMonths(1);
 
-            setTime();
+            SetTime();
         }
 
         private void BtDN_Click(object sender, EventArgs e)
@@ -225,42 +236,35 @@ namespace QLNH
             String ten = txtTen.Text;
             String soDT = txtSDT.Text;
             String soNg = txtSN.Text;
+           
+
             int gio = int.Parse(cbTime.Text.Substring(0, 2));
             int phut = int.Parse(cbTime.Text.Substring(3));
             DateTime time = timePk.Value.AddHours(gio).AddMinutes(phut);
 
-            if (!checkAlpha(ten))
+            if (!CheckAlpha(ten))
                 MessageBox.Show("Vui lòng nhập tên chính xác");
-            else if (!checkSDT(soDT))
+            else if (!CheckSDT(soDT))
                 MessageBox.Show("Vui lòng nhập đúng số điện thoại");
-            else if (!checkNum(soNg))
+            else if (!CheckNum(soNg))
                 MessageBox.Show("Vui lòng nhập số người chính xác");
             else
             {
                 DataTable dsb = Load_Data("Ban", "MaBan, SucChua, TinhTrang");
-                DataTable dsd = Load_Data("DatBan", "MaBan, ThoiGian");
-                int i, j;
-                for (i = 0; i < dsb.Rows.Count; i++)
+
+
+                foreach (DataRow dr in dsb.Rows)
                 {
-                    if (int.Parse(dsb.Rows[i].ItemArray[1].ToString()) >= int.Parse(soNg))
+                    maban = dr.ItemArray[0].ToString();
+                    if (Check_Ban(maban, time))
                     {
-                        for (j = 0; j < dsd.Rows.Count; j++)
-                            if (dsd.Rows[j].ItemArray[0].ToString() == dsb.Rows[i].ItemArray[0].ToString() && !CheckGioHopLe(DateTime.Parse(dsd.Rows[j].ItemArray[1].ToString()), time))
-                                break;
-                        if (j == dsd.Rows.Count)
-                        {
-                            maban = dsb.Rows[i].ItemArray[0].ToString();
-                            break;
-                        }
+                        Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi", "'" + maban + "','" + ten + "','" + soDT + "','" + time + "','" + soNg + "'");
+                        MessageBox.Show("Đặt bàn thành công!");
+                        return;
                     }
                 }
-                if (i != dsb.Rows.Count)
-                {
-                    Add_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi","'" + maban + "','" + ten + "','" + soDT + "','" + time + "','" + soNg + "'");
-                    MessageBox.Show("Đặt bàn thành công!");
-                }
-                else MessageBox.Show("Không có bàn phù hợp yêu cầu!");
 
+                MessageBox.Show("Không có bàn phù hợp yêu cầu!");
             }
         }
 
@@ -273,7 +277,7 @@ namespace QLNH
         private void TimePk_ValueChanged(object sender, EventArgs e)
         {
             if (timePk.Value.CompareTo(DateTime.Now.Date) == 0)
-                setTime();
+                SetTime();
         }
     }
 }

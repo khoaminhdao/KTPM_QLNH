@@ -22,11 +22,13 @@ namespace QLNH
         private void MenuNV_Load(object sender, EventArgs e)
         {
             DataTable dsnv = Form1.Load_Data("NhanVien", "MaNV, Ten, ChucVu");
-            for (int i = 0; i < dsnv.Rows.Count; i++)
-                if (dsnv.Rows[i].ItemArray[0].ToString() == Form1.MSNV)
+
+            foreach (DataRow dr in dsnv.Rows)
+            {
+                if (dr.ItemArray[0].ToString() == Form1.MSNV)
                 {
-                    ten = dsnv.Rows[i].ItemArray[1].ToString();
-                    if (dsnv.Rows[i].ItemArray[2].ToString() != "Quản lí")
+                    ten = dr.ItemArray[1].ToString();
+                    if (dr.ItemArray[2].ToString() != "Quản lí")
                     {
                         GoiMon gm = new GoiMon();
                         this.Close();
@@ -35,6 +37,7 @@ namespace QLNH
                     else
                         chàoToolStripMenuItem.Text += ten;
                 }
+            }
         }
 
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)

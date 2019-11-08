@@ -33,13 +33,15 @@ namespace QLNH
             if (Check_Input())
             {
                 String maMA = txtMaMa.Text;
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maMA)
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
+                {
+                    if (dr.Cells[0].Value.ToString() == maMA)
                     {
                         MessageBox.Show("Mã món ăn đã tồn tại, nhấn sửa để cập nhật thông tin!");
                         return;
                     }
-               
+                }
+
                 String tenMA = txtTenMa.Text;
                 String donGia = txtDonGia.Text;
 
@@ -55,12 +57,18 @@ namespace QLNH
         {
             dataGridView1.DataSource = Form1.Load_Data("ThucDon", "MaMA, TenMA, DonGia");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                if (int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()) != i + 1)
+
+            int count = 1;
+            
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                if (int.Parse(dr.Cells[0].Value.ToString()) != count)
                 {
-                    txtMaMa.Text = (i + 1).ToString();
+                    txtMaMa.Text = count.ToString();
                     return;
                 }
+            }
+
             txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
             txtTenMa.Text = txtDonGia.Text = "";
         }

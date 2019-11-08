@@ -79,12 +79,18 @@ namespace QLNH
         {
             dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
-            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                if (int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()) != i + 1)
+
+            int count = 1;
+
+            foreach (DataGridViewRow dr in dataGridView1.Rows)
+            {
+                if (int.Parse(dr.Cells[0].Value.ToString()) != count)
                 {
-                    txtMaNv.Text = (i + 1).ToString();
+                    txtMaNv.Text = count.ToString();
                     return;
                 }
+            }
+
             txtMaNv.Text = (dataGridView1.Rows.Count + 1).ToString();
             txtTenNv.Text = txtQuocTich.Text = "";
         }

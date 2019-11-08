@@ -107,7 +107,7 @@
             this.btSua.Margin = new System.Windows.Forms.Padding(2);
             this.btSua.Name = "btSua";
             this.btSua.Size = new System.Drawing.Size(56, 38);
-            this.btSua.TabIndex = 88;
+            this.btSua.TabIndex = 5;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
             this.btSua.Click += new System.EventHandler(this.btSua_Click);
@@ -118,7 +118,7 @@
             this.buThoat.Margin = new System.Windows.Forms.Padding(2);
             this.buThoat.Name = "buThoat";
             this.buThoat.Size = new System.Drawing.Size(68, 38);
-            this.buThoat.TabIndex = 88;
+            this.buThoat.TabIndex = 6;
             this.buThoat.Text = "Thoát";
             this.buThoat.UseVisualStyleBackColor = true;
             this.buThoat.Click += new System.EventHandler(this.buThoat_Click);
@@ -129,7 +129,7 @@
             this.btXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(56, 38);
-            this.btXoa.TabIndex = 88;
+            this.btXoa.TabIndex = 4;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
             this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
@@ -140,7 +140,7 @@
             this.btLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btLuu.Name = "btLuu";
             this.btLuu.Size = new System.Drawing.Size(56, 38);
-            this.btLuu.TabIndex = 88;
+            this.btLuu.TabIndex = 3;
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = true;
             this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
@@ -157,9 +157,10 @@
             // txtDonGia
             // 
             this.txtDonGia.Location = new System.Drawing.Point(151, 114);
+            this.txtDonGia.MaxLength = 7;
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Size = new System.Drawing.Size(148, 26);
-            this.txtDonGia.TabIndex = 85;
+            this.txtDonGia.TabIndex = 2;
             // 
             // label10
             // 
@@ -174,9 +175,10 @@
             // 
             this.txtTenMa.Location = new System.Drawing.Point(151, 72);
             this.txtTenMa.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTenMa.MaxLength = 20;
             this.txtTenMa.Name = "txtTenMa";
             this.txtTenMa.Size = new System.Drawing.Size(148, 26);
-            this.txtTenMa.TabIndex = 79;
+            this.txtTenMa.TabIndex = 1;
             // 
             // txtMaMa
             // 
@@ -184,7 +186,7 @@
             this.txtMaMa.Name = "txtMaMa";
             this.txtMaMa.ReadOnly = true;
             this.txtMaMa.Size = new System.Drawing.Size(148, 26);
-            this.txtMaMa.TabIndex = 76;
+            this.txtMaMa.TabIndex = 0;
             // 
             // label2
             // 
