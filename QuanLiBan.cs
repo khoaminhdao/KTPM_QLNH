@@ -82,6 +82,9 @@ namespace QLNH
         {
             Set_Ma();
             cbTT.SelectedIndex = 0;
+            dataGridView1.Columns[0].HeaderText = "Mã Bàn";
+            dataGridView1.Columns[1].HeaderText = "Sức Chức";
+            dataGridView1.Columns[2].HeaderText = "Tình Trạng";
         }
 
 
@@ -136,7 +139,7 @@ namespace QLNH
             temp.Columns.Add("SDT", typeof(string));
             temp.Columns.Add("ThoiGian", typeof(DateTime));
             temp.Columns.Add("SoNguoi", typeof(Int32));
-
+      
             foreach (DataRow ds in dsd.Rows)
                 if (ds.ItemArray[0].ToString() == txtMaBan.Text)
                     temp.ImportRow(ds);

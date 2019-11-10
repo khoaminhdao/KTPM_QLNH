@@ -67,6 +67,8 @@ namespace QLNH
                     txtMaMa.Text = count.ToString();
                     return;
                 }
+                else
+                    count++;
             }
 
             txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
@@ -81,6 +83,9 @@ namespace QLNH
         private void QuanLiThucDon_Load(object sender, EventArgs e)
         {
             Set_Ma();
+            dataGridView1.Columns[0].HeaderText = "Mã Món Ăn";
+            dataGridView1.Columns[1].HeaderText = "Tên Món Ăn";
+            dataGridView1.Columns[2].HeaderText = "Đơn Giá";
         }
 
 
