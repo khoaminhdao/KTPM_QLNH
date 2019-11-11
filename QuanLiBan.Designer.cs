@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.grbttnv = new System.Windows.Forms.GroupBox();
-            this.cbTT = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btThoat = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
@@ -53,8 +51,6 @@
             // 
             // grbttnv
             // 
-            this.grbttnv.Controls.Add(this.cbTT);
-            this.grbttnv.Controls.Add(this.label3);
             this.grbttnv.Controls.Add(this.dataGridView1);
             this.grbttnv.Controls.Add(this.btThoat);
             this.grbttnv.Controls.Add(this.btSua);
@@ -75,27 +71,6 @@
             this.grbttnv.TabIndex = 3;
             this.grbttnv.TabStop = false;
             this.grbttnv.Text = "Thông tin bàn";
-            // 
-            // cbTT
-            // 
-            this.cbTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTT.FormattingEnabled = true;
-            this.cbTT.Items.AddRange(new object[] {
-            "Trống",
-            "Đang sử dụng"});
-            this.cbTT.Location = new System.Drawing.Point(508, 28);
-            this.cbTT.Name = "cbTT";
-            this.cbTT.Size = new System.Drawing.Size(117, 28);
-            this.cbTT.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(411, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 20);
-            this.label3.TabIndex = 90;
-            this.label3.Text = "Tình trạng";
             // 
             // dataGridView1
             // 
@@ -129,6 +104,7 @@
             // 
             // btSua
             // 
+            this.btSua.Enabled = false;
             this.btSua.Location = new System.Drawing.Point(290, 62);
             this.btSua.Margin = new System.Windows.Forms.Padding(2);
             this.btSua.Name = "btSua";
@@ -151,6 +127,7 @@
             // 
             // btXoa
             // 
+            this.btXoa.Enabled = false;
             this.btXoa.Location = new System.Drawing.Point(201, 62);
             this.btXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btXoa.Name = "btXoa";
@@ -182,11 +159,11 @@
             // 
             // txtSucChua
             // 
-            this.txtSucChua.Location = new System.Drawing.Point(278, 28);
+            this.txtSucChua.Location = new System.Drawing.Point(407, 28);
             this.txtSucChua.Margin = new System.Windows.Forms.Padding(2);
             this.txtSucChua.MaxLength = 2;
             this.txtSucChua.Name = "txtSucChua";
-            this.txtSucChua.Size = new System.Drawing.Size(103, 26);
+            this.txtSucChua.Size = new System.Drawing.Size(125, 26);
             this.txtSucChua.TabIndex = 1;
             // 
             // txtMaBan
@@ -194,13 +171,13 @@
             this.txtMaBan.Location = new System.Drawing.Point(79, 31);
             this.txtMaBan.Name = "txtMaBan";
             this.txtMaBan.ReadOnly = true;
-            this.txtMaBan.Size = new System.Drawing.Size(96, 26);
+            this.txtMaBan.Size = new System.Drawing.Size(112, 26);
             this.txtMaBan.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(197, 34);
+            this.label2.Location = new System.Drawing.Point(326, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 74;
@@ -291,8 +268,6 @@
         private System.Windows.Forms.TextBox txtMaBan;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbTT;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;

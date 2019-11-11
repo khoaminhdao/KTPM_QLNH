@@ -41,9 +41,8 @@ namespace QLNH
                     }
 
                 String sucChua = txtSucChua.Text;
-                String tinhTrang = cbTT.Text;
 
-                Form1.Add_Data("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','" + tinhTrang + "'");
+                Form1.Add_Data("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','Trống'");
 
                 Set_Ma();
             }
@@ -81,7 +80,6 @@ namespace QLNH
         private void QuanLiBan_Load(object sender, EventArgs e)
         {
             Set_Ma();
-            cbTT.SelectedIndex = 0;
         }
 
 
@@ -92,9 +90,8 @@ namespace QLNH
 
                 String sucChua = txtSucChua.Text;
                 String maBan = txtMaBan.Text;
-                String tinhTrang = cbTT.Text;
 
-                Form1.Update_Data("Ban", "sucChua = '" + sucChua + "', TinhTrang = '" + tinhTrang + "'", "MaBan = " + maBan);
+                Form1.Update_Data("Ban", "sucChua = '" + sucChua, "MaBan = " + maBan);
                 Set_Ma();
             }
         }
@@ -127,7 +124,11 @@ namespace QLNH
             DataGridViewRow dr = dataGridView1.CurrentRow;
             txtMaBan.Text = dr.Cells[0].Value.ToString();
             txtSucChua.Text = dr.Cells[1].Value.ToString();
-            cbTT.Text = dr.Cells[2].Value.ToString();
+            
+            if (dr.Cells[2].Value.ToString() == "Đang sử dụng")
+                btSua.Enabled = btXoa.Enabled = false;
+            else
+                btSua.Enabled = btXoa.Enabled = true;
 
             DataTable dsd = Form1.Load_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi");
             DataTable temp = new DataTable();

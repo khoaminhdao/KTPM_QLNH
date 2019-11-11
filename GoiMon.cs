@@ -121,7 +121,8 @@ namespace QLNH
                     Show(dr.ItemArray[0].ToString(), dr.ItemArray[1].ToString());
             }
 
-            
+            if (tabControl1.TabPages.Count == 0)
+                btTT.Enabled = false;
         }
 
         private void BtTao_Click(object sender, EventArgs e)
@@ -138,7 +139,9 @@ namespace QLNH
                             return;
                         else
                             break;
+                    btTT.Enabled = true;
                 }
+
             }
 
             String maBan = cbMB.Text;
@@ -194,26 +197,36 @@ namespace QLNH
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable hd = Form1.Load_Data("HoaDon", "MaHD, TongTien");
-            string maHD = tabControl1.SelectedTab.Tag.ToString();
-
-            foreach (DataRow dr in hd.Rows)
+            if (tabControl1.TabPages.Count != 0)
             {
-                if (dr.ItemArray[0].ToString() == maHD)
-                    txtTT.Text = dr.ItemArray[1].ToString();
+                string maHD = tabControl1.SelectedTab.Tag.ToString();
+
+                foreach (DataRow dr in hd.Rows)
+                {
+                    if (dr.ItemArray[0].ToString() == maHD)
+                        txtTT.Text = dr.ItemArray[1].ToString();
+                }
             }
-            if (txtTT.Text != "0")
-                btTT.Enabled = true;
-            else
-                btTT.Enabled = false;
+            //if (txtTT.Text != "0")
+            //    btTT.Enabled = true;
+            //else
+            //    btTT.Enabled = false;
         }
 
         private void btTT_Click(object sender, EventArgs e)
         {
+            
             if (MessageBox.Show("Bạn muốn thanh toán hóa đơn " + tabControl1.SelectedTab.Name + "?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Form1.Update_Data("Ban", "TinhTrang = 'Trống'", "MaBan =" + tabControl1.SelectedTab.Name.Substring(4));
+                Form1.Update_Data("Ban", "TinhTrang = 'Trống'", "MaBan =" + tabControl1.SelectedTab.Name);
                 Form1.Update_Data("HoaDon", "ThanhToan = True", "MaHD =" + tabControl1.SelectedTab.Tag.ToString());
+                tabControl1.TabPages.Remove(tabControl1.SelectedTab);
                 MessageBox.Show("Thanh toán thành công");
+                if (tabControl1.TabPages.Count == 0)
+                {
+                    btTT.Enabled = false;
+                    btThem.Enabled = false;
+                }
             }
         }
     } 

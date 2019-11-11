@@ -164,7 +164,6 @@
             // 
             // btTT
             // 
-            this.btTT.Enabled = false;
             this.btTT.Location = new System.Drawing.Point(419, 397);
             this.btTT.Name = "btTT";
             this.btTT.Size = new System.Drawing.Size(80, 27);
