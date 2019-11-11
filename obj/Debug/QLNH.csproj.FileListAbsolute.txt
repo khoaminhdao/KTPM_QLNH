@@ -19,3 +19,20 @@ C:\Users\Huy Bac\Desktop\KTPM_QLNH\obj\Debug\QLNH.csproj.CoreCompileInputs.cache
 C:\Users\Huy Bac\Desktop\KTPM_QLNH\obj\Debug\QLNH.exe
 C:\Users\Huy Bac\Desktop\KTPM_QLNH\obj\Debug\QLNH.pdb
 >>>>>>> a1d77d7b95944bc83b9239705f9e1e558cbaceb1
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.csprojAssemblyReference.cache
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.csproj.ResolveComReference.cache
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.DoiMatKhau.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.Form1.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.GoiMon.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.MenuNV.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.Properties.Resources.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiBan.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiHoaDon.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiNhanVien.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.QuanLiThucDon.resources
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.csproj.GenerateResource.cache
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.exe
+C:\Users\X\Desktop\KTPM_QLNH\obj\Debug\QLNH.pdb
+C:\Users\X\Desktop\KTPM_QLNH\bin\Debug\QLNH.exe.config
+C:\Users\X\Desktop\KTPM_QLNH\bin\Debug\QLNH.exe
+C:\Users\X\Desktop\KTPM_QLNH\bin\Debug\QLNH.pdb

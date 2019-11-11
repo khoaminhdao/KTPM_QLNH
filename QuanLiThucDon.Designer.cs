@@ -139,11 +139,7 @@
             this.btLuu.Location = new System.Drawing.Point(201, 185);
             this.btLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btLuu.Name = "btLuu";
-<<<<<<< HEAD
-            this.btLuu.Size = new System.Drawing.Size(70, 38);
-=======
             this.btLuu.Size = new System.Drawing.Size(87, 47);
->>>>>>> a1d77d7b95944bc83b9239705f9e1e558cbaceb1
             this.btLuu.TabIndex = 3;
             this.btLuu.Text = "Thêm";
             this.btLuu.UseVisualStyleBackColor = true;
