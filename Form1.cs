@@ -168,10 +168,12 @@ namespace QLNH
         private void Check_Login(string id, string pass)
         {
             DataTable dsnv = Load_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
-            if (id == "")
-            { MessageBox.Show("Vui lòng nhập tên tài khoản!"); }
+            if (id == ""&& pass == "")
+            { MessageBox.Show("Vui lòng nhập thông tin tài khoản"); }
+            else if (id == "")
+            { MessageBox.Show("Vui lòng nhập tên tài khoản!"); return; }
             else if (pass == "")
-            { MessageBox.Show("Vui lòng nhập mật khẩu!"); return; }
+            { MessageBox.Show("Vui lòng nhập mật khẩu!");return; }
             else
             {
                 foreach (DataRow dr in dsnv.Rows)
@@ -241,8 +243,9 @@ namespace QLNH
             int gio = int.Parse(cbTime.Text.Substring(0, 2));
             int phut = int.Parse(cbTime.Text.Substring(3));
             DateTime time = timePk.Value.AddHours(gio).AddMinutes(phut);
-
-            if (!CheckAlpha(ten))
+            if (ten == "" && soDT == "" && soNg == "")
+                MessageBox.Show("Vui lòng nhập thông tin khách hàng");
+            else if (!CheckAlpha(ten))
                 MessageBox.Show("Vui lòng nhập tên chính xác");
             else if (!CheckSDT(soDT))
                 MessageBox.Show("Vui lòng nhập đúng số điện thoại");

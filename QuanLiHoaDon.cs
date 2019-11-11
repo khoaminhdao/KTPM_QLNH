@@ -22,6 +22,11 @@ namespace QLNH
         private void QuanLiHoaDon_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = dsd;
+            dataGridView1.Columns[0].HeaderText = "Mã Hóa Đơn";
+            dataGridView1.Columns[1].HeaderText = "Mã Bàn";
+            dataGridView1.Columns[2].HeaderText = "Mã Nhân Viên";
+            dataGridView1.Columns[3].HeaderText = "Ngày Tạo";
+
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

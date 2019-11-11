@@ -106,6 +106,15 @@ namespace QLNH
         {
             Set_Ma();
             cbChucVu.SelectedIndex = cbGioiTinh.SelectedIndex = cbTrinhDo.SelectedIndex = 0;
+            dataGridView1.Columns[0].HeaderText = "Mã NV";
+            dataGridView1.Columns[1].HeaderText = "Họ";
+            dataGridView1.Columns[2].HeaderText = "Tên";
+            dataGridView1.Columns[3].HeaderText = "Ngày Sinh";
+            dataGridView1.Columns[4].HeaderText = "Chức Vụ";
+            dataGridView1.Columns[5].HeaderText = "Trình Độ";
+            dataGridView1.Columns[6].HeaderText = "Giới Tính";
+            dataGridView1.Columns[7].HeaderText = "Quốc Tịch";
+            dataGridView1.Columns[8].HeaderText = "Ngày Vào Làm";
         }
 
         private void btXoa_Click(object sender, EventArgs e)
