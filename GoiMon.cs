@@ -207,10 +207,6 @@ namespace QLNH
                         txtTT.Text = dr.ItemArray[1].ToString();
                 }
             }
-            //if (txtTT.Text != "0")
-            //    btTT.Enabled = true;
-            //else
-            //    btTT.Enabled = false;
         }
 
         private void btTT_Click(object sender, EventArgs e)
