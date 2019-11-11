@@ -143,12 +143,12 @@
             // 
             // btLuu
             // 
-            this.btLuu.Location = new System.Drawing.Point(203, 200);
+            this.btLuu.Location = new System.Drawing.Point(174, 200);
             this.btLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btLuu.Name = "btLuu";
-            this.btLuu.Size = new System.Drawing.Size(56, 38);
+            this.btLuu.Size = new System.Drawing.Size(77, 38);
             this.btLuu.TabIndex = 7;
-            this.btLuu.Text = "Lưu";
+            this.btLuu.Text = "Thêm";
             this.btLuu.UseVisualStyleBackColor = true;
             this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 

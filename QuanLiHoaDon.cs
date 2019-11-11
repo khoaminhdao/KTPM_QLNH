@@ -28,9 +28,12 @@ namespace QLNH
         {
             DataTable temp = new DataTable();
             temp.Columns.Add("MaHD", typeof(Int32));
-            temp.Columns.Add("MaMA", typeof(Int32));
+            temp.Columns.Add("TenMa", typeof(string));
             temp.Columns.Add("SoLuong", typeof(Int32));
-            foreach (DataRow dr in dsd.Rows)
+           
+
+            DataTable ds = Form1.Load_Data("CTHD", "MaHD, TenMA, SoLuong");
+            foreach (DataRow dr in ds.Rows)
                 if (dr.ItemArray[0].ToString() == dataGridView1.CurrentRow.Cells[0].Value.ToString())
                     temp.ImportRow(dr);
             dataGridView2.DataSource = temp;

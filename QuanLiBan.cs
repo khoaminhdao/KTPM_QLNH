@@ -91,7 +91,7 @@ namespace QLNH
                 String sucChua = txtSucChua.Text;
                 String maBan = txtMaBan.Text;
 
-                Form1.Update_Data("Ban", "sucChua = '" + sucChua, "MaBan = " + maBan);
+                Form1.Update_Data("Ban", "SucChua = " + sucChua, "MaBan = " + maBan);
                 Set_Ma();
             }
         }
@@ -125,7 +125,7 @@ namespace QLNH
             txtMaBan.Text = dr.Cells[0].Value.ToString();
             txtSucChua.Text = dr.Cells[1].Value.ToString();
             
-            if (dr.Cells[2].Value.ToString() == "Đang sử dụng")
+            if (dr.Cells[2].Value.ToString() == "Đang Sử Dụng")
                 btSua.Enabled = btXoa.Enabled = false;
             else
                 btSua.Enabled = btXoa.Enabled = true;
@@ -143,5 +143,6 @@ namespace QLNH
                     temp.ImportRow(ds);
             dataGridView2.DataSource = temp;
         }
+
     }
 }

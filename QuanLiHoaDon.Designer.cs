@@ -45,7 +45,7 @@
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(46, 330);
+            this.groupBox1.Location = new System.Drawing.Point(12, 329);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -89,7 +89,7 @@
             this.grbttnv.Controls.Add(this.dataGridView1);
             this.grbttnv.Controls.Add(this.btThoat);
             this.grbttnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbttnv.Location = new System.Drawing.Point(50, 6);
+            this.grbttnv.Location = new System.Drawing.Point(11, 6);
             this.grbttnv.Margin = new System.Windows.Forms.Padding(2);
             this.grbttnv.Name = "grbttnv";
             this.grbttnv.Padding = new System.Windows.Forms.Padding(2);
@@ -133,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 631);
+            this.ClientSize = new System.Drawing.Size(661, 625);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbttnv);
             this.Name = "QuanLiHoaDon";

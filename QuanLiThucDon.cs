@@ -67,6 +67,8 @@ namespace QLNH
                     txtMaMa.Text = count.ToString();
                     return;
                 }
+                else
+                    count++;
             }
 
             txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
