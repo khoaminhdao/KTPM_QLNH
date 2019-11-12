@@ -19,7 +19,7 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (txtSucChua.Text == "")
+            if (!Form1.CheckNum(txtSucChua.Text))
             {
                 MessageBox.Show("Vui lòng nhập sức chứa của bàn!");
                 return false;

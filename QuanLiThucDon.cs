@@ -19,9 +19,14 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (txtTenMa.Text == "")
+            if (!Form1.CheckAlpha(txtTenMa.Text))
             {
-                MessageBox.Show("Vui lòng nhập tên món ăn");
+                MessageBox.Show("Vui lòng nhập chính xác tên món ăn");
+                return false;
+            }
+            if (!Form1.CheckNum(txtDonGia.Text))
+            {
+                MessageBox.Show("Vui lòng nhập chính xác đơn giá");
                 return false;
             }
             return true;

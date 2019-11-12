@@ -20,9 +20,14 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (txtTenNv.Text == "")
+            if (!Form1.CheckAlpha(txtTenNv.Text))
             {
-                MessageBox.Show("Vui lòng nhập tên nhân viên");
+                MessageBox.Show("Vui lòng nhập chính xác tên nhân viên");
+                return false;
+            }
+            if (!Form1.CheckAlpha(txtQuocTich.Text))
+            {
+                MessageBox.Show("Vui lòng nhập chính xác quốc tịch");
                 return false;
             }
             return true;
