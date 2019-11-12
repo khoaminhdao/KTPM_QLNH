@@ -7,8 +7,9 @@ using System.Data;
 
 namespace QLNH
 {
-    class Check
+    public class Check
     {
+      
         public static Boolean Alpha(string s)
         {
             if (s.Length == 0)

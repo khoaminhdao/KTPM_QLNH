@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace QLNH
 {
-    class Data
+    public class Data
     {
         static readonly OleDbConnection strcon = new OleDbConnection();
         static readonly string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + @"\DATA\Data.mdb";
