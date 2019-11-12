@@ -21,11 +21,11 @@ namespace QLNH
 
         private void MenuNV_Load(object sender, EventArgs e)
         {
-            DataTable dsnv = Form1.Load_Data("NhanVien", "MaNV, Ten, ChucVu");
+            DataTable dsnv = Data.Load("NhanVien", "MaNV, Ten, ChucVu");
 
             foreach (DataRow dr in dsnv.Rows)
             {
-                if (dr.ItemArray[0].ToString() == Form1.MSNV)
+                if (dr.ItemArray[0].ToString() == DangNhap.MSNV)
                 {
                     ten = dr.ItemArray[1].ToString();
                     if (dr.ItemArray[2].ToString() != "Quản lí")

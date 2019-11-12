@@ -20,12 +20,12 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (!Form1.CheckAlpha(txtTenNv.Text))
+            if (!Check.Alpha(txtTenNv.Text))
             {
                 MessageBox.Show("Vui lòng nhập chính xác tên nhân viên");
                 return false;
             }
-            if (!Form1.CheckAlpha(txtQuocTich.Text))
+            if (!Check.Alpha(txtQuocTich.Text))
             {
                 MessageBox.Show("Vui lòng nhập chính xác quốc tịch");
                 return false;
@@ -46,12 +46,13 @@ namespace QLNH
             }
             return text;
         }
+
         private void ADD_VALUE()
         {
             
             if (Check_Input())
             {
-                String maNV = txtMaNv.Text;
+                string maNV = txtMaNv.Text;
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                     if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maNV)
                     {
@@ -60,19 +61,19 @@ namespace QLNH
                     }
                 int vt = txtTenNv.Text.LastIndexOf(" ");
                
-                String ho = txtTenNv.Text.Substring(0, vt);
-                String ten = txtTenNv.Text.Substring(vt + 1);
-                String nS = datetime.Value.ToShortDateString();
-                String gT = cbGioiTinh.Text;
-                String tD = cbTrinhDo.Text;
-                String qT = txtQuocTich.Text;
-                String cV = cbChucVu.Text;
+                string ho = txtTenNv.Text.Substring(0, vt);
+                string ten = txtTenNv.Text.Substring(vt + 1);
+                string nS = datetime.Value.ToShortDateString();
+                string gT = cbGioiTinh.Text;
+                string tD = cbTrinhDo.Text;
+                string qT = txtQuocTich.Text;
+                string cV = cbChucVu.Text;
 
 
-                Form1.Add_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam", "'" + maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT + "','" + DateTime.Now.ToShortDateString() + "'");
+                Data.Add("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam", "'" + maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT + "','" + DateTime.Now.ToShortDateString() + "'");
 
                 if (cV == "Quản lí" || cV == "Phục vụ")
-                    Form1.Add_Data("TaiKhoan", "MaNV, TaiKhoan, MatKhau","'" + maNV + "','" + RemoveUnicode(ten.ToLower()) + maNV + "','" + "123'");
+                    Data.Add("TaiKhoan", "MaNV, TaiKhoan, MatKhau","'" + maNV + "','" + RemoveUnicode(ten.ToLower()) + maNV + "','" + "123'");
 
                 Set_Ma();
             }
@@ -82,7 +83,7 @@ namespace QLNH
 
         public void Set_Ma ()
         {
-            dataGridView1.DataSource = Form1.Load_Data("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam");
+            dataGridView1.DataSource = Data.Load("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
             int count = 1;
@@ -128,14 +129,9 @@ namespace QLNH
                 return;
             else
             {
-                Form1.Delete_Data("NhanVien", "MaNV = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                Data.Delete("NhanVien", "MaNV = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 Set_Ma();
             }
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Không có dữ liệu", "Thông báo");
-            //}
-
         }
 
         private void btSua_Click(object sender, EventArgs e)
@@ -153,7 +149,7 @@ namespace QLNH
                 String cV = cbChucVu.Text;
 
 
-                Form1.Update_Data("NhanVien", "Ho = '" + ho + "', Ten = '" + ten + "', NgaySinh = '" + nS + "', ChucVu = '" + cV + "', TrinhDo = '" + tD + "', GioiTinh = '" + gT + "', QuocTich = '" + qT + "'", "MaNV =" + maNV);
+                Data.Update("NhanVien", "Ho = '" + ho + "', Ten = '" + ten + "', NgaySinh = '" + nS + "', ChucVu = '" + cV + "', TrinhDo = '" + tD + "', GioiTinh = '" + gT + "', QuocTich = '" + qT + "'", "MaNV =" + maNV);
                 Set_Ma();
             }
         }

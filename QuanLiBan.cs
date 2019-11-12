@@ -19,9 +19,9 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (!Form1.CheckNum(txtSucChua.Text))
+            if (!Check.Num(txtSucChua.Text))
             {
-                MessageBox.Show("Vui lòng nhập sức chứa của bàn!");
+                MessageBox.Show("Vui lòng nhập đúng sức chứa của bàn!");
                 return false;
             }
             return true;
@@ -29,20 +29,21 @@ namespace QLNH
 
         private void ADD_VALUE()
         {
-
             if (Check_Input())
             {
                 String maBan = txtMaBan.Text;
                 foreach (DataGridViewRow dr in dataGridView1.Rows)
+                {
                     if (dr.Cells[0].Value.ToString() == maBan)
                     {
                         MessageBox.Show("Mã bàn đã tồn tại, nhấn sửa để cập nhật thông tin!");
                         return;
                     }
+                }
 
                 String sucChua = txtSucChua.Text;
 
-                Form1.Add_Data("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','Trống'");
+                Data.Add("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','Trống'");
 
                 Set_Ma();
             }
@@ -52,7 +53,7 @@ namespace QLNH
 
         public void Set_Ma()
         {
-            dataGridView1.DataSource = Form1.Load_Data("Ban", "MaBan, SucChua, TinhTrang");
+            dataGridView1.DataSource = Data.Load("Ban", "MaBan, SucChua, TinhTrang");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
             int count = 1;
@@ -96,7 +97,7 @@ namespace QLNH
                 String sucChua = txtSucChua.Text;
                 String maBan = txtMaBan.Text;
 
-                Form1.Update_Data("Ban", "SucChua = " + sucChua, "MaBan = " + maBan);
+                Data.Update("Ban", "SucChua = " + sucChua, "MaBan = " + maBan);
                 Set_Ma();
             }
         }
@@ -114,7 +115,7 @@ namespace QLNH
                     return;
                 else
                 {
-                    Form1.Delete_Data("Ban", "MaBan = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    Data.Delete("Ban", "MaBan = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     Set_Ma();
                 }
             }
@@ -135,7 +136,7 @@ namespace QLNH
             else
                 btSua.Enabled = btXoa.Enabled = true;
 
-            DataTable dsd = Form1.Load_Data("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi");
+            DataTable dsd = Data.Load("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi");
             DataTable temp = new DataTable();
             temp.Columns.Add("MaBan", typeof(Int32));
             temp.Columns.Add("Ten", typeof(string));

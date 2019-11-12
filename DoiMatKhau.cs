@@ -21,10 +21,10 @@ namespace QLNH
 
         private void DoiMatKhau_Load(object sender, EventArgs e)
         {
-            DataTable dsd = Form1.Load_Data("TaiKhoan", "MaNV, MatKhau");
+            DataTable dsd = Data.Load("TaiKhoan", "MaNV, MatKhau");
 
             foreach (DataRow dr in dsd.Rows)
-                if (dr.ItemArray[0].ToString() == Form1.MSNV)
+                if (dr.ItemArray[0].ToString() == DangNhap.MSNV)
                     oldpass = dr.ItemArray[1].ToString();
         }
 
@@ -32,7 +32,7 @@ namespace QLNH
         {
             if (txtMK.Text == oldpass)
             {
-                Form1.Update_Data("TaiKhoan", "MatKhau ='" + txtnMK.Text + "'", "MaNV = " + Form1.MSNV);
+                Data.Update("TaiKhoan", "MatKhau ='" + txtnMK.Text + "'", "MaNV = " + DangNhap.MSNV);
                 MessageBox.Show("Mật khẩu thay đổi thành công");
             }
             else

@@ -17,7 +17,7 @@ namespace QLNH
             InitializeComponent();
         }
 
-        DataTable dsd = Form1.Load_Data("HoaDon", "MaHD, MaBan, MaNV, NgayLap");
+        DataTable dsd = Data.Load("HoaDon", "MaHD, MaBan, MaNV, NgayLap");
 
         private void QuanLiHoaDon_Load(object sender, EventArgs e)
         {
@@ -33,15 +33,19 @@ namespace QLNH
         {
             DataTable temp = new DataTable();
             temp.Columns.Add("MaHD", typeof(Int32));
-            temp.Columns.Add("TenMa", typeof(string));
+            temp.Columns.Add("TenMA", typeof(string));
             temp.Columns.Add("SoLuong", typeof(Int32));
            
 
-            DataTable ds = Form1.Load_Data("CTHD", "MaHD, TenMA, SoLuong");
+            DataTable ds = Data.Load("CTHD", "MaHD, TenMA, SoLuong");
             foreach (DataRow dr in ds.Rows)
                 if (dr.ItemArray[0].ToString() == dataGridView1.CurrentRow.Cells[0].Value.ToString())
                     temp.ImportRow(dr);
+
             dataGridView2.DataSource = temp;
+            dataGridView2.Columns[0].HeaderText = "Mã Hóa Đơn";
+            dataGridView2.Columns[1].HeaderText = "Tên Món Ăn";
+            dataGridView2.Columns[2].HeaderText = "Số Lượng";
         }
     }
 }

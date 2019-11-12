@@ -19,12 +19,12 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (!Form1.CheckAlpha(txtTenMa.Text))
+            if (!Check.Alpha(txtTenMa.Text))
             {
                 MessageBox.Show("Vui lòng nhập chính xác tên món ăn");
                 return false;
             }
-            if (!Form1.CheckNum(txtDonGia.Text))
+            if (!Check.Num(txtDonGia.Text))
             {
                 MessageBox.Show("Vui lòng nhập chính xác đơn giá");
                 return false;
@@ -50,7 +50,7 @@ namespace QLNH
                 String tenMA = txtTenMa.Text;
                 String donGia = txtDonGia.Text;
 
-                Form1.Add_Data("ThucDon", "MaMA, TenMA, DonGia", "'" + maMA + "','" + tenMA + "','" + donGia + "'");
+                Data.Add("ThucDon", "MaMA, TenMA, DonGia", "'" + maMA + "','" + tenMA + "','" + donGia + "'");
 
                 Set_Ma();
             }
@@ -60,7 +60,7 @@ namespace QLNH
 
         public void Set_Ma()
         {
-            dataGridView1.DataSource = Form1.Load_Data("ThucDon", "MaMA, TenMA, DonGia");
+            dataGridView1.DataSource = Data.Load("ThucDon", "MaMA, TenMA, DonGia");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
             int count = 1;
@@ -103,7 +103,7 @@ namespace QLNH
                 String maMA = txtMaMa.Text;
                 String donGia = txtDonGia.Text;
                 
-                Form1.Update_Data("ThucDon", "TenMA = '" + tenMA + "', DonGia = '" + donGia + "'", "MaMA = " + maMA);
+                Data.Update("ThucDon", "TenMA = '" + tenMA + "', DonGia = '" + donGia + "'", "MaMA = " + maMA);
                 Set_Ma();
             }
         }
@@ -121,7 +121,7 @@ namespace QLNH
                     return;
                 else
                 {
-                    Form1.Delete_Data("ThucDon", "MaMA = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    Data.Delete("ThucDon", "MaMA = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
                     Set_Ma();
                 }
             }
