@@ -76,12 +76,11 @@ namespace QLNH
                 {
                     cbTime.Items.RemoveAt(0);
                 }
-
-                cbTime.SelectedIndex = 0;
-
             }
             else
                 timePk.MinDate = DateTime.Now.Date.AddDays(1);
+
+            cbTime.SelectedIndex = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)

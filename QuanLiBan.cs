@@ -19,7 +19,7 @@ namespace QLNH
 
         public bool Check_Input()
         {
-            if (!Check.Num(txtSucChua.Text))
+            if (!Check.Num(txtSucChua.Text) || (int.Parse(txtSucChua.Text) <= 0))
             {
                 MessageBox.Show("Vui lòng nhập đúng sức chứa của bàn!");
                 return false;
@@ -31,17 +31,18 @@ namespace QLNH
         {
             if (Check_Input())
             {
-                String maBan = txtMaBan.Text;
-                foreach (DataGridViewRow dr in dataGridView1.Rows)
-                {
-                    if (dr.Cells[0].Value.ToString() == maBan)
-                    {
-                        MessageBox.Show("Mã bàn đã tồn tại, nhấn sửa để cập nhật thông tin!");
-                        return;
-                    }
-                }
+                //String maBan = txtMaBan.Text;
+                //foreach (DataGridViewRow dr in dataGridView1.Rows)
+                //{
+                //    if (dr.Cells[0].Value.ToString() == maBan)
+                //    {
+                //        MessageBox.Show("Mã bàn đã tồn tại, nhấn sửa để cập nhật thông tin!");
+                //        return;
+                //    }
+                //}
 
-                String sucChua = txtSucChua.Text;
+                string maBan = txtMaBan.Text;
+                string sucChua = txtSucChua.Text;
 
                 Data.Add("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','Trống'");
 
@@ -49,7 +50,6 @@ namespace QLNH
             }
 
         }
-
 
         public void Set_Ma()
         {
@@ -88,7 +88,6 @@ namespace QLNH
 
         }
 
-
         private void btSua_Click(object sender, EventArgs e)
         {
             if (Check_Input())
@@ -99,6 +98,7 @@ namespace QLNH
 
                 Data.Update("Ban", "SucChua = " + sucChua, "MaBan = " + maBan);
                 Set_Ma();
+                btLuu.Enabled = true;
             }
         }
 
@@ -148,6 +148,7 @@ namespace QLNH
                 if (ds.ItemArray[0].ToString() == txtMaBan.Text)
                     temp.ImportRow(ds);
             dataGridView2.DataSource = temp;
+            btLuu.Enabled = false;
         }
 
     }

@@ -14,8 +14,10 @@ namespace QLNH
         {
             if (s.Length == 0)
                 return false;
+            if (char.IsWhiteSpace(s[0]))
+                return false;
             foreach (char i in s)
-                if (!char.IsLetter(i))
+                if (!char.IsLetter(i) && !char.IsWhiteSpace(i))
                     return false;
             return true;
         }
