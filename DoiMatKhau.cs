@@ -17,22 +17,18 @@ namespace QLNH
             InitializeComponent();
         }
 
-        private String oldpass = "";
+        private string oldpass = "";
 
         private void DoiMatKhau_Load(object sender, EventArgs e)
         {
-            DataTable dsd = Data.Load("TaiKhoan", "MaNV, MatKhau");
-
-            foreach (DataRow dr in dsd.Rows)
-                if (dr.ItemArray[0].ToString() == DangNhap.MSNV)
-                    oldpass = dr.ItemArray[1].ToString();
+            oldpass = (Data.Load("TaiKhoan", "MatKhau", "MaNV =" + NhanVien.GetMaNV())).Rows[0].ItemArray[0].ToString();
         }
 
         private void BtXN_Click(object sender, EventArgs e)
         {
             if (txtMK.Text == oldpass)
             {
-                Data.Update("TaiKhoan", "MatKhau ='" + txtnMK.Text + "'", "MaNV = " + DangNhap.MSNV);
+                Data.Update("TaiKhoan", "MatKhau ='" + txtnMK.Text + "'", "MaNV = " + NhanVien.GetMaNV());
                 MessageBox.Show("Mật khẩu thay đổi thành công");
             }
             else

@@ -90,7 +90,7 @@ namespace QLNH
                 {
                     if (pass == dr.ItemArray[2].ToString())
                     {
-                        DangNhap.MSNV = dr.ItemArray[0].ToString();
+                        new NhanVien(dr.ItemArray[0].ToString());
                         return true;
                     }
                     else

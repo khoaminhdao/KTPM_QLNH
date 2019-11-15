@@ -44,7 +44,7 @@ namespace QLNH
             return true;
         }
 
-        public string checkMaBan()
+        public string CheckMaBan()
         {
             DataTable dsb = Data.Load("Ban", "MaBan, SucChua, TinhTrang");
 
@@ -61,7 +61,7 @@ namespace QLNH
 
         public void Add()
         {
-            this.maBan = checkMaBan();
+            this.maBan = CheckMaBan();
 
             if (maBan != "")
             {

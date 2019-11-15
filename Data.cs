@@ -38,6 +38,23 @@ namespace QLNH
             return dsHienThi.Tables[0];
         }
 
+        public static DataTable Load(string bang, string danhsachthamso, string dk)
+        {
+            DataSet dsHienThi = new DataSet();
+
+            string s = "select " + danhsachthamso + " from " + bang + " where " + dk;
+
+            Open_DataAccess();
+
+            OleDbDataAdapter daShowData = new OleDbDataAdapter(s, strcon);
+
+            daShowData.Fill(dsHienThi, bang);
+
+            strcon.Close();
+
+            return dsHienThi.Tables[0];
+        }
+
         public static void Add(string bang, string danhsachcot, string danhsachthamso)
         {
 

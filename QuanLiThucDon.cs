@@ -57,7 +57,6 @@ namespace QLNH
 
         }
 
-
         public void Set_Ma()
         {
             dataGridView1.DataSource = Data.Load("ThucDon", "MaMA, TenMA, DonGia");
@@ -80,7 +79,7 @@ namespace QLNH
             txtTenMa.Text = txtDonGia.Text = "";
         }
 
-        private void btLuu_Click(object sender, EventArgs e)
+        private void BtLuu_Click(object sender, EventArgs e)
         {
             ADD_VALUE();
         }
@@ -93,8 +92,7 @@ namespace QLNH
             dataGridView1.Columns[2].HeaderText = "Đơn Giá";
         }
 
-
-        private void btSua_Click(object sender, EventArgs e)
+        private void BtSua_Click(object sender, EventArgs e)
         {
             if (Check_Input())
             {
@@ -108,12 +106,12 @@ namespace QLNH
             }
         }
 
-        private void buThoat_Click(object sender, EventArgs e)
+        private void BtThoat_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btXoa_Click(object sender, EventArgs e)
+        private void BtXoa_Click(object sender, EventArgs e)
         {
             try
             {
@@ -131,7 +129,7 @@ namespace QLNH
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
             txtMaMa.Text = dr.Cells[0].Value.ToString();

@@ -75,6 +75,7 @@
     <Compile Include="MenuNV.Designer.cs">
       <DependentUpon>MenuNV.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLiHoaDon.cs">

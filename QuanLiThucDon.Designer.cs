@@ -89,7 +89,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(852, 256);
             this.dataGridView1.TabIndex = 89;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
             // btThoat
             // 
@@ -110,7 +110,7 @@
             this.btSua.TabIndex = 5;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
-            this.btSua.Click += new System.EventHandler(this.btSua_Click);
+            this.btSua.Click += new System.EventHandler(this.BtSua_Click);
             // 
             // buThoat
             // 
@@ -121,7 +121,7 @@
             this.buThoat.TabIndex = 6;
             this.buThoat.Text = "Thoát";
             this.buThoat.UseVisualStyleBackColor = true;
-            this.buThoat.Click += new System.EventHandler(this.buThoat_Click);
+            this.buThoat.Click += new System.EventHandler(this.BtThoat_Click);
             // 
             // btXoa
             // 
@@ -132,7 +132,7 @@
             this.btXoa.TabIndex = 4;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
-            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
+            this.btXoa.Click += new System.EventHandler(this.BtXoa_Click);
             // 
             // btLuu
             // 
@@ -143,7 +143,7 @@
             this.btLuu.TabIndex = 3;
             this.btLuu.Text = "Thêm";
             this.btLuu.UseVisualStyleBackColor = true;
-            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
+            this.btLuu.Click += new System.EventHandler(this.BtLuu_Click);
             // 
             // label4
             // 

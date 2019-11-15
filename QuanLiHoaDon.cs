@@ -17,35 +17,34 @@ namespace QLNH
             InitializeComponent();
         }
 
-        DataTable dsd = Data.Load("HoaDon", "MaHD, MaBan, MaNV, NgayLap");
-
         private void QuanLiHoaDon_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = dsd;
+            dataGridView1.DataSource = Data.Load("HoaDon", "MaHD, MaBan, MaNV, ThoiGianLap, ThoiGianThanhToan, TongTien"); ;
             dataGridView1.Columns[0].HeaderText = "Mã Hóa Đơn";
             dataGridView1.Columns[1].HeaderText = "Mã Bàn";
             dataGridView1.Columns[2].HeaderText = "Mã Nhân Viên";
-            dataGridView1.Columns[3].HeaderText = "Ngày Tạo";
-
+            dataGridView1.Columns[3].HeaderText = "Thời Gian Tạo";
+            dataGridView1.Columns[4].HeaderText = "Thời Gian Thanh Toán";
+            dataGridView1.Columns[5].HeaderText = "Tổng Tiền";
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataTable temp = new DataTable();
-            temp.Columns.Add("MaHD", typeof(Int32));
             temp.Columns.Add("TenMA", typeof(string));
             temp.Columns.Add("SoLuong", typeof(Int32));
-           
+            temp.Columns.Add("DonGia", typeof(double));
+            temp.Columns.Add("ThanhTien", typeof(double));
 
-            DataTable ds = Data.Load("CTHD", "MaHD, TenMA, SoLuong");
+            DataTable ds = Data.Load("CTHD", "TenMA, SoLuong, DonGia, ThanhTien", "MaHD =" + dataGridView1.CurrentRow.Cells[0].Value.ToString());
             foreach (DataRow dr in ds.Rows)
-                if (dr.ItemArray[0].ToString() == dataGridView1.CurrentRow.Cells[0].Value.ToString())
-                    temp.ImportRow(dr);
+              temp.ImportRow(dr);
 
             dataGridView2.DataSource = temp;
-            dataGridView2.Columns[0].HeaderText = "Mã Hóa Đơn";
-            dataGridView2.Columns[1].HeaderText = "Tên Món Ăn";
-            dataGridView2.Columns[2].HeaderText = "Số Lượng";
+            dataGridView2.Columns[0].HeaderText = "Tên Món Ăn";
+            dataGridView2.Columns[1].HeaderText = "Số Lượng";
+            dataGridView2.Columns[2].HeaderText = "Đơn Giá";
+            dataGridView2.Columns[3].HeaderText = "Thành Tiền";
         }
     }
 }

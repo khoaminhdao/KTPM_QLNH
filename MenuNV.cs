@@ -17,27 +17,16 @@ namespace QLNH
             InitializeComponent();
         }
 
-        public static String ten = "";
-
         private void MenuNV_Load(object sender, EventArgs e)
         {
-            DataTable dsnv = Data.Load("NhanVien", "MaNV, Ten, ChucVu");
-
-            foreach (DataRow dr in dsnv.Rows)
+            if (NhanVien.GetCV() != "Quản lí")
             {
-                if (dr.ItemArray[0].ToString() == DangNhap.MSNV)
-                {
-                    ten = dr.ItemArray[1].ToString();
-                    if (dr.ItemArray[2].ToString() != "Quản lí")
-                    {
-                        GoiMon gm = new GoiMon();
-                        this.Close();
-                        gm.ShowDialog();
-                    }
-                    else
-                        chàoToolStripMenuItem.Text += ten;
-                }
+                GoiMon gm = new GoiMon();
+                this.Close();
+                gm.ShowDialog();
             }
+            else
+                chàoToolStripMenuItem.Text += NhanVien.GetTen();
         }
 
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)

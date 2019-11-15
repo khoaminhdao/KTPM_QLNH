@@ -31,16 +31,6 @@ namespace QLNH
         {
             if (Check_Input())
             {
-                //String maBan = txtMaBan.Text;
-                //foreach (DataGridViewRow dr in dataGridView1.Rows)
-                //{
-                //    if (dr.Cells[0].Value.ToString() == maBan)
-                //    {
-                //        MessageBox.Show("Mã bàn đã tồn tại, nhấn sửa để cập nhật thông tin!");
-                //        return;
-                //    }
-                //}
-
                 string maBan = txtMaBan.Text;
                 string sucChua = txtSucChua.Text;
 
@@ -73,7 +63,7 @@ namespace QLNH
             txtSucChua.Text = "";
         }
 
-        private void btLuu_Click(object sender, EventArgs e)
+        private void BtLuu_Click(object sender, EventArgs e)
         {
             ADD_VALUE();
         }
@@ -83,12 +73,12 @@ namespace QLNH
             Set_Ma();
 
             dataGridView1.Columns[0].HeaderText = "Mã Bàn";
-            dataGridView1.Columns[1].HeaderText = "Sức Chức";
+            dataGridView1.Columns[1].HeaderText = "Sức Chứa";
             dataGridView1.Columns[2].HeaderText = "Tình Trạng";
 
         }
 
-        private void btSua_Click(object sender, EventArgs e)
+        private void BtSua_Click(object sender, EventArgs e)
         {
             if (Check_Input())
             {
@@ -102,12 +92,12 @@ namespace QLNH
             }
         }
 
-        private void btThoat_Click(object sender, EventArgs e)
+        private void BtThoat_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btXoa_Click(object sender, EventArgs e)
+        private void BtXoa_Click(object sender, EventArgs e)
         {
             try
             {
@@ -125,7 +115,7 @@ namespace QLNH
             }
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
             txtMaBan.Text = dr.Cells[0].Value.ToString();
@@ -136,18 +126,22 @@ namespace QLNH
             else
                 btSua.Enabled = btXoa.Enabled = true;
 
-            DataTable dsd = Data.Load("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi");
+            DataTable dsd = Data.Load("DatBan", "Ten, SDT, ThoiGian, SoNguoi", "MaBan =" + txtMaBan.Text);
             DataTable temp = new DataTable();
-            temp.Columns.Add("MaBan", typeof(Int32));
             temp.Columns.Add("Ten", typeof(string));
             temp.Columns.Add("SDT", typeof(string));
             temp.Columns.Add("ThoiGian", typeof(DateTime));
             temp.Columns.Add("SoNguoi", typeof(Int32));
       
             foreach (DataRow ds in dsd.Rows)
-                if (ds.ItemArray[0].ToString() == txtMaBan.Text)
-                    temp.ImportRow(ds);
+                temp.ImportRow(ds);
+
             dataGridView2.DataSource = temp;
+            dataGridView2.Columns[0].HeaderText = "Tên";
+            dataGridView2.Columns[1].HeaderText = "Số Điện Thoại";
+            dataGridView2.Columns[2].HeaderText = "Thời Gian";
+            dataGridView2.Columns[3].HeaderText = "Số Người";
+
             btLuu.Enabled = false;
         }
 

@@ -117,7 +117,7 @@
             this.btThoat.TabIndex = 10;
             this.btThoat.Text = "Thoát";
             this.btThoat.UseVisualStyleBackColor = true;
-            this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
+            this.btThoat.Click += new System.EventHandler(this.BtThoat_Click);
             // 
             // btSua
             // 
@@ -128,7 +128,7 @@
             this.btSua.TabIndex = 9;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
-            this.btSua.Click += new System.EventHandler(this.btSua_Click);
+            this.btSua.Click += new System.EventHandler(this.BtSua_Click);
             // 
             // btXoa
             // 
@@ -139,7 +139,7 @@
             this.btXoa.TabIndex = 8;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
-            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
+            this.btXoa.Click += new System.EventHandler(this.BtXoa_Click);
             // 
             // btLuu
             // 
@@ -151,7 +151,7 @@
             this.btLuu.TabIndex = 7;
             this.btLuu.Text = "Thêm";
             this.btLuu.UseVisualStyleBackColor = true;
-            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
+            this.btLuu.Click += new System.EventHandler(this.BtLuu_Click);
             // 
             // cbGioiTinh
             // 

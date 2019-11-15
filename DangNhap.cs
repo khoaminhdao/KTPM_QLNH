@@ -19,8 +19,6 @@ namespace QLNH
             InitializeComponent();
         }
 
-        public static String MSNV;
-
         private void SetTime()
         {
             int gio = DateTime.Now.Hour;
@@ -62,6 +60,7 @@ namespace QLNH
                 Hide();
                 menu.ShowDialog();
                 Show();
+                txtMK.Text = "";
             }
         }
 

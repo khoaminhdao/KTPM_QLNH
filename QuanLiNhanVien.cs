@@ -53,12 +53,14 @@ namespace QLNH
             if (Check_Input())
             {
                 string maNV = txtMaNv.Text;
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                    if (dataGridView1.Rows[i].Cells[0].Value.ToString() == maNV)
+                foreach (DataGridViewRow dr in dataGridView1.Rows)
+                {
+                    if (dr.Cells[0].Value.ToString() == maNV)
                     {
                         MessageBox.Show("Mã nhân viên đã tồn tại, nhấn sửa để cập nhật thông tin!");
                         return;
                     }
+                }
                 int vt = txtTenNv.Text.LastIndexOf(" ");
                
                 string ho = txtTenNv.Text.Substring(0, vt);
@@ -102,7 +104,7 @@ namespace QLNH
             txtTenNv.Text = txtQuocTich.Text = "";
         }
 
-        private void btLuu_Click(object sender, EventArgs e)
+        private void BtLuu_Click(object sender, EventArgs e)
         {
             ADD_VALUE();
         }
@@ -122,7 +124,7 @@ namespace QLNH
             dataGridView1.Columns[8].HeaderText = "Ngày Vào Làm";
         }
 
-        private void btXoa_Click(object sender, EventArgs e)
+        private void BtXoa_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
@@ -133,7 +135,7 @@ namespace QLNH
             }
         }
 
-        private void btSua_Click(object sender, EventArgs e)
+        private void BtSua_Click(object sender, EventArgs e)
         {
             if (Check_Input())
             {
@@ -153,7 +155,7 @@ namespace QLNH
             }
         }
 
-        private void btThoat_Click(object sender, EventArgs e)
+        private void BtThoat_Click(object sender, EventArgs e)
         {
             Close();
         }

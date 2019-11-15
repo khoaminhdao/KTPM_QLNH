@@ -96,7 +96,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(487, 301);
             this.tabControl1.TabIndex = 5;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -170,7 +170,7 @@
             this.btTT.TabIndex = 13;
             this.btTT.Text = "Thanh Toán";
             this.btTT.UseVisualStyleBackColor = true;
-            this.btTT.Click += new System.EventHandler(this.btTT_Click);
+            this.btTT.Click += new System.EventHandler(this.BtTT_Click);
             // 
             // GoiMon
             // 
