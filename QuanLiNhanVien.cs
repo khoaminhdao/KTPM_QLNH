@@ -80,7 +80,6 @@ namespace QLNH
             
         }
 
-
         public void Set_Ma ()
         {
             dataGridView1.DataSource = Data.Load("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam");

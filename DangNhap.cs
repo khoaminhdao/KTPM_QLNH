@@ -21,43 +21,6 @@ namespace QLNH
 
         public static String MSNV;
 
-        private void Check_Login(string id, string pass)
-        {
-            
-            if (id == "")
-            { 
-                MessageBox.Show("Vui lòng nhập tên tài khoản!");
-                return; 
-            }
-            else if (pass == "")
-            { 
-                MessageBox.Show("Vui lòng nhập mật khẩu!");
-                return;
-            }
-            else
-            {
-                DataTable dsnv = Data.Load("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
-                foreach (DataRow dr in dsnv.Rows)
-                {
-                    if (id == dr.ItemArray[1].ToString())
-                    {
-                        if (pass == dr.ItemArray[2].ToString())
-                        {
-                            MSNV = dr.ItemArray[0].ToString();
-                            MenuNV menu = new MenuNV();
-                            Hide();
-                            menu.ShowDialog();
-                            Show();
-                            return;
-                        }
-                        else
-                        { MessageBox.Show("Sai mật khẩu"); return; }
-                    }
-                }
-                MessageBox.Show("Sai tài khoản");
-            }
-        }
-
         private void SetTime()
         {
             int gio = DateTime.Now.Hour;
@@ -93,43 +56,28 @@ namespace QLNH
 
         private void BtDN_Click(object sender, EventArgs e)
         {
-            Check_Login(txtTK.Text, txtMK.Text);
+            if (Check.Login(txtTK.Text, txtMK.Text))
+            {
+                MenuNV menu = new MenuNV();
+                Hide();
+                menu.ShowDialog();
+                Show();
+            }
         }
 
         private void BtDatBan_Click(object sender, EventArgs e)
         {
-            string ten = txtTen.Text;
-            string soDT = txtSDT.Text;
-            string soNg = txtSN.Text;
             int maxSDT = 10;
             if (rdBan.Checked)
                 maxSDT = 11;
 
             int gio = int.Parse(cbTime.Text.Substring(0, 2));
             int phut = int.Parse(cbTime.Text.Substring(3));
-            DateTime time = timePk.Value.AddHours(gio).AddMinutes(phut);
 
-            if (!Check.Alpha(ten))
-                MessageBox.Show("Vui lòng nhập tên chính xác");
-            else if (!Check.SDT(soDT, maxSDT))
-                MessageBox.Show("Vui lòng nhập đúng số điện thoại");
-            else if (!Check.Num(soNg))
-                MessageBox.Show("Vui lòng nhập số người chính xác");
-            else
+            KhachHang kh = new KhachHang(txtTen.Text, txtSDT.Text, txtSN.Text, timePk.Value.AddHours(gio).AddMinutes(phut));
+            if (kh.CheckInput(maxSDT)) 
             {
-                DataTable dsb = Data.Load("Ban", "MaBan, SucChua, TinhTrang");
-
-                foreach (DataRow dr in dsb.Rows)
-                {
-                    string maban = dr.ItemArray[0].ToString();
-                    if (Check.Ban(maban, time))
-                    {
-                        Data.Add("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi", "'" + maban + "','" + ten + "','" + soDT + "','" + time + "','" + soNg + "'");
-                        MessageBox.Show("Đặt bàn thành công!");
-                        return;
-                    }
-                }
-                MessageBox.Show("Không có bàn phù hợp yêu cầu!");
+                kh.Add();
             }
         }
 

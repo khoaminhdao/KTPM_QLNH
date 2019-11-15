@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows.Forms;
 
 namespace QLNH
 {
     public class Check
     {
       
-        public static Boolean Alpha(string s)
+        public static bool Alpha(string s)
         {
             if (s.Length == 0)
                 return false;
@@ -22,7 +23,7 @@ namespace QLNH
             return true;
         }
 
-        public static Boolean Num(string s)
+        public static bool Num(string s)
         {
             if (s.Length == 0)
                 return false;
@@ -32,7 +33,7 @@ namespace QLNH
             return true;
         }
 
-        public static Boolean GioHopLe(DateTime a, DateTime b)
+        public static bool GioHopLe(DateTime a, DateTime b)
         {
             //Trả về true khi a, b cách nhau hơn 3 tiếng
             //-1 -> a < b
@@ -48,7 +49,7 @@ namespace QLNH
             return true;
         }
 
-        public static Boolean SDT(string s, int max)
+        public static bool SDT(string s, int max)
         {
             if (s.Length != max)
                 return false;
@@ -59,7 +60,7 @@ namespace QLNH
             return true;
         }
 
-        public static Boolean Ban(String maban, DateTime time)
+        public static bool Ban(String maban, DateTime time)
         {
             DataTable dsd = Data.Load("DatBan", "MaBan, ThoiGian");
 
@@ -67,6 +68,40 @@ namespace QLNH
                 if (ds.ItemArray[0].ToString() == maban && !GioHopLe(DateTime.Parse(ds.ItemArray[1].ToString()), time))
                     return false;
             return true;
+        }
+
+        public static bool Login(string id, string pass)
+        {
+            if (id == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên tài khoản!");
+                return false;
+            }
+            if (pass == "")
+            {
+                MessageBox.Show("Vui lòng nhập mật khẩu!");
+                return false;
+            }
+
+            DataTable dsnv = Data.Load("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
+            foreach (DataRow dr in dsnv.Rows)
+            {
+                if (id == dr.ItemArray[1].ToString())
+                {
+                    if (pass == dr.ItemArray[2].ToString())
+                    {
+                        DangNhap.MSNV = dr.ItemArray[0].ToString();
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sai mật khẩu");
+                        return false; 
+                    }
+                }
+            }
+            MessageBox.Show("Sai tài khoản");
+            return false;
         }
     }
 }

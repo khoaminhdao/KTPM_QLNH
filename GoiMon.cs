@@ -18,35 +18,16 @@ namespace QLNH
         }
 
         DataTable ThucDon = Data.Load("ThucDon", "MaMA, TenMA, DonGia");
+        List<HoaDon> hd = new List<HoaDon>();
 
-        public void Set_Ma()
+        public void DSBanTrong()
         {
-            DataView hd = Data.Load("HoaDon", "MaHD").DefaultView;
-            hd.Sort = "MaHD";
-            DataTable hd1 = hd.ToTable();
-            int count = 1;
-
-            foreach (DataRow dr in hd1.Rows)
-            {
-                if (int.Parse(dr.ItemArray[0].ToString()) != count)
-                {
-                    txtMaHD.Text = count.ToString();
-                    return;
-                }
-                else
-                    count++;
-            }
-            txtMaHD.Text = (hd1.Rows.Count + 1).ToString();
-
-            Check_Trong();
-        }
-
-        public void Check_Trong()
-        {
-            DataTable ban = Data.Load("Ban", "MaBan, TinhTrang");
+            DataView ban = Data.Load("Ban", "MaBan, TinhTrang").DefaultView;
+            ban.Sort = "MaBan";
+            DataTable ban1 = ban.ToTable();
             cbMB.Items.Clear();
 
-            foreach (DataRow dr in ban.Rows)
+            foreach (DataRow dr in ban1.Rows)
             {
                 if (dr.ItemArray[1].ToString() == "Trống")
                     cbMB.Items.Add(dr.ItemArray[0]);
@@ -59,72 +40,40 @@ namespace QLNH
             cbMB.SelectedIndex = 0;
         }
 
-        public DataTable CTHD(String maHD)
-        {
-            DataTable dt = Data.Load("CTHD", "MaHD, TenMa, SoLuong, DonGia, ThanhTien");
-            DataTable temp = new DataTable();
-            temp.Columns.Add("MaHD", typeof(Int32));
-            temp.Columns.Add("TenMA", typeof(string));
-            temp.Columns.Add("SoLuong", typeof(Int32));
-            temp.Columns.Add("DonGia", typeof(Int32));
-            temp.Columns.Add("ThanhTien", typeof(Int32));
-
-            temp.Columns[0].ColumnName = "Mã Hóa Đơn";
-            temp.Columns[1].ColumnName = "Tên Món Ăn";
-            temp.Columns[2].ColumnName = "Số Lượng";
-            temp.Columns[3].ColumnName = "Đơn Giá";
-            temp.Columns[4].ColumnName = "Thành Tiền";
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (dr.ItemArray[0].ToString() == maHD)
-                {
-                    temp.ImportRow(dr);
-                }
-            }
-            return temp;
-        }
-
-        public int CheckMA(string maHD, string maMA)
-        {
-            DataTable cthd = Data.Load("CTHD", "MaHD, MaMA, SoLuong");
-            foreach (DataRow dr in cthd.Rows)
-                if (dr.ItemArray[0].ToString() == maHD && dr.ItemArray[1].ToString() == maMA)
-                    return int.Parse(dr.ItemArray[2].ToString());
-            return 0;
-        }
-
-        public void Show(string maHD, string maBan)
+        public void CreatePage(string maHD, string maBan)
         {
             tabControl1.TabPages.Add(maBan, "Bàn " + maBan);
-
             DataGrid dt = new DataGrid();
             dt.Size = tabControl1.TabPages[maBan].Size;
             dt.ReadOnly = true;
 
+            tabControl1.TabPages[maBan].Tag = maBan;
             tabControl1.TabPages[maBan].Controls.Add(dt);
-            tabControl1.TabPages[maBan].Tag = maHD;
+            dt.DataSource = hd[hd.Count - 1].ChiTiet();
 
-            dt.DataSource = CTHD(maHD);
-
-            Set_Ma();
+            txtMaHD.Text = HoaDon.Set_Ma();
+            DSBanTrong();
             btThem.Enabled = true;
         }
 
         private void GoiMon_Load(object sender, EventArgs e)
         {
-            Set_Ma();
+            txtMaHD.Text = HoaDon.Set_Ma();
+            DSBanTrong();
 
             foreach (DataRow dr in ThucDon.Rows)
                 cbMA.Items.Add(dr.ItemArray[0] + "." + dr.ItemArray[1]);
             cbMA.SelectedIndex = 0;
 
-            DataTable hd = Data.Load("HoaDon", "MaHD, MaBan, ThanhToan");
+            DataTable dt = Data.Load("HoaDon", "MaHD, MaBan, MaNV, TongTien, ThanhToan");
 
-            foreach (DataRow dr in hd.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
-                if (dr.ItemArray[2].ToString() == "False")
-                    Show(dr.ItemArray[0].ToString(), dr.ItemArray[1].ToString());
+                if (dr.ItemArray[4].ToString() == "False")
+                {
+                    hd.Add(new HoaDon(dr.ItemArray[0].ToString(), dr.ItemArray[1].ToString(), dr.ItemArray[2].ToString(), double.Parse(dr.ItemArray[3].ToString())));
+                    CreatePage(dr.ItemArray[0].ToString(), dr.ItemArray[1].ToString());
+                }
             }
 
             if (tabControl1.TabPages.Count == 0)
@@ -153,65 +102,37 @@ namespace QLNH
             String maBan = cbMB.Text;
             String maHD = txtMaHD.Text.ToString();
 
-            Data.Add("HoaDon", "MaHD, MaBan, MaNV, NgayLap", "'" + txtMaHD.Text + "','" + cbMB.Text + "','" + DangNhap.MSNV + "','" + DateTime.Now + "'");
+            hd.Add(new HoaDon(maHD, maBan, DangNhap.MSNV, 0));
+            Data.Add("HoaDon", "MaHD, MaBan, MaNV, NgayLap", "'" + maHD + "','" + maBan + "','" + DangNhap.MSNV + "','" + DateTime.Now + "'");
             Data.Update("Ban", "TinhTrang = 'Đang Sử Dụng'", "MaBan =" + maBan);
-
-            Show(maHD, maBan);
+            CreatePage(maHD, maBan);
         }
 
         private void BtThem_Click(object sender, EventArgs e)
         {
             if (Check.Num(txtSoLuong.Text))
             {
-                TabPage tc = tabControl1.SelectedTab;
-                DataGrid dt = (DataGrid)tc.Controls[0];
+                int stt = tabControl1.SelectedIndex;
                 
-                string maHD = tabControl1.SelectedTab.Tag.ToString();
                 string maMA = cbMA.Text.Substring(0, cbMA.Text.IndexOf("."));
                 
-                int soLuong = int.Parse(txtSoLuong.Text);
-                int soLuongCu = CheckMA(maHD, maMA.ToString());
+                hd[stt].ThemMA(maMA, int.Parse(txtSoLuong.Text));
 
-                int donGia = 0;
-                string tenMA = "";
-
-                foreach (DataRow dr in ThucDon.Rows)
-                {
-                    if (dr.ItemArray[0].ToString() == maMA)
-                    {
-                        tenMA = dr.ItemArray[1].ToString();
-                        donGia = int.Parse(dr.ItemArray[2].ToString());
-                    }
-                }
-
-                if (soLuongCu == 0)
-                {
-                    Data.Add("CTHD", "MaHD, MaMA, TenMA, SoLuong, DonGia, ThanhTien", "'" + maHD + "','" + maMA + "','" + tenMA + "','" + txtSoLuong.Text + "','" + donGia + "','" + donGia * soLuong + "'");
-                }
-                else
-                    Data.Update("CTHD", "SoLuong =" + (soLuong + soLuongCu) + ", DonGia =" + donGia * (soLuong + soLuongCu), "MaHD = " + maHD + " and MaMA =" + maMA);
+                DataGrid dt = (DataGrid)(tabControl1.TabPages[stt].Controls[0]);
+                dt.DataSource = hd[stt].ChiTiet();
                 
-                txtTT.Text  = (int.Parse(txtTT.Text) + (donGia * soLuong)).ToString();
+                txtTT.Text  = hd[stt].getTT().ToString();
                 
-                Data.Update("HoaDon", "TongTien ='" + txtTT.Text + "'", "MaHD =" + maHD);
-                
-                dt.DataSource = CTHD(maHD);
                 btTT.Enabled = true;
             }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable hd = Data.Load("HoaDon", "MaHD, TongTien");
-            if (tabControl1.TabPages.Count != 0)
-            {
-                string maHD = tabControl1.SelectedTab.Tag.ToString();
-
-                foreach (DataRow dr in hd.Rows)
-                {
-                    if (dr.ItemArray[0].ToString() == maHD)
-                        txtTT.Text = dr.ItemArray[1].ToString();
-                }
+           
+            if (tabControl1.TabPages.Count != 0) //điều kiện để không bị lỗi
+            {   
+                txtTT.Text = hd[tabControl1.SelectedIndex].getTT().ToString();
             }
             //if (txtTT.Text != "0")
             //    btTT.Enabled = true;
@@ -226,8 +147,10 @@ namespace QLNH
             {
                 Data.Update("Ban", "TinhTrang = 'Trống'", "MaBan =" + tabControl1.SelectedTab.Name);
                 Data.Update("HoaDon", "ThanhToan = True", "MaHD =" + tabControl1.SelectedTab.Tag.ToString());
+                hd.RemoveAt(tabControl1.SelectedIndex);
                 tabControl1.TabPages.Remove(tabControl1.SelectedTab);
                 MessageBox.Show("Thanh toán thành công");
+                DSBanTrong();
                 if (tabControl1.TabPages.Count == 0)
                 {
                     btTT.Enabled = false;

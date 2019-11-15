@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ban.cs" />
     <Compile Include="Check.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="DoiMatKhau.cs">
@@ -66,6 +67,8 @@
     <Compile Include="GoiMon.Designer.cs">
       <DependentUpon>GoiMon.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoaDon.cs" />
+    <Compile Include="KhachHang.cs" />
     <Compile Include="MenuNV.cs">
       <SubType>Form</SubType>
     </Compile>
