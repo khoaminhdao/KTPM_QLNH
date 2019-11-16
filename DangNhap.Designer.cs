@@ -87,6 +87,7 @@
             this.txtMK.Size = new System.Drawing.Size(198, 27);
             this.txtMK.TabIndex = 1;
             this.txtMK.UseSystemPasswordChar = true;
+            this.txtMK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtMK_KeyDown);
             // 
             // label1
             // 
@@ -330,7 +331,7 @@
             this.tabPage2.Text = "Nhân Viên";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -340,7 +341,8 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.KeyPreview = true;
+            this.Name = "DangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

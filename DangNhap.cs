@@ -91,5 +91,11 @@ namespace QLNH
             if (timePk.Value.CompareTo(DateTime.Now.Date) == 0)
                 SetTime();
         }
+
+        private void TxtMK_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btDN.PerformClick();
+        }
     }
 }

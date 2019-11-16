@@ -126,17 +126,7 @@ namespace QLNH
             else
                 btSua.Enabled = btXoa.Enabled = true;
 
-            DataTable dsd = Data.Load("DatBan", "Ten, SDT, ThoiGian, SoNguoi", "MaBan =" + txtMaBan.Text);
-            DataTable temp = new DataTable();
-            temp.Columns.Add("Ten", typeof(string));
-            temp.Columns.Add("SDT", typeof(string));
-            temp.Columns.Add("ThoiGian", typeof(DateTime));
-            temp.Columns.Add("SoNguoi", typeof(Int32));
-      
-            foreach (DataRow ds in dsd.Rows)
-                temp.ImportRow(ds);
-
-            dataGridView2.DataSource = temp;
+            dataGridView2.DataSource = Ban.Ctdb(txtMaBan.Text);
             dataGridView2.Columns[0].HeaderText = "Tên";
             dataGridView2.Columns[1].HeaderText = "Số Điện Thoại";
             dataGridView2.Columns[2].HeaderText = "Thời Gian";

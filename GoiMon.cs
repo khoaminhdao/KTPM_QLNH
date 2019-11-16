@@ -42,17 +42,28 @@ namespace QLNH
         {
             tabControl1.TabPages.Add(maBan, "Bàn " + maBan);
 
-            DataGrid dt = new DataGrid
+            DataGridView dt = new DataGridView
             {
                 Size = tabControl1.TabPages[maBan].Size,
                 ReadOnly = true,
-                DataSource = hd[hd.Count - 1].ChiTiet()
+                DataSource = hd[hd.Count - 1].ChiTiet(),
+                AllowUserToAddRows = false,
+                AllowUserToResizeRows = false,
+                AllowUserToDeleteRows = false,
+                AllowUserToResizeColumns = false
             };
+
+            dt.CellClick += Dt_CellClick;
 
             tabControl1.TabPages[maBan].Controls.Add(dt);
             txtMaHD.Text = HoaDon.Set_Ma();
             DSB();
             btThem.Enabled = true;
+        }
+
+        private void Dt_CellClick(object sender, EventArgs e)
+        {
+            btXoa.Enabled = true;
         }
 
         private void GoiMon_Load(object sender, EventArgs e)
@@ -108,21 +119,20 @@ namespace QLNH
 
         private void BtThem_Click(object sender, EventArgs e)
         {
-            if (Check.Num(txtSoLuong.Text))
-            {
+           
                 int stt = tabControl1.SelectedIndex;
                 
                 string maMA = cbMA.Text.Substring(0, cbMA.Text.IndexOf("."));
                 
-                hd[stt].ThemMA(maMA, int.Parse(txtSoLuong.Text));
+                hd[stt].ThemMA(maMA, (int)numSL.Value);
 
-                DataGrid dt = (DataGrid)(tabControl1.TabPages[stt].Controls[0]);
+                DataGridView dt = (DataGridView)(tabControl1.TabPages[stt].Controls[0]);
                 dt.DataSource = hd[stt].ChiTiet();
                 
                 txtTT.Text  = hd[stt].GetTT().ToString();
                 
                 btTT.Enabled = true;
-            }
+           
         }
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -156,6 +166,22 @@ namespace QLNH
                     txtTT.Text = "0";
                 }
             }
+        }
+
+        private void BtXoa_Click(object sender, EventArgs e)
+        {
+            int stt = tabControl1.SelectedIndex;
+            DataGridView dt = (DataGridView)(tabControl1.TabPages[stt].Controls[0]);
+
+            foreach (DataGridViewRow dr in dt.SelectedRows)
+            {
+                hd[stt].XoaMA(dr.Cells[0].Value.ToString());
+            }
+
+            dt.DataSource = hd[stt].ChiTiet();
+
+            txtTT.Text = hd[stt].GetTT().ToString();
+            btXoa.Enabled = false;
         }
     } 
 }

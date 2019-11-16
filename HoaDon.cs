@@ -24,9 +24,7 @@ namespace QLNH
             {
                 this.ten = dr.ItemArray[0].ToString();
                 this.donGia = int.Parse(dr.ItemArray[1].ToString());
-               
             }
-
         }
         public string GetMa()
         {
@@ -120,23 +118,40 @@ namespace QLNH
 
         public void ThemMA(string maMA, int soLuong)
         {
-                foreach (MonAn i in this.cthd)
+            foreach (MonAn i in cthd)
+            {
+                if (i.GetMa() == maMA)
                 {
-                    if (i.GetMa() == maMA)
-                    {
-                        i.TangSL(soLuong);
-                        tongTien += (i.GetDonGia() * soLuong);
-                        Data.Update("CTHD", "SoLuong =" + i.GetSL() + ", ThanhTien =" + i.GetThanhTien(), "MaHD = " + maHD + " and MaMA =" + maMA);
-                        Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
-                        return;
-                    }
+                    i.TangSL(soLuong);
+                    tongTien += (i.GetDonGia() * soLuong);
+                    Data.Update("CTHD", "SoLuong =" + i.GetSL() + ", ThanhTien =" + i.GetThanhTien(), "MaHD = " + maHD + " and MaMA =" + maMA);
+                    Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
+                    return;
                 }
+            }
+
             this.cthd.Add(new MonAn(maMA, soLuong));
             MonAn ma = cthd[cthd.Count() - 1];
             double thanhtien = ma.GetDonGia() * soLuong;
             tongTien += thanhtien;
             Data.Add("CTHD", "MaHD, MaMA, TenMA, SoLuong, DonGia, ThanhTien", "'" + maHD + "','" + maMA + "','" + ma.GetTen() + "','" + soLuong + "','" + ma.GetDonGia() + "','" + thanhtien + "'");
             Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
+        }
+
+        public void XoaMA(string maMA)
+        {
+            Data.Delete("CTHD", "MaHD =" + this.maHD + " and MaMA = " + maMA);
+            Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
+
+            foreach (MonAn i in cthd)
+            {
+                if (i.GetMa() == maMA)
+                {
+                    tongTien -= (i.GetDonGia() * i.GetSL());
+                    cthd.Remove(i);
+                    break;
+                }
+            }
         }
 
         public double GetTT()

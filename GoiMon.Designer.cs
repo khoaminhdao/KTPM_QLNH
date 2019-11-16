@@ -37,11 +37,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbMA = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.btThem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTT = new System.Windows.Forms.TextBox();
             this.btTT = new System.Windows.Forms.Button();
+            this.btXoa = new System.Windows.Forms.Button();
+            this.numSL = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numSL)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,24 +121,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(236, 465);
+            this.label4.Location = new System.Drawing.Point(253, 465);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Số Lượng";
             // 
-            // txtSoLuong
-            // 
-            this.txtSoLuong.Location = new System.Drawing.Point(312, 458);
-            this.txtSoLuong.MaxLength = 2;
-            this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(85, 20);
-            this.txtSoLuong.TabIndex = 4;
-            // 
             // btThem
             // 
             this.btThem.Enabled = false;
-            this.btThem.Location = new System.Drawing.Point(435, 451);
+            this.btThem.Location = new System.Drawing.Point(438, 458);
             this.btThem.Name = "btThem";
             this.btThem.Size = new System.Drawing.Size(61, 27);
             this.btThem.TabIndex = 5;
@@ -172,16 +166,50 @@
             this.btTT.UseVisualStyleBackColor = true;
             this.btTT.Click += new System.EventHandler(this.BtTT_Click);
             // 
+            // btXoa
+            // 
+            this.btXoa.Enabled = false;
+            this.btXoa.Location = new System.Drawing.Point(12, 401);
+            this.btXoa.Name = "btXoa";
+            this.btXoa.Size = new System.Drawing.Size(61, 27);
+            this.btXoa.TabIndex = 14;
+            this.btXoa.Text = "Xóa";
+            this.btXoa.UseVisualStyleBackColor = true;
+            this.btXoa.Click += new System.EventHandler(this.BtXoa_Click);
+            // 
+            // numSL
+            // 
+            this.numSL.Location = new System.Drawing.Point(328, 463);
+            this.numSL.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numSL.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSL.Name = "numSL";
+            this.numSL.Size = new System.Drawing.Size(45, 20);
+            this.numSL.TabIndex = 15;
+            this.numSL.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // GoiMon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 487);
+            this.Controls.Add(this.numSL);
+            this.Controls.Add(this.btXoa);
             this.Controls.Add(this.btTT);
             this.Controls.Add(this.txtTT);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btThem);
-            this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbMA);
             this.Controls.Add(this.label3);
@@ -194,6 +222,7 @@
             this.Name = "GoiMon";
             this.Text = "GoiMon";
             this.Load += new System.EventHandler(this.GoiMon_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numSL)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,10 +239,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbMA;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Button btThem;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTT;
         private System.Windows.Forms.Button btTT;
+        private System.Windows.Forms.Button btXoa;
+        private System.Windows.Forms.NumericUpDown numSL;
     }
 }
