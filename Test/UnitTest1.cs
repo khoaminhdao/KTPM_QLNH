@@ -40,8 +40,10 @@ namespace Test
         public void TestGio()
         {
             //DateTime(year, month, day, hour, minute, second)
-            Assert.IsTrue(Check.GioHopLe(new DateTime(2019, 11, 13, 15, 30, 00), new DateTime(2019, 11, 13, 19, 30, 00)));
-            Assert.IsFalse(Check.GioHopLe(new DateTime(2019, 11, 13, 15, 30, 00), new DateTime(2019, 11, 13, 16, 30, 00)));
+            Assert.AreEqual(Check.GioHopLe(new DateTime(2019, 11, 13, 15, 30, 00), new DateTime(2019, 11, 13, 19, 30, 00)), 0);
+            Assert.AreEqual(Check.GioHopLe(new DateTime(2019, 11, 13, 15, 30, 00), new DateTime(2019, 11, 13, 16, 30, 00)), -1);
+            Assert.AreEqual(Check.GioHopLe(new DateTime(2019, 11, 13, 16, 30, 00), new DateTime(2019, 11, 13, 15, 30, 00)), 1);
+            Assert.AreEqual(Check.GioHopLe(new DateTime(2019, 11, 13, 16, 30, 00), new DateTime(2019, 11, 13, 16, 30, 00)), 1);
         }
 
 

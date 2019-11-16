@@ -50,7 +50,8 @@ namespace QLNH
                 AllowUserToAddRows = false,
                 AllowUserToResizeRows = false,
                 AllowUserToDeleteRows = false,
-                AllowUserToResizeColumns = false
+                AllowUserToResizeColumns = false,
+                RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders,
             };
 
             dt.CellClick += Dt_CellClick;
@@ -97,7 +98,7 @@ namespace QLNH
             foreach (DataRow dr in datban.Rows)
             {
                 string thoigian = dr.ItemArray[1].ToString();
-                if (!Check.GioHopLe(DateTime.Parse(thoigian), DateTime.Now))
+                if (Check.GioHopLe(DateTime.Parse(thoigian), DateTime.Now) == 1)
                 {
                     if (MessageBox.Show("Bàn được đặt vào lúc: " + thoigian + " của khách hàng " + dr.ItemArray[0].ToString() + " bạn có muốn tạo hóa đơn?", "Cảnh báo", MessageBoxButtons.YesNo) == DialogResult.No)
                         return;
@@ -130,7 +131,8 @@ namespace QLNH
                 dt.DataSource = hd[stt].ChiTiet();
                 
                 txtTT.Text  = hd[stt].GetTT().ToString();
-                
+
+                numSL.Value = 1;
                 btTT.Enabled = true;
            
         }

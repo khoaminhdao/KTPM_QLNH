@@ -86,7 +86,7 @@
             // btQLNV
             // 
             this.btQLNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btQLNV.Location = new System.Drawing.Point(6, 120);
+            this.btQLNV.Location = new System.Drawing.Point(6, 211);
             this.btQLNV.Name = "btQLNV";
             this.btQLNV.Size = new System.Drawing.Size(178, 29);
             this.btQLNV.TabIndex = 2;
@@ -97,7 +97,7 @@
             // btQLTD
             // 
             this.btQLTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btQLTD.Location = new System.Drawing.Point(6, 167);
+            this.btQLTD.Location = new System.Drawing.Point(6, 120);
             this.btQLTD.Name = "btQLTD";
             this.btQLTD.Size = new System.Drawing.Size(178, 29);
             this.btQLTD.TabIndex = 3;
@@ -119,7 +119,7 @@
             // btQLHD
             // 
             this.btQLHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btQLHD.Location = new System.Drawing.Point(6, 212);
+            this.btQLHD.Location = new System.Drawing.Point(6, 167);
             this.btQLHD.Name = "btQLHD";
             this.btQLHD.Size = new System.Drawing.Size(178, 29);
             this.btQLHD.TabIndex = 4;

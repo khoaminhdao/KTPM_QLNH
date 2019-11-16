@@ -17,28 +17,9 @@ namespace QLNH
             InitializeComponent();
         }
 
-        public bool Check_Input()
-        {
-            if (!Check.Num(txtSucChua.Text) || (int.Parse(txtSucChua.Text) <= 0))
-            {
-                MessageBox.Show("Vui lòng nhập đúng sức chứa của bàn!");
-                return false;
-            }
-            return true;
-        }
-
         private void ADD_VALUE()
         {
-            if (Check_Input())
-            {
-                string maBan = txtMaBan.Text;
-                string sucChua = txtSucChua.Text;
-
-                Data.Add("Ban", "MaBan, SucChua, TinhTrang", "'" + maBan + "','" + sucChua + "','Trống'");
-
-                Set_Ma();
-            }
-
+            Data.Add("Ban", "MaBan, SucChua, TinhTrang", "'" + txtMaBan.Text + "','" + numSucChua.Value + "','Trống'");
         }
 
         public void Set_Ma()
@@ -60,7 +41,7 @@ namespace QLNH
             }
 
             txtMaBan.Text = (dataGridView1.Rows.Count + 1).ToString();
-            txtSucChua.Text = "";
+            numSucChua.Value = 2;
         }
 
         private void BtLuu_Click(object sender, EventArgs e)
@@ -79,17 +60,10 @@ namespace QLNH
         }
 
         private void BtSua_Click(object sender, EventArgs e)
-        {
-            if (Check_Input())
-            {
-
-                String sucChua = txtSucChua.Text;
-                String maBan = txtMaBan.Text;
-
-                Data.Update("Ban", "SucChua = " + sucChua, "MaBan = " + maBan);
-                Set_Ma();
-                btLuu.Enabled = true;
-            }
+        { 
+            Data.Update("Ban", "SucChua = " + numSucChua.Value, "MaBan = " + txtMaBan.Text);
+            Set_Ma();
+            btLuu.Enabled = true;
         }
 
         private void BtThoat_Click(object sender, EventArgs e)
@@ -119,7 +93,7 @@ namespace QLNH
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
             txtMaBan.Text = dr.Cells[0].Value.ToString();
-            txtSucChua.Text = dr.Cells[1].Value.ToString();
+            numSucChua.Value = decimal.Parse(dr.Cells[1].Value.ToString());
             
             if (dr.Cells[2].Value.ToString() == "Đang Sử Dụng")
                 btSua.Enabled = btXoa.Enabled = false;

@@ -53,14 +53,6 @@ namespace QLNH
             if (Check_Input())
             {
                 string maNV = txtMaNv.Text;
-                foreach (DataGridViewRow dr in dataGridView1.Rows)
-                {
-                    if (dr.Cells[0].Value.ToString() == maNV)
-                    {
-                        MessageBox.Show("Mã nhân viên đã tồn tại, nhấn sửa để cập nhật thông tin!");
-                        return;
-                    }
-                }
                 int vt = txtTenNv.Text.LastIndexOf(" ");
                
                 string ho = txtTenNv.Text.Substring(0, vt);
@@ -152,6 +144,8 @@ namespace QLNH
 
                 Data.Update("NhanVien", "Ho = '" + ho + "', Ten = '" + ten + "', NgaySinh = '" + nS + "', ChucVu = '" + cV + "', TrinhDo = '" + tD + "', GioiTinh = '" + gT + "', QuocTich = '" + qT + "'", "MaNV =" + maNV);
                 Set_Ma();
+
+                btThem.Enabled = true;
             }
         }
 
@@ -170,7 +164,8 @@ namespace QLNH
             cbTrinhDo.Text = dr.Cells[5].Value.ToString();
             cbGioiTinh.Text = dr.Cells[6].Value.ToString();
             txtQuocTich.Text = dr.Cells[7].Value.ToString();
-            
+
+            btThem.Enabled = false;
         }
     }
 }

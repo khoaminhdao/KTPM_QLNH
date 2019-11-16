@@ -10,7 +10,6 @@ namespace QLNH
 {
     public class Check
     {
-      
         public static bool Alpha(string s)
         {
             if (s.Length == 0)
@@ -33,7 +32,7 @@ namespace QLNH
             return true;
         }
 
-        public static bool GioHopLe(DateTime a, DateTime b)
+        public static int GioHopLe(DateTime a, DateTime b)
         {
             //Trả về true khi a, b cách nhau hơn 3 tiếng
             //-1 -> a < b
@@ -41,12 +40,12 @@ namespace QLNH
             //1 -> a > b
 
             if (a.CompareTo(b) == 0)
-                return false;
+                return 1;
             if (a.CompareTo(b) == -1 && b.CompareTo(a.AddHours(3)) == -1)
-                return false;
+                return -1;
             if (b.CompareTo(a) == -1 && a.CompareTo(b.AddHours(3)) == -1)
-                return false;
-            return true;
+                return 1;
+            return 0;
         }
 
         public static bool SDT(string s, int max)
@@ -65,7 +64,7 @@ namespace QLNH
             DataTable dsd = Data.Load("DatBan", "MaBan, ThoiGian");
 
             foreach (DataRow ds in dsd.Rows)
-                if (ds.ItemArray[0].ToString() == maban && !GioHopLe(DateTime.Parse(ds.ItemArray[1].ToString()), time))
+                if (ds.ItemArray[0].ToString() == maban && GioHopLe(DateTime.Parse(ds.ItemArray[1].ToString()), time) != 2)
                     return false;
             return true;
         }

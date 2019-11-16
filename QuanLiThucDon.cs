@@ -24,34 +24,19 @@ namespace QLNH
                 MessageBox.Show("Vui lòng nhập chính xác tên món ăn");
                 return false;
             }
-            if (!Check.Num(txtDonGia.Text))
-            {
-                MessageBox.Show("Vui lòng nhập chính xác đơn giá");
-                return false;
-            }
             return true;
         }
 
         private void ADD_VALUE()
         {
-
             if (Check_Input())
             {
                 String maMA = txtMaMa.Text;
-                foreach (DataGridViewRow dr in dataGridView1.Rows)
-                {
-                    if (dr.Cells[0].Value.ToString() == maMA)
-                    {
-                        MessageBox.Show("Mã món ăn đã tồn tại, nhấn sửa để cập nhật thông tin!");
-                        return;
-                    }
-                }
-
                 String tenMA = txtTenMa.Text;
-                String donGia = txtDonGia.Text;
+                decimal donGia = numDonGia.Value * 1000;
 
-                Data.Add("ThucDon", "MaMA, TenMA, DonGia", "'" + maMA + "','" + tenMA + "','" + donGia + "'");
-
+                string s = string.Format(" {0}, '{1}', {2}", maMA, tenMA, donGia);
+                Data.Add("ThucDon", "MaMA, TenMA, DonGia", s);
                 Set_Ma();
             }
 
@@ -61,6 +46,8 @@ namespace QLNH
         {
             dataGridView1.DataSource = Data.Load("ThucDon", "MaMA, TenMA, DonGia");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+            txtTenMa.Text = "";
+            numDonGia.Value = 1;
 
             int count = 1;
             
@@ -76,7 +63,6 @@ namespace QLNH
             }
 
             txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
-            txtTenMa.Text = txtDonGia.Text = "";
         }
 
         private void BtLuu_Click(object sender, EventArgs e)
@@ -99,10 +85,11 @@ namespace QLNH
 
                 String tenMA = txtTenMa.Text;
                 String maMA = txtMaMa.Text;
-                String donGia = txtDonGia.Text;
-                
-                Data.Update("ThucDon", "TenMA = '" + tenMA + "', DonGia = '" + donGia + "'", "MaMA = " + maMA);
+                decimal donGia = numDonGia.Value;
+
+                Data.Update("ThucDon", "TenMA ='" + tenMA + "', DonGia =" + donGia*1000, "MaMA =" + maMA);
                 Set_Ma();
+                btLuu.Enabled = true;
             }
         }
 
@@ -113,28 +100,24 @@ namespace QLNH
 
         private void BtXoa_Click(object sender, EventArgs e)
         {
-            try
+            
+            if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+            else
             {
-                if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                    return;
-                else
-                {
-                    Data.Delete("ThucDon", "MaMA = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    Set_Ma();
-                }
+                Data.Delete("ThucDon", "MaMA =" + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                Set_Ma();
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Không có dữ liệu", "Thông báo");
-            }
+           
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btLuu.Enabled = false;
             DataGridViewRow dr = dataGridView1.CurrentRow;
             txtMaMa.Text = dr.Cells[0].Value.ToString();
             txtTenMa.Text = dr.Cells[1].Value.ToString();
-            txtDonGia.Text = dr.Cells[2].Value.ToString();
+            numDonGia.Value = decimal.Parse(dr.Cells[2].Value.ToString())/1000;
         }
     }
     

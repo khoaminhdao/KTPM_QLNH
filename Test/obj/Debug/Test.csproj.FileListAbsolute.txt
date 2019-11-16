@@ -1,0 +1,17 @@
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\KhachHang.csv
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Test.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Test.pdb
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\QLNH.exe
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\QLNH.pdb
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\QLNH.exe.config
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.dll
+C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.pdb

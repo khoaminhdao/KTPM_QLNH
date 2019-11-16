@@ -21,6 +21,7 @@ namespace QLNH
 
         private void SetTime()
         {
+            timePk.Value = DateTime.Now;
             int gio = DateTime.Now.Hour;
             int phut = DateTime.Now.Minute;
 
@@ -73,11 +74,16 @@ namespace QLNH
             int gio = int.Parse(cbTime.Text.Substring(0, 2));
             int phut = int.Parse(cbTime.Text.Substring(3));
 
-            KhachHang kh = new KhachHang(txtTen.Text, txtSDT.Text, txtSN.Text, timePk.Value.AddHours(gio).AddMinutes(phut));
+            KhachHang kh = new KhachHang(txtTen.Text, txtSDT.Text, numSoNg.Value.ToString(), timePk.Value.AddHours(gio).AddMinutes(phut));
             if (kh.CheckInput(maxSDT)) 
             {
                 kh.Add();
             }
+
+            txtTen.Text = txtSDT.Text = "";
+            numSoNg.Value = 1;
+            rdDD.PerformClick();
+            SetTime();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -36,18 +36,22 @@
             this.btXoa = new System.Windows.Forms.Button();
             this.btLuu = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtDonGia = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtTenMa = new System.Windows.Forms.TextBox();
             this.txtMaMa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.numDonGia = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.grbttnv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDonGia)).BeginInit();
             this.SuspendLayout();
             // 
             // grbttnv
             // 
+            this.grbttnv.Controls.Add(this.label3);
+            this.grbttnv.Controls.Add(this.numDonGia);
             this.grbttnv.Controls.Add(this.dataGridView1);
             this.grbttnv.Controls.Add(this.btThoat);
             this.grbttnv.Controls.Add(this.btSua);
@@ -55,18 +59,17 @@
             this.grbttnv.Controls.Add(this.btXoa);
             this.grbttnv.Controls.Add(this.btLuu);
             this.grbttnv.Controls.Add(this.label4);
-            this.grbttnv.Controls.Add(this.txtDonGia);
             this.grbttnv.Controls.Add(this.label10);
             this.grbttnv.Controls.Add(this.txtTenMa);
             this.grbttnv.Controls.Add(this.txtMaMa);
             this.grbttnv.Controls.Add(this.label2);
             this.grbttnv.Controls.Add(this.label1);
             this.grbttnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbttnv.Location = new System.Drawing.Point(3, 1);
-            this.grbttnv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grbttnv.Location = new System.Drawing.Point(2, 1);
+            this.grbttnv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grbttnv.Name = "grbttnv";
-            this.grbttnv.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grbttnv.Size = new System.Drawing.Size(859, 494);
+            this.grbttnv.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbttnv.Size = new System.Drawing.Size(644, 401);
             this.grbttnv.TabIndex = 2;
             this.grbttnv.TabStop = false;
             this.grbttnv.Text = "Thông tin món ăn";
@@ -80,33 +83,33 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 234);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 190);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(852, 256);
+            this.dataGridView1.Size = new System.Drawing.Size(639, 208);
             this.dataGridView1.TabIndex = 89;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
             // btThoat
             // 
-            this.btThoat.Location = new System.Drawing.Point(755, 246);
-            this.btThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btThoat.Location = new System.Drawing.Point(566, 200);
+            this.btThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btThoat.Name = "btThoat";
-            this.btThoat.Size = new System.Drawing.Size(79, 47);
+            this.btThoat.Size = new System.Drawing.Size(59, 38);
             this.btThoat.TabIndex = 88;
             this.btThoat.Text = "Thoát";
             this.btThoat.UseVisualStyleBackColor = true;
             // 
             // btSua
             // 
-            this.btSua.Location = new System.Drawing.Point(539, 182);
-            this.btSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btSua.Location = new System.Drawing.Point(404, 148);
+            this.btSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btSua.Name = "btSua";
-            this.btSua.Size = new System.Drawing.Size(75, 47);
+            this.btSua.Size = new System.Drawing.Size(56, 38);
             this.btSua.TabIndex = 5;
             this.btSua.Text = "Sửa";
             this.btSua.UseVisualStyleBackColor = true;
@@ -114,10 +117,10 @@
             // 
             // buThoat
             // 
-            this.buThoat.Location = new System.Drawing.Point(692, 182);
-            this.buThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buThoat.Location = new System.Drawing.Point(519, 148);
+            this.buThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buThoat.Name = "buThoat";
-            this.buThoat.Size = new System.Drawing.Size(91, 47);
+            this.buThoat.Size = new System.Drawing.Size(68, 38);
             this.buThoat.TabIndex = 6;
             this.buThoat.Text = "Thoát";
             this.buThoat.UseVisualStyleBackColor = true;
@@ -125,10 +128,10 @@
             // 
             // btXoa
             // 
-            this.btXoa.Location = new System.Drawing.Point(367, 185);
-            this.btXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btXoa.Location = new System.Drawing.Point(275, 150);
+            this.btXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btXoa.Name = "btXoa";
-            this.btXoa.Size = new System.Drawing.Size(75, 47);
+            this.btXoa.Size = new System.Drawing.Size(56, 38);
             this.btXoa.TabIndex = 4;
             this.btXoa.Text = "Xóa";
             this.btXoa.UseVisualStyleBackColor = true;
@@ -136,10 +139,10 @@
             // 
             // btLuu
             // 
-            this.btLuu.Location = new System.Drawing.Point(201, 185);
-            this.btLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btLuu.Location = new System.Drawing.Point(151, 150);
+            this.btLuu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btLuu.Name = "btLuu";
-            this.btLuu.Size = new System.Drawing.Size(87, 47);
+            this.btLuu.Size = new System.Drawing.Size(65, 38);
             this.btLuu.TabIndex = 3;
             this.btLuu.Text = "Thêm";
             this.btLuu.UseVisualStyleBackColor = true;
@@ -148,77 +151,93 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 206);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(11, 167);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 25);
+            this.label4.Size = new System.Drawing.Size(88, 20);
             this.label4.TabIndex = 86;
             this.label4.Text = "Chức Năng";
-            // 
-            // txtDonGia
-            // 
-            this.txtDonGia.Location = new System.Drawing.Point(201, 140);
-            this.txtDonGia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtDonGia.MaxLength = 7;
-            this.txtDonGia.Name = "txtDonGia";
-            this.txtDonGia.Size = new System.Drawing.Size(196, 30);
-            this.txtDonGia.TabIndex = 2;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 140);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(9, 114);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 25);
+            this.label10.Size = new System.Drawing.Size(68, 20);
             this.label10.TabIndex = 84;
             this.label10.Text = "Đơn Giá";
             // 
             // txtTenMa
             // 
-            this.txtTenMa.Location = new System.Drawing.Point(201, 89);
-            this.txtTenMa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTenMa.Location = new System.Drawing.Point(151, 72);
+            this.txtTenMa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTenMa.MaxLength = 20;
             this.txtTenMa.Name = "txtTenMa";
-            this.txtTenMa.Size = new System.Drawing.Size(196, 30);
+            this.txtTenMa.Size = new System.Drawing.Size(148, 26);
             this.txtTenMa.TabIndex = 1;
             // 
             // txtMaMa
             // 
-            this.txtMaMa.Location = new System.Drawing.Point(201, 41);
-            this.txtMaMa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaMa.Location = new System.Drawing.Point(151, 33);
             this.txtMaMa.Name = "txtMaMa";
             this.txtMaMa.ReadOnly = true;
-            this.txtMaMa.Size = new System.Drawing.Size(196, 30);
+            this.txtMaMa.Size = new System.Drawing.Size(148, 26);
             this.txtMaMa.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 92);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 25);
+            this.label2.Size = new System.Drawing.Size(95, 20);
             this.label2.TabIndex = 74;
             this.label2.Text = "Tên Món Ăn";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 25);
+            this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 73;
             this.label1.Text = "Mã Món Ăn";
             // 
+            // numDonGia
+            // 
+            this.numDonGia.Location = new System.Drawing.Point(151, 112);
+            this.numDonGia.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numDonGia.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numDonGia.Name = "numDonGia";
+            this.numDonGia.Size = new System.Drawing.Size(61, 26);
+            this.numDonGia.TabIndex = 90;
+            this.numDonGia.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(235, 115);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 20);
+            this.label3.TabIndex = 91;
+            this.label3.Text = "* 1000 vnđ";
+            // 
             // QuanLiThucDon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 495);
+            this.ClientSize = new System.Drawing.Size(646, 402);
             this.Controls.Add(this.grbttnv);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "QuanLiThucDon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLiThucDon";
@@ -226,6 +245,7 @@
             this.grbttnv.ResumeLayout(false);
             this.grbttnv.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDonGia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,7 +258,6 @@
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDonGia;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtTenMa;
         private System.Windows.Forms.TextBox txtMaMa;
@@ -246,5 +265,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buThoat;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numDonGia;
     }
 }

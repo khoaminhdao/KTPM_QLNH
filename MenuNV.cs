@@ -19,14 +19,16 @@ namespace QLNH
 
         private void MenuNV_Load(object sender, EventArgs e)
         {
-            if (NhanVien.GetCV() != "Quản lí")
+            if (NhanVien.GetCV() == "Phục vụ")
             {
-                GoiMon gm = new GoiMon();
-                this.Close();
-                gm.ShowDialog();
+                btQLB.Enabled = btQLTD.Enabled = btQLHD.Enabled = btQLNV.Enabled = false;
             }
-            else
-                chàoToolStripMenuItem.Text += NhanVien.GetTen();
+            else if(NhanVien.GetCV() == "Quản lí bếp")
+            {
+                btQLHD.Enabled = false;
+                btQLNV.Enabled = false;
+            }
+            chàoToolStripMenuItem.Text += NhanVien.GetTen();
         }
 
         private void ĐăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)

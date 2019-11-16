@@ -37,7 +37,6 @@
             this.btDatBan = new System.Windows.Forms.Button();
             this.timePk = new System.Windows.Forms.DateTimePicker();
             this.txtSDT = new System.Windows.Forms.TextBox();
-            this.txtSN = new System.Windows.Forms.TextBox();
             this.lbSDT = new System.Windows.Forms.Label();
             this.lbTG = new System.Windows.Forms.Label();
             this.lbSN = new System.Windows.Forms.Label();
@@ -50,10 +49,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbTime = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.numSoNg = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoNg)).BeginInit();
             this.SuspendLayout();
             // 
             // btDN
@@ -155,15 +156,6 @@
             this.txtSDT.Size = new System.Drawing.Size(171, 27);
             this.txtSDT.TabIndex = 2;
             // 
-            // txtSN
-            // 
-            this.txtSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSN.Location = new System.Drawing.Point(115, 228);
-            this.txtSN.MaxLength = 2;
-            this.txtSN.Name = "txtSN";
-            this.txtSN.Size = new System.Drawing.Size(171, 27);
-            this.txtSN.TabIndex = 6;
-            // 
             // lbSDT
             // 
             this.lbSDT.AutoSize = true;
@@ -261,6 +253,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.numSoNg);
             this.tabPage1.Controls.Add(this.cbTime);
             this.tabPage1.Controls.Add(this.lbTen);
             this.tabPage1.Controls.Add(this.groupBox1);
@@ -271,7 +264,6 @@
             this.tabPage1.Controls.Add(this.lbTG);
             this.tabPage1.Controls.Add(this.txtSDT);
             this.tabPage1.Controls.Add(this.lbSDT);
-            this.tabPage1.Controls.Add(this.txtSN);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -331,6 +323,28 @@
             this.tabPage2.Text = "Nhân Viên";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // numSoNg
+            // 
+            this.numSoNg.Location = new System.Drawing.Point(120, 223);
+            this.numSoNg.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSoNg.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSoNg.Name = "numSoNg";
+            this.numSoNg.Size = new System.Drawing.Size(46, 27);
+            this.numSoNg.TabIndex = 8;
+            this.numSoNg.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,6 +368,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoNg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,7 +385,6 @@
         private System.Windows.Forms.Button btDatBan;
         private System.Windows.Forms.DateTimePicker timePk;
         private System.Windows.Forms.TextBox txtSDT;
-        private System.Windows.Forms.TextBox txtSN;
         private System.Windows.Forms.Label lbSDT;
         private System.Windows.Forms.Label lbTG;
         private System.Windows.Forms.Label lbSN;
@@ -383,6 +397,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ComboBox cbTime;
+        private System.Windows.Forms.NumericUpDown numSoNg;
     }
 }
 
