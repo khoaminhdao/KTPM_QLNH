@@ -26,16 +26,20 @@ namespace QLNH
             List<String> ds = new List<String>();
             Ban.DSTrong(ds);
 
-            foreach (string i in ds)
-            {
-               cbMB.Items.Add(i);
-            }
-            if (cbMB.Items.Count == 0)
+            if (ds.Count == 0)
             {
                 cbMB.Items.Add("Không");
                 btTao.Enabled = false;
             }
-            cbMB.SelectedIndex = 0;
+            else
+            {
+                foreach (string i in ds)
+                {
+                    cbMB.Items.Add(i);
+                }
+
+                cbMB.SelectedIndex = 0;
+            }
         }
 
         public void CreatePage(string maBan)
@@ -46,7 +50,7 @@ namespace QLNH
             {
                 Size = tabControl1.TabPages[maBan].Size,
                 ReadOnly = true,
-                DataSource = hd[hd.Count - 1].ChiTiet(),
+                DataSource = hd.Find(x => x.GetMaBan().Equals(maBan)).ChiTiet(),
                 AllowUserToAddRows = false,
                 AllowUserToResizeRows = false,
                 AllowUserToDeleteRows = false,
@@ -54,17 +58,22 @@ namespace QLNH
                 RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders,
             };
 
-            dt.CellClick += Dt_CellClick;
-
+           // dt.CellClick += Dt_CellClick;
+            dt.CurrentCellChanged += CurrentCellChanged;
             tabControl1.TabPages[maBan].Controls.Add(dt);
             txtMaHD.Text = HoaDon.Set_Ma();
             DSB();
             btThem.Enabled = true;
         }
 
-        private void Dt_CellClick(object sender, EventArgs e)
+        private void CurrentCellChanged(object sender, EventArgs e)
         {
-            btXoa.Enabled = true;
+            DataGridView dt = (DataGridView)tabControl1.SelectedTab.Controls[0];
+            if (dt.CurrentRow != null)
+            {
+                dt.CurrentRow.Selected = true;
+                btXoa.Enabled = true;
+            }
         }
 
         private void GoiMon_Load(object sender, EventArgs e)
@@ -72,17 +81,17 @@ namespace QLNH
             txtMaHD.Text = HoaDon.Set_Ma();
             DSB();
 
-            DataTable ThucDon = Data.Load("ThucDon", "MaMA, TenMA, DonGia");
+            DataTable ThucDon = Data.Load("ThucDon", "*");
             foreach (DataRow dr in ThucDon.Rows)
-                cbMA.Items.Add(dr.ItemArray[0] + "." + dr.ItemArray[1]);
+                cbMA.Items.Add(dr["MaMA"] + "." + dr["TenMA"]);
             cbMA.SelectedIndex = 0;
 
             DataTable dt = Data.Load("HoaDon", "MaHD, MaBan, TongTien", "(([HoaDon].[ThoiGianLap])=([HoaDon].[ThoiGianThanhToan]))");
 
             foreach (DataRow dr in dt.Rows)
             {
-                hd.Add(new HoaDon(dr.ItemArray[0].ToString(), dr.ItemArray[1].ToString(), double.Parse(dr.ItemArray[2].ToString())));
-                CreatePage(dr.ItemArray[1].ToString());
+                hd.Add(new HoaDon(dr["MaHD"].ToString(), dr["MaBan"].ToString(), double.Parse(dr["TongTien"].ToString())));
+                CreatePage(dr[1].ToString());
             }
 
             if (tabControl1.TabPages.Count == 0)
@@ -97,10 +106,10 @@ namespace QLNH
 
             foreach (DataRow dr in datban.Rows)
             {
-                string thoigian = dr.ItemArray[1].ToString();
+                string thoigian = dr["ThoiGian"].ToString();
                 if (Check.GioHopLe(DateTime.Parse(thoigian), DateTime.Now) == 1)
                 {
-                    if (MessageBox.Show("Bàn được đặt vào lúc: " + thoigian + " của khách hàng " + dr.ItemArray[0].ToString() + " bạn có muốn tạo hóa đơn?", "Cảnh báo", MessageBoxButtons.YesNo) == DialogResult.No)
+                    if (MessageBox.Show("Bàn được đặt vào lúc: " + thoigian + " của khách hàng " + dr["Ten"].ToString() + " bạn có muốn tạo hóa đơn?", "Cảnh báo", MessageBoxButtons.YesNo) == DialogResult.No)
                         return;
                     else
                         break;
@@ -113,27 +122,27 @@ namespace QLNH
             string maHD = txtMaHD.Text.ToString();
 
             hd.Add(new HoaDon(maHD, maBan, 0));
-            Data.Add("HoaDon", "MaHD, MaBan, MaNV, ThoiGianLap, ThoiGianThanhToan", "'" + maHD + "','" + maBan + "','" + NhanVien.GetMaNV() + "','" + DateTime.Now + "','" + DateTime.Now + "'");
+            string s = string.Format("{0}, {1}, {2}, '{3}', '{4}'", maHD, maBan, NhanVien.GetMaNV(), DateTime.Now, DateTime.Now);
+            Data.Add("HoaDon", "MaHD, MaBan, MaNV, ThoiGianLap, ThoiGianThanhToan", s);
             Data.Update("Ban", "TinhTrang = 'Đang Sử Dụng'", "MaBan =" + maBan);
             CreatePage(maBan);
         }
 
         private void BtThem_Click(object sender, EventArgs e)
         {
-           
-                int stt = tabControl1.SelectedIndex;
+            int stt = tabControl1.SelectedIndex;
                 
-                string maMA = cbMA.Text.Substring(0, cbMA.Text.IndexOf("."));
+            string maMA = cbMA.Text.Substring(0, cbMA.Text.IndexOf("."));
                 
-                hd[stt].ThemMA(maMA, (int)numSL.Value);
+            hd[stt].ThemMA(maMA, (int)numSL.Value);
 
-                DataGridView dt = (DataGridView)(tabControl1.TabPages[stt].Controls[0]);
-                dt.DataSource = hd[stt].ChiTiet();
+            DataGridView dt = (DataGridView)(tabControl1.TabPages[stt].Controls[0]);
+            dt.DataSource = hd[stt].ChiTiet();
                 
-                txtTT.Text  = hd[stt].GetTT().ToString();
+            txtTT.Text  = hd[stt].GetTT().ToString();
 
-                numSL.Value = 1;
-                btTT.Enabled = true;
+            numSL.Value = 1;
+            btTT.Enabled = true;
            
         }
 
@@ -153,7 +162,7 @@ namespace QLNH
         private void BtTT_Click(object sender, EventArgs e)
         {
             
-            if (MessageBox.Show("Bạn muốn thanh toán hóa đơn " + tabControl1.SelectedTab.Name + "?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn muốn thanh toán hóa đơn ở bàn " + tabControl1.SelectedTab.Name + "?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int stt = tabControl1.SelectedIndex;
                 hd[stt].ThanhToan();

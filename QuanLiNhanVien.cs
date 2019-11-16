@@ -47,27 +47,19 @@ namespace QLNH
             return text;
         }
 
-        private void ADD_VALUE()
+        private void Add()
         {
-            
             if (Check_Input())
             {
-                string maNV = txtMaNv.Text;
                 int vt = txtTenNv.Text.LastIndexOf(" ");
-               
                 string ho = txtTenNv.Text.Substring(0, vt);
                 string ten = txtTenNv.Text.Substring(vt + 1);
-                string nS = datetime.Value.ToShortDateString();
-                string gT = cbGioiTinh.Text;
-                string tD = cbTrinhDo.Text;
-                string qT = txtQuocTich.Text;
-                string cV = cbChucVu.Text;
+                
+                string s = string.Format("{0}, '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}'", txtMaNv.Text, ho, ten, datetime.Value.ToShortDateString(), cbChucVu.Text, cbTrinhDo.Text, cbGioiTinh.Text, txtQuocTich.Text, DateTime.Now.ToShortDateString());
+                string s1 = string.Format("{0}, '{1}', '123'", txtMaNv.Text, RemoveUnicode(ten.ToLower()));
 
-
-                Data.Add("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam", "'" + maNV + "','" + ho + "','" + ten + "','" + nS + "','" + cV + "','" + tD + "','" + gT + "','" + qT + "','" + DateTime.Now.ToShortDateString() + "'");
-
-                if (cV == "Quản lí" || cV == "Phục vụ")
-                    Data.Add("TaiKhoan", "MaNV, TaiKhoan, MatKhau","'" + maNV + "','" + RemoveUnicode(ten.ToLower()) + maNV + "','" + "123'");
+                Data.Add("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam", s);
+                Data.Add("TaiKhoan", "MaNV, TaiKhoan, MatKhau", s1);
 
                 Set_Ma();
             }
@@ -76,8 +68,8 @@ namespace QLNH
 
         public void Set_Ma ()
         {
-            dataGridView1.DataSource = Data.Load("NhanVien", "MaNV, Ho, Ten, NgaySinh, ChucVu, TrinhDo, GioiTinh, QuocTich, NgayVaoLam");
-            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+            dataGridView1.DataSource = Data.Load("NhanVien", "*");
+            dataGridView1.Sort(dataGridView1.Columns["MaNV"], ListSortDirection.Ascending);
 
             int count = 1;
 
@@ -96,9 +88,9 @@ namespace QLNH
             txtTenNv.Text = txtQuocTich.Text = "";
         }
 
-        private void BtLuu_Click(object sender, EventArgs e)
+        private void BtThem_Click(object sender, EventArgs e)
         {
-            ADD_VALUE();
+            Add();
         }
 
         private void QuanLiNhanVien_Load(object sender, EventArgs e)
@@ -132,17 +124,12 @@ namespace QLNH
             if (Check_Input())
             {
                 int vt = txtTenNv.Text.LastIndexOf(" ");
-                String maNV = txtMaNv.Text;
-                String ho = txtTenNv.Text.Substring(0, vt);
-                String ten = txtTenNv.Text.Substring(vt + 1);
-                String nS = datetime.Value.ToShortDateString();
-                String gT = cbGioiTinh.Text;
-                String tD = cbTrinhDo.Text;
-                String qT = txtQuocTich.Text;
-                String cV = cbChucVu.Text;
+                string ho = txtTenNv.Text.Substring(0, vt);
+                string ten = txtTenNv.Text.Substring(vt + 1);
 
+                string s = string.Format("Ho = '{0}', Ten = '{1}', NgaySinh = '{2}', ChucVu = '{3}', TrinhDo = '{4}', GioiTinh = '{5}', QuocTich = '{6}'", ho, ten, datetime.Value, cbChucVu.Text, cbTrinhDo.Text, cbGioiTinh.Text, txtQuocTich.Text);
 
-                Data.Update("NhanVien", "Ho = '" + ho + "', Ten = '" + ten + "', NgaySinh = '" + nS + "', ChucVu = '" + cV + "', TrinhDo = '" + tD + "', GioiTinh = '" + gT + "', QuocTich = '" + qT + "'", "MaNV =" + maNV);
+                Data.Update("NhanVien", s, "MaNV = " + txtMaNv.Text);
                 Set_Ma();
 
                 btThem.Enabled = true;

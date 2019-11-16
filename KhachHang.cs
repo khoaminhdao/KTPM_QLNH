@@ -46,11 +46,11 @@ namespace QLNH
 
         public string CheckMaBan()
         {
-            DataTable dsb = Data.Load("Ban", "MaBan, SucChua, TinhTrang");
+            DataTable dsb = Data.Load("Ban", "*");
 
             foreach (DataRow dr in dsb.Rows)
             {
-                string maban = dr.ItemArray[0].ToString();
+                string maban = dr["MaBan"].ToString();
                 if (Check.Ban(maban, time))
                 {
                     return maban;
@@ -65,7 +65,8 @@ namespace QLNH
 
             if (maBan != "")
             {
-                Data.Add("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi", "'" + this.maBan + "','" + this.ten + "','" + this.soDT + "','" + this.time + "','" + this.soNg + "'");
+                string s = string.Format("{0}, '{1}', '{2}', '{3}', {4}", this.maBan, this.ten, this.soDT, this.time, this.soNg);
+                Data.Add("DatBan", "MaBan, Ten, SDT, ThoiGian, SoNguoi", s);
                 MessageBox.Show("Đặt bàn thành công!");
             }
             else

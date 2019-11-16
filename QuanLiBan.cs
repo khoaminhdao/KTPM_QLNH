@@ -17,14 +17,9 @@ namespace QLNH
             InitializeComponent();
         }
 
-        private void ADD_VALUE()
-        {
-            Data.Add("Ban", "MaBan, SucChua, TinhTrang", "'" + txtMaBan.Text + "','" + numSucChua.Value + "','Trống'");
-        }
-
         public void Set_Ma()
         {
-            dataGridView1.DataSource = Data.Load("Ban", "MaBan, SucChua, TinhTrang");
+            dataGridView1.DataSource = Data.Load("Ban", "*");
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
 
             int count = 1;
@@ -44,9 +39,10 @@ namespace QLNH
             numSucChua.Value = 2;
         }
 
-        private void BtLuu_Click(object sender, EventArgs e)
+        private void BtThem_Click(object sender, EventArgs e)
         {
-            ADD_VALUE();
+            string s = string.Format("{0}, {1}, 'Trống'", txtMaBan.Text, numSucChua.Value);
+            Data.Add("Ban", "*", s);
         }
 
         private void QuanLiBan_Load(object sender, EventArgs e)
@@ -73,25 +69,19 @@ namespace QLNH
 
         private void BtXoa_Click(object sender, EventArgs e)
         {
-            try
+            if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+            else
             {
-                if (MessageBox.Show("Bạn chắc chắn muốn xóa.", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                    return;
-                else
-                {
-                    Data.Delete("Ban", "MaBan = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
-                    Set_Ma();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Không có dữ liệu", "Thông báo");
+                Data.Delete("Ban", "MaBan = " + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                Set_Ma();
             }
         }
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
+            dr.Selected = true;
             txtMaBan.Text = dr.Cells[0].Value.ToString();
             numSucChua.Value = decimal.Parse(dr.Cells[1].Value.ToString());
             

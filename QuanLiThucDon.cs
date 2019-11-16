@@ -27,7 +27,7 @@ namespace QLNH
             return true;
         }
 
-        private void ADD_VALUE()
+        private void Add()
         {
             if (Check_Input())
             {
@@ -45,7 +45,7 @@ namespace QLNH
         public void Set_Ma()
         {
             dataGridView1.DataSource = Data.Load("ThucDon", "MaMA, TenMA, DonGia");
-            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+            dataGridView1.Sort(dataGridView1.Columns["MaMA"], ListSortDirection.Ascending);
             txtTenMa.Text = "";
             numDonGia.Value = 1;
 
@@ -67,7 +67,7 @@ namespace QLNH
 
         private void BtLuu_Click(object sender, EventArgs e)
         {
-            ADD_VALUE();
+            Add();
         }
 
         private void QuanLiThucDon_Load(object sender, EventArgs e)
@@ -115,6 +115,7 @@ namespace QLNH
         {
             btLuu.Enabled = false;
             DataGridViewRow dr = dataGridView1.CurrentRow;
+            dr.Selected = true;
             txtMaMa.Text = dr.Cells[0].Value.ToString();
             txtTenMa.Text = dr.Cells[1].Value.ToString();
             numDonGia.Value = decimal.Parse(dr.Cells[2].Value.ToString())/1000;

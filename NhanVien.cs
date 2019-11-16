@@ -17,8 +17,8 @@ namespace QLNH
         {
             maNV = MSNV;
             DataTable dsnv = Data.Load("NhanVien", "Ten, ChucVu", "MaNV =" + maNV);
-            ten = dsnv.Rows[0].ItemArray[0].ToString();
-            chucVu = dsnv.Rows[0].ItemArray[1].ToString();
+            ten = dsnv.Rows[0]["Ten"].ToString();
+            chucVu = dsnv.Rows[0]["ChucVu"].ToString();
         }
 
         public static string GetMaNV()

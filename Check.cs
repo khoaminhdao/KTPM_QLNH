@@ -64,7 +64,7 @@ namespace QLNH
             DataTable dsd = Data.Load("DatBan", "MaBan, ThoiGian");
 
             foreach (DataRow ds in dsd.Rows)
-                if (ds.ItemArray[0].ToString() == maban && GioHopLe(DateTime.Parse(ds.ItemArray[1].ToString()), time) != 2)
+                if (ds[0].ToString() == maban && GioHopLe(DateTime.Parse(ds[1].ToString()), time) != 0)
                     return false;
             return true;
         }
@@ -85,11 +85,11 @@ namespace QLNH
             DataTable dsnv = Data.Load("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
             foreach (DataRow dr in dsnv.Rows)
             {
-                if (id == dr.ItemArray[1].ToString())
+                if (id == dr[1].ToString())
                 {
-                    if (pass == dr.ItemArray[2].ToString())
+                    if (pass == dr[2].ToString())
                     {
-                        new NhanVien(dr.ItemArray[0].ToString());
+                        new NhanVien(dr[0].ToString());
                         return true;
                     }
                     else

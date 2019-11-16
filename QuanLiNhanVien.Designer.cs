@@ -77,9 +77,9 @@
             this.grbttnv.Controls.Add(this.label1);
             this.grbttnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbttnv.Location = new System.Drawing.Point(2, 2);
-            this.grbttnv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbttnv.Margin = new System.Windows.Forms.Padding(2);
             this.grbttnv.Name = "grbttnv";
-            this.grbttnv.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbttnv.Padding = new System.Windows.Forms.Padding(2);
             this.grbttnv.Size = new System.Drawing.Size(694, 446);
             this.grbttnv.TabIndex = 1;
             this.grbttnv.TabStop = false;
@@ -97,7 +97,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(2, 238);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -111,7 +111,7 @@
             // btThoat
             // 
             this.btThoat.Location = new System.Drawing.Point(566, 200);
-            this.btThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btThoat.Name = "btThoat";
             this.btThoat.Size = new System.Drawing.Size(59, 38);
             this.btThoat.TabIndex = 10;
@@ -122,7 +122,7 @@
             // btSua
             // 
             this.btSua.Location = new System.Drawing.Point(449, 200);
-            this.btSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btSua.Margin = new System.Windows.Forms.Padding(2);
             this.btSua.Name = "btSua";
             this.btSua.Size = new System.Drawing.Size(56, 38);
             this.btSua.TabIndex = 9;
@@ -133,7 +133,7 @@
             // btXoa
             // 
             this.btXoa.Location = new System.Drawing.Point(323, 200);
-            this.btXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(56, 38);
             this.btXoa.TabIndex = 8;
@@ -144,13 +144,13 @@
             // btThem
             // 
             this.btThem.Location = new System.Drawing.Point(203, 200);
-            this.btThem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btThem.Margin = new System.Windows.Forms.Padding(2);
             this.btThem.Name = "btThem";
             this.btThem.Size = new System.Drawing.Size(58, 38);
             this.btThem.TabIndex = 7;
             this.btThem.Text = "Thêm";
             this.btThem.UseVisualStyleBackColor = true;
-            this.btThem.Click += new System.EventHandler(this.BtLuu_Click);
+            this.btThem.Click += new System.EventHandler(this.BtThem_Click);
             // 
             // cbGioiTinh
             // 
@@ -216,10 +216,9 @@
             this.cbChucVu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbChucVu.FormattingEnabled = true;
             this.cbChucVu.Items.AddRange(new object[] {
+            "Cửa hàng trưởng",
             "Quản lí",
-            "Phục vụ",
-            "Đầu bếp",
-            "Bảo vệ"});
+            "Phục vụ"});
             this.cbChucVu.Location = new System.Drawing.Point(514, 113);
             this.cbChucVu.Name = "cbChucVu";
             this.cbChucVu.Size = new System.Drawing.Size(166, 28);
@@ -246,7 +245,7 @@
             // txtTenNv
             // 
             this.txtTenNv.Location = new System.Drawing.Point(151, 72);
-            this.txtTenNv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenNv.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenNv.MaxLength = 30;
             this.txtTenNv.Name = "txtTenNv";
             this.txtTenNv.Size = new System.Drawing.Size(177, 26);
@@ -303,7 +302,7 @@
             this.ClientSize = new System.Drawing.Size(695, 451);
             this.Controls.Add(this.grbttnv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "QuanLiNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLiNhanVien";

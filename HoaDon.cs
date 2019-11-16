@@ -12,7 +12,7 @@ namespace QLNH
         private string ma;
         private string ten;
         private int soLuong;
-        private double donGia;
+        private int donGia;
 
         public MonAn(string ma, int soLuong)
         {
@@ -22,10 +22,11 @@ namespace QLNH
             DataTable ThucDon = Data.Load("ThucDon", "TenMA, DonGia", "MaMA =" + ma);
             foreach (DataRow dr in ThucDon.Rows)
             {
-                this.ten = dr.ItemArray[0].ToString();
-                this.donGia = int.Parse(dr.ItemArray[1].ToString());
+                this.ten = dr["TenMA"].ToString();
+                this.donGia = int.Parse(dr["DonGia"].ToString());
             }
         }
+
         public string GetMa()
         {
             return this.ma;
@@ -41,12 +42,12 @@ namespace QLNH
             return this.soLuong;
         }
 
-        public double GetDonGia()
+        public int GetDonGia()
         {
             return this.donGia;
         }
 
-        public double GetThanhTien()
+        public int GetThanhTien()
         {
             return soLuong * donGia;
         }
@@ -55,6 +56,7 @@ namespace QLNH
         {
             this.soLuong += soLuong;
         }
+
     }
 
     public class HoaDon
@@ -69,6 +71,17 @@ namespace QLNH
             this.maHD = maHD;
             this.maBan = maBan;
             this.tongTien = tongtien;
+
+            DataTable dt = Data.Load("CTHD", "MaHD, MaMA, SoLuong", "MaHD =" + this.maHD);
+            foreach (DataRow dr in dt.Rows)
+            {
+                this.cthd.Add(new MonAn(dr["MaMA"].ToString(), int.Parse(dr["SoLuong"].ToString())));
+            }
+        }
+
+        public string GetMaBan()
+        {
+            return this.maBan;
         }
 
         public static string Set_Ma()
@@ -91,20 +104,19 @@ namespace QLNH
         }
 
         public DataTable ChiTiet()
-        {
-            DataTable dt = Data.Load("CTHD", "MaMA, TenMA, SoLuong, DonGia, ThanhTien", "MaHD = " + this.maHD);
-            
+        {  
             DataTable temp = new DataTable();
-            temp.Columns.Add("MaMA", typeof(Int32));
+            temp.Columns.Add("MaMA", typeof(string));
             temp.Columns.Add("TenMA", typeof(string));
-            temp.Columns.Add("SoLuong", typeof(Int32));
+            temp.Columns.Add("SoLuong", typeof(int));
             temp.Columns.Add("DonGia", typeof(double));
             temp.Columns.Add("ThanhTien", typeof(double));
+
+            DataTable dt = Data.Load("CTHD", "MaMA, TenMA, SoLuong, DonGia, ThanhTien", "MaHD =" + this.maHD);
 
             foreach (DataRow dr in dt.Rows)
             {
                 temp.ImportRow(dr);
-                cthd.Add(new MonAn(dr.ItemArray[0].ToString(), int.Parse(dr.ItemArray[2].ToString())));
             }
 
             temp.Columns[0].ColumnName = "Mã Món Ăn";
@@ -118,24 +130,24 @@ namespace QLNH
 
         public void ThemMA(string maMA, int soLuong)
         {
-            foreach (MonAn i in cthd)
+            MonAn i = cthd.Find(x => x.GetMa().Equals(maMA));
+            if (i != null)
             {
-                if (i.GetMa() == maMA)
-                {
-                    i.TangSL(soLuong);
-                    tongTien += (i.GetDonGia() * soLuong);
-                    Data.Update("CTHD", "SoLuong =" + i.GetSL() + ", ThanhTien =" + i.GetThanhTien(), "MaHD = " + maHD + " and MaMA =" + maMA);
-                    Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
-                    return;
-                }
+                i.TangSL(soLuong);
+                tongTien += (i.GetDonGia() * soLuong);
+                Data.Update("CTHD", "SoLuong =" + i.GetSL() + ", ThanhTien =" + i.GetThanhTien(), "MaHD = " + maHD + " and MaMA =" + maMA);
+                Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
+                return;
             }
-
-            this.cthd.Add(new MonAn(maMA, soLuong));
-            MonAn ma = cthd[cthd.Count() - 1];
-            double thanhtien = ma.GetDonGia() * soLuong;
-            tongTien += thanhtien;
-            Data.Add("CTHD", "MaHD, MaMA, TenMA, SoLuong, DonGia, ThanhTien", "'" + maHD + "','" + maMA + "','" + ma.GetTen() + "','" + soLuong + "','" + ma.GetDonGia() + "','" + thanhtien + "'");
-            Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
+            else
+            {
+                this.cthd.Add(new MonAn(maMA, soLuong));
+                MonAn ma = cthd[cthd.Count() - 1];
+                double thanhtien = ma.GetDonGia() * soLuong;
+                tongTien += thanhtien;
+                Data.Add("CTHD", "MaHD, MaMA, TenMA, SoLuong, DonGia, ThanhTien", "'" + maHD + "','" + maMA + "','" + ma.GetTen() + "','" + soLuong + "','" + ma.GetDonGia() + "','" + thanhtien + "'");
+                Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
+            }
         }
 
         public void XoaMA(string maMA)
@@ -143,15 +155,10 @@ namespace QLNH
             Data.Delete("CTHD", "MaHD =" + this.maHD + " and MaMA = " + maMA);
             Data.Update("HoaDon", "TongTien =" + tongTien, "MaHD =" + this.maHD);
 
-            foreach (MonAn i in cthd)
-            {
-                if (i.GetMa() == maMA)
-                {
-                    tongTien -= (i.GetDonGia() * i.GetSL());
-                    cthd.Remove(i);
-                    break;
-                }
-            }
+            MonAn ma = cthd.Find(x => x.GetMa().Equals(maMA));
+                
+            tongTien -= (ma.GetDonGia() * ma.GetSL());
+            cthd.Remove(ma);
         }
 
         public double GetTT()

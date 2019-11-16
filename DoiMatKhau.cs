@@ -21,7 +21,7 @@ namespace QLNH
 
         private void DoiMatKhau_Load(object sender, EventArgs e)
         {
-            oldpass = (Data.Load("TaiKhoan", "MatKhau", "MaNV =" + NhanVien.GetMaNV())).Rows[0].ItemArray[0].ToString();
+            oldpass = (Data.Load("TaiKhoan", "MatKhau", "MaNV =" + NhanVien.GetMaNV())).Rows[0]["MatKhau"].ToString();
         }
 
         private void BtXN_Click(object sender, EventArgs e)

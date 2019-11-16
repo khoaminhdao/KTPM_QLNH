@@ -144,7 +144,7 @@
             this.btLuu.TabIndex = 3;
             this.btLuu.Text = "Thêm";
             this.btLuu.UseVisualStyleBackColor = true;
-            this.btLuu.Click += new System.EventHandler(this.BtLuu_Click);
+            this.btLuu.Click += new System.EventHandler(this.BtThem_Click);
             // 
             // label4
             // 

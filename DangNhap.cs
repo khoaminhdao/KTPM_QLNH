@@ -21,11 +21,11 @@ namespace QLNH
 
         private void SetTime()
         {
-            timePk.Value = DateTime.Now;
+            timePk.Value = timePk.MinDate;
             int gio = DateTime.Now.Hour;
             int phut = DateTime.Now.Minute;
 
-            if (gio < 19)
+            if (gio > 5 && gio < 19)
             {
                 String s = gio + 3 + ":";
 
@@ -39,7 +39,7 @@ namespace QLNH
                     cbTime.Items.RemoveAt(0);
                 }
             }
-            else
+            else if (gio >= 19)
                 timePk.MinDate = DateTime.Now.Date.AddDays(1);
 
             cbTime.SelectedIndex = 0;

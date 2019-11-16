@@ -19,7 +19,7 @@ namespace QLNH
 
         private void QuanLiHoaDon_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Data.Load("HoaDon", "MaHD, MaBan, MaNV, ThoiGianLap, ThoiGianThanhToan, TongTien"); ;
+            dataGridView1.DataSource = Data.Load("HoaDon", "*"); ;
             dataGridView1.Columns[0].HeaderText = "Mã Hóa Đơn";
             dataGridView1.Columns[1].HeaderText = "Mã Bàn";
             dataGridView1.Columns[2].HeaderText = "Mã Nhân Viên";
@@ -30,6 +30,7 @@ namespace QLNH
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dataGridView1.CurrentRow.Selected = true;
             DataTable temp = new DataTable();
             temp.Columns.Add("TenMA", typeof(string));
             temp.Columns.Add("SoLuong", typeof(Int32));
