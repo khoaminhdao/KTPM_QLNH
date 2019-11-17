@@ -12,32 +12,36 @@ namespace QLNH
     {
         public static bool Alpha(string s)
         {
-            if (s.Length == 0)
+            try 
+            {
+                if (s.Length == 0)
+                    throw new FormatException("Vui lòng nhập!");
+                if (char.IsWhiteSpace(s[0]))
+                    throw new FormatException("Kí tự đầu tiên phải là chữ!");
+                foreach (char i in s)
+                    if (!char.IsLetter(i) && !char.IsWhiteSpace(i))
+                        throw new FormatException("Vui lòng nhập chính xác");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return false;
-            if (char.IsWhiteSpace(s[0]))
-                return false;
-            foreach (char i in s)
-                if (!char.IsLetter(i) && !char.IsWhiteSpace(i))
-                    return false;
-            return true;
-        }
-
-        public static bool Num(string s)
-        {
-            if (s.Length == 0)
-                return false;
-            foreach (char i in s)
-                if (!char.IsDigit(i))
-                    return false;
-            return true;
+            }
         }
 
         public static int GioHopLe(DateTime a, DateTime b)
         {
-            //Trả về true khi a, b cách nhau hơn 3 tiếng
+            //CompareTo(a, b) trả về
             //-1 -> a < b
             //0 -> a = b
             //1 -> a > b
+
+
+            //GioHopLe (a, b) trả về
+            //1 khi a và b là cùng 1 thời điểm hoặc khi a là thời điểm sau b trong khoảng 3 tiếng
+            //0 khi a và b cách nhau hơn 3 tiếng
+            //-1 khi b là thời điểm sau a trong khoảng 3 tiếng
 
             if (a.CompareTo(b) == 0)
                 return 1;
@@ -50,13 +54,25 @@ namespace QLNH
 
         public static bool SDT(string s, int max)
         {
-            if (s.Length != max)
+            try
+            {
+                if (s.Length == 0)
+                    throw new FormatException("Vui lòng nhập số điện thoại!");
+                if (s[0] != '0')
+                    throw new Exception("Vui lòng nhập chính xác số điện thoại");
+                if (s.Length != max)
+                    throw new Exception("Vui lòng kiểm tra số lượng chữ số đã nhập!");
+               
+                foreach (char i in s)
+                    if (!char.IsDigit(i))
+                        throw new FormatException("Vui lòng nhập chính xác số điện thoại");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return false;
-            if (s[0] != '0')
-                return false;
-            if (!Num(s))
-                return false;
-            return true;
+            }
         }
 
         public static bool Ban(String maban, DateTime time)
@@ -69,38 +85,5 @@ namespace QLNH
             return true;
         }
 
-        public static bool Login(string id, string pass)
-        {
-            if (id == "")
-            {
-                MessageBox.Show("Vui lòng nhập tên tài khoản!");
-                return false;
-            }
-            if (pass == "")
-            {
-                MessageBox.Show("Vui lòng nhập mật khẩu!");
-                return false;
-            }
-
-            DataTable dsnv = Data.Load("TaiKhoan", "MaNV, TaiKhoan, MatKhau");
-            foreach (DataRow dr in dsnv.Rows)
-            {
-                if (id == dr[1].ToString())
-                {
-                    if (pass == dr[2].ToString())
-                    {
-                        new NhanVien(dr[0].ToString());
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sai mật khẩu");
-                        return false; 
-                    }
-                }
-            }
-            MessageBox.Show("Sai tài khoản");
-            return false;
-        }
     }
 }

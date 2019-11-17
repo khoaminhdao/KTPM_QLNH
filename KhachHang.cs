@@ -28,17 +28,10 @@ namespace QLNH
         {
             if (!Check.Alpha(ten))
             {
-                MessageBox.Show("Vui lòng nhập tên chính xác");
                 return false;
             }
             if (!Check.SDT(soDT, maxSDT))
             {
-                MessageBox.Show("Vui lòng nhập đúng số điện thoại");
-                return false;
-            }
-            if (!Check.Num(soNg))
-            {
-                MessageBox.Show("Vui lòng nhập số người chính xác");
                 return false;
             }
             return true;

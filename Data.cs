@@ -12,7 +12,7 @@ namespace QLNH
     public class Data
     {
         static readonly OleDbConnection strcon = new OleDbConnection();
-        static readonly string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Application.StartupPath + @"\DATA\Data.mdb";
+        static readonly string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "Data.mdb";
 
         public static void Open_DataAccess()
         {
@@ -25,13 +25,15 @@ namespace QLNH
         {
             DataSet dsHienThi = new DataSet();
 
-            string s = "select " + danhsachthamso + " from " + bang;
+            string l = "select " + danhsachthamso + " from " + bang;
 
             Open_DataAccess();
 
-            OleDbDataAdapter daShowData = new OleDbDataAdapter(s, strcon);
+            OleDbDataAdapter daShowData = new OleDbDataAdapter(l, strcon);
 
             daShowData.Fill(dsHienThi, bang);
+
+            daShowData.Dispose();
 
             strcon.Close();
 
@@ -42,13 +44,15 @@ namespace QLNH
         {
             DataSet dsHienThi = new DataSet();
 
-            string s = "select " + danhsachthamso + " from " + bang + " where " + dk;
+            string l = "select " + danhsachthamso + " from " + bang + " where " + dk;
 
             Open_DataAccess();
 
-            OleDbDataAdapter daShowData = new OleDbDataAdapter(s, strcon);
+            OleDbDataAdapter daShowData = new OleDbDataAdapter(l, strcon);
 
             daShowData.Fill(dsHienThi, bang);
+
+            daShowData.Dispose();
 
             strcon.Close();
 
@@ -60,18 +64,11 @@ namespace QLNH
 
             string l = "insert into " + bang + "(" + danhsachcot + ") values(" + danhsachthamso + ")";
 
+            OleDbCommand command = strcon.CreateCommand();
             Open_DataAccess();
-
-
-            using (OleDbConnection connection = new OleDbConnection(s))
-            using (OleDbCommand command = new OleDbCommand(l, strcon))
-            {
-                connection.Open();
-
-                OleDbDataReader reader = command.ExecuteReader();
-                reader.Close();
-            }
-
+            command.CommandText = l;
+            command.Connection = strcon;
+            command.ExecuteNonQuery();
             strcon.Close();
         }
 
@@ -80,17 +77,11 @@ namespace QLNH
 
             string l = "update " + bang + " set " + danhsach + " where " + dk;
 
+            OleDbCommand command = strcon.CreateCommand();
             Open_DataAccess();
-
-
-            using (OleDbConnection connection = new OleDbConnection(s))
-            using (OleDbCommand command = new OleDbCommand(l, strcon))
-            {
-                connection.Open();
-                OleDbDataReader reader = command.ExecuteReader();
-                reader.Close();
-            }
-
+            command.CommandText = l;
+            command.Connection = strcon;
+            command.ExecuteNonQuery();
             strcon.Close();
         }
 
@@ -98,17 +89,11 @@ namespace QLNH
         {
             string l = "delete from " + bang + " where " + dk;
 
+            OleDbCommand command = strcon.CreateCommand();
             Open_DataAccess();
-
-
-            using (OleDbConnection connection = new OleDbConnection(s))
-            using (OleDbCommand command = new OleDbCommand(l, strcon))
-            {
-                connection.Open();
-                OleDbDataReader reader = command.ExecuteReader();
-                reader.Close();
-            }
-
+            command.CommandText = l;
+            command.Connection = strcon;
+            command.ExecuteNonQuery();
             strcon.Close();
         }
     }

@@ -55,7 +55,7 @@ namespace QLNH
 
         private void BtDN_Click(object sender, EventArgs e)
         {
-            if (Check.Login(txtTK.Text, txtMK.Text))
+            if (NhanVien.CheckLogin(txtTK.Text, txtMK.Text))
             {
                 MenuNV menu = new MenuNV();
                 Hide();
