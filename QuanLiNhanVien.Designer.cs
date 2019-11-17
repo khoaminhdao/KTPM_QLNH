@@ -216,7 +216,6 @@
             this.cbChucVu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbChucVu.FormattingEnabled = true;
             this.cbChucVu.Items.AddRange(new object[] {
-            "Cửa hàng trưởng",
             "Quản lí",
             "Phục vụ"});
             this.cbChucVu.Location = new System.Drawing.Point(514, 113);
@@ -299,7 +298,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(695, 451);
+            this.ClientSize = new System.Drawing.Size(695, 449);
             this.Controls.Add(this.grbttnv);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(2);

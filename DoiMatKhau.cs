@@ -30,6 +30,7 @@ namespace QLNH
             {
                 Data.Update("TaiKhoan", "MatKhau ='" + txtnMK.Text + "'", "MaNV = " + NhanVien.GetMaNV());
                 MessageBox.Show("Mật khẩu thay đổi thành công");
+                this.Close();
             }
             else
                 MessageBox.Show("Mật khẩu hiện tại không chính xác!");
@@ -47,6 +48,12 @@ namespace QLNH
                 errorProvider1.Clear();
                 btXN.Enabled = true;
             }
+        }
+
+        private void DoiMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btXN.PerformClick();
         }
     }
 }

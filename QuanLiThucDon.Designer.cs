@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grbttnv = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numDonGia = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btThoat = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
@@ -41,11 +43,9 @@
             this.txtMaMa = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numDonGia = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.grbttnv.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDonGia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // grbttnv
@@ -66,13 +66,44 @@
             this.grbttnv.Controls.Add(this.label1);
             this.grbttnv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grbttnv.Location = new System.Drawing.Point(2, 1);
-            this.grbttnv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grbttnv.Margin = new System.Windows.Forms.Padding(2);
             this.grbttnv.Name = "grbttnv";
-            this.grbttnv.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grbttnv.Size = new System.Drawing.Size(644, 401);
+            this.grbttnv.Padding = new System.Windows.Forms.Padding(2);
+            this.grbttnv.Size = new System.Drawing.Size(644, 400);
             this.grbttnv.TabIndex = 2;
             this.grbttnv.TabStop = false;
             this.grbttnv.Text = "Thông tin món ăn";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(235, 115);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 20);
+            this.label3.TabIndex = 91;
+            this.label3.Text = "* 1000 vnđ";
+            // 
+            // numDonGia
+            // 
+            this.numDonGia.Location = new System.Drawing.Point(151, 112);
+            this.numDonGia.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numDonGia.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numDonGia.Name = "numDonGia";
+            this.numDonGia.Size = new System.Drawing.Size(61, 26);
+            this.numDonGia.TabIndex = 90;
+            this.numDonGia.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // dataGridView1
             // 
@@ -84,7 +115,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(2, 190);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -97,7 +128,7 @@
             // btThoat
             // 
             this.btThoat.Location = new System.Drawing.Point(566, 200);
-            this.btThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btThoat.Margin = new System.Windows.Forms.Padding(2);
             this.btThoat.Name = "btThoat";
             this.btThoat.Size = new System.Drawing.Size(59, 38);
             this.btThoat.TabIndex = 88;
@@ -107,7 +138,7 @@
             // btSua
             // 
             this.btSua.Location = new System.Drawing.Point(404, 148);
-            this.btSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btSua.Margin = new System.Windows.Forms.Padding(2);
             this.btSua.Name = "btSua";
             this.btSua.Size = new System.Drawing.Size(56, 38);
             this.btSua.TabIndex = 5;
@@ -118,7 +149,7 @@
             // buThoat
             // 
             this.buThoat.Location = new System.Drawing.Point(519, 148);
-            this.buThoat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buThoat.Margin = new System.Windows.Forms.Padding(2);
             this.buThoat.Name = "buThoat";
             this.buThoat.Size = new System.Drawing.Size(68, 38);
             this.buThoat.TabIndex = 6;
@@ -129,7 +160,7 @@
             // btXoa
             // 
             this.btXoa.Location = new System.Drawing.Point(275, 150);
-            this.btXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(56, 38);
             this.btXoa.TabIndex = 4;
@@ -140,7 +171,7 @@
             // btLuu
             // 
             this.btLuu.Location = new System.Drawing.Point(151, 150);
-            this.btLuu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btLuu.Margin = new System.Windows.Forms.Padding(2);
             this.btLuu.Name = "btLuu";
             this.btLuu.Size = new System.Drawing.Size(65, 38);
             this.btLuu.TabIndex = 3;
@@ -169,7 +200,7 @@
             // txtTenMa
             // 
             this.txtTenMa.Location = new System.Drawing.Point(151, 72);
-            this.txtTenMa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTenMa.Margin = new System.Windows.Forms.Padding(2);
             this.txtTenMa.MaxLength = 20;
             this.txtTenMa.Name = "txtTenMa";
             this.txtTenMa.Size = new System.Drawing.Size(148, 26);
@@ -201,51 +232,21 @@
             this.label1.TabIndex = 73;
             this.label1.Text = "Mã Món Ăn";
             // 
-            // numDonGia
-            // 
-            this.numDonGia.Location = new System.Drawing.Point(151, 112);
-            this.numDonGia.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.numDonGia.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numDonGia.Name = "numDonGia";
-            this.numDonGia.Size = new System.Drawing.Size(61, 26);
-            this.numDonGia.TabIndex = 90;
-            this.numDonGia.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(235, 115);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 20);
-            this.label3.TabIndex = 91;
-            this.label3.Text = "* 1000 vnđ";
-            // 
             // QuanLiThucDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 402);
+            this.ClientSize = new System.Drawing.Size(646, 401);
             this.Controls.Add(this.grbttnv);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "QuanLiThucDon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLiThucDon";
             this.Load += new System.EventHandler(this.QuanLiThucDon_Load);
             this.grbttnv.ResumeLayout(false);
             this.grbttnv.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDonGia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -23,8 +23,7 @@ namespace QLNH
         {
             cbMB.Items.Clear();
 
-            List<String> ds = new List<String>();
-            Ban.DSTrong(ds);
+            List<String> ds = Ban.DSTrong();
 
             if (ds.Count == 0)
             {
@@ -48,14 +47,14 @@ namespace QLNH
 
             DataGridView dt = new DataGridView
             {
-                Size = tabControl1.TabPages[maBan].Size,
+                Size = tabControl1.SelectedTab.Size,
                 ReadOnly = true,
                 DataSource = hd.Find(x => x.GetMaBan().Equals(maBan)).ChiTiet(),
                 AllowUserToAddRows = false,
                 AllowUserToResizeRows = false,
                 AllowUserToDeleteRows = false,
                 AllowUserToResizeColumns = false,
-                RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
             };
 
            // dt.CellClick += Dt_CellClick;

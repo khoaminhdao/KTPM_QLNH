@@ -15,4 +15,3 @@ C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.csprojAssemblyReference.cache
 C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.csproj.CopyComplete
 C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.dll
 C:\Users\X\Desktop\KTPM_QLNH\Test\obj\Debug\Test.pdb
-C:\Users\X\Desktop\KTPM_QLNH\Test\bin\Debug\Data.mdb

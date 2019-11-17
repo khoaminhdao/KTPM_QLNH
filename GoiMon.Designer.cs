@@ -219,7 +219,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMaHD);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GoiMon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GoiMon";
             this.Load += new System.EventHandler(this.GoiMon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSL)).EndInit();

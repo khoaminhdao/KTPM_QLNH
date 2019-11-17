@@ -37,7 +37,6 @@ namespace QLNH
             //0 -> a = b
             //1 -> a > b
 
-
             //GioHopLe (a, b) trả về
             //1 khi a và b là cùng 1 thời điểm hoặc khi a là thời điểm sau b trong khoảng 3 tiếng
             //0 khi a và b cách nhau hơn 3 tiếng
@@ -73,16 +72,6 @@ namespace QLNH
                 MessageBox.Show(ex.Message);
                 return false;
             }
-        }
-
-        public static bool Ban(String maban, DateTime time)
-        {
-            DataTable dsd = Data.Load("DatBan", "MaBan, ThoiGian");
-
-            foreach (DataRow ds in dsd.Rows)
-                if (ds[0].ToString() == maban && GioHopLe(DateTime.Parse(ds[1].ToString()), time) != 0)
-                    return false;
-            return true;
         }
 
     }

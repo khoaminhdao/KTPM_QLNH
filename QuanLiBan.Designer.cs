@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grbttnv = new System.Windows.Forms.GroupBox();
+            this.numSucChua = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btThoat = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
@@ -41,12 +42,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.numSucChua = new System.Windows.Forms.NumericUpDown();
             this.grbttnv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSucChua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSucChua)).BeginInit();
             this.SuspendLayout();
             // 
             // grbttnv
@@ -71,6 +71,28 @@
             this.grbttnv.TabIndex = 3;
             this.grbttnv.TabStop = false;
             this.grbttnv.Text = "Thông tin bàn";
+            // 
+            // numSucChua
+            // 
+            this.numSucChua.Location = new System.Drawing.Point(294, 32);
+            this.numSucChua.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSucChua.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numSucChua.Name = "numSucChua";
+            this.numSucChua.Size = new System.Drawing.Size(42, 26);
+            this.numSucChua.TabIndex = 90;
+            this.numSucChua.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // dataGridView1
             // 
@@ -213,28 +235,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(639, 96);
             this.dataGridView2.TabIndex = 89;
             // 
-            // numSucChua
-            // 
-            this.numSucChua.Location = new System.Drawing.Point(294, 32);
-            this.numSucChua.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numSucChua.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numSucChua.Name = "numSucChua";
-            this.numSucChua.Size = new System.Drawing.Size(42, 26);
-            this.numSucChua.TabIndex = 90;
-            this.numSucChua.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
             // QuanLiBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,15 +242,17 @@
             this.ClientSize = new System.Drawing.Size(662, 449);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbttnv);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "QuanLiBan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLiBan";
             this.Load += new System.EventHandler(this.QuanLiBan_Load);
             this.grbttnv.ResumeLayout(false);
             this.grbttnv.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSucChua)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSucChua)).EndInit();
             this.ResumeLayout(false);
 
         }

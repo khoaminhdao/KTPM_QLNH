@@ -44,7 +44,7 @@ namespace QLNH
             foreach (DataRow dr in dsb.Rows)
             {
                 string maban = dr["MaBan"].ToString();
-                if (Check.Ban(maban, time))
+                if (Ban.CheckHopLe(maban, time) && int.Parse(dr["SucChua"].ToString()) >= int.Parse(this.soNg))
                 {
                     return maban;
                 }

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace QLNH
 {
-    class Ban
+    public class Ban
     {
-        public static void DSTrong(List<string> ds)
+        public static List<string> DSTrong()
         {
+            List<string> ds = new List<string>();
             DataView ban = Data.Load("Ban", "MaBan", "TinhTrang = 'Trống'").DefaultView;
             ban.Sort = "MaBan";
             DataTable ban1 = ban.ToTable();
@@ -19,6 +20,7 @@ namespace QLNH
             {
                 ds.Add(dr.ItemArray[0].ToString());
             }
+            return ds;
         }
 
         public static DataTable Ctdb(string maban)
@@ -35,5 +37,16 @@ namespace QLNH
 
             return temp;
         }
+
+        public static bool CheckHopLe(String maban, DateTime time)
+        {
+            DataTable dsd = Data.Load("DatBan", "ThoiGian", "MaBan =" + maban);
+
+            foreach (DataRow ds in dsd.Rows)
+                if (Check.GioHopLe(DateTime.Parse(ds["ThoiGian"].ToString()), time) != 0)
+                    return false;
+            return true;
+        }
+
     }
 }

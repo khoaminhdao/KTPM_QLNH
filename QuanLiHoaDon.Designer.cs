@@ -136,7 +136,9 @@
             this.ClientSize = new System.Drawing.Size(661, 625);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grbttnv);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "QuanLiHoaDon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLiHoaDon";
             this.Load += new System.EventHandler(this.QuanLiHoaDon_Load);
             this.groupBox1.ResumeLayout(false);

@@ -12,7 +12,7 @@ namespace QLNH
     public class Data
     {
         static readonly OleDbConnection strcon = new OleDbConnection();
-        static readonly string s = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + "Data.mdb";
+        static readonly string s = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= Data\Data.mdb";
 
         public static void Open_DataAccess()
         {
