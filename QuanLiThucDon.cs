@@ -35,9 +35,13 @@ namespace QLNH
                 String tenMA = txtTenMa.Text;
                 decimal donGia = numDonGia.Value * 1000;
 
-                string s = string.Format(" {0}, '{1}', {2}", maMA, tenMA, donGia);
-                Data.Add("ThucDon", "MaMA, TenMA, DonGia", s);
-                Set_Ma();
+                if (Data.Load("ThucDon", "*", "tenMA ='" + tenMA + "'").Rows.Count == 0)
+                {
+                    string s = string.Format(" {0}, '{1}', {2}", maMA, tenMA, donGia);
+                    Data.Add("ThucDon", "MaMA, TenMA, DonGia", s);
+                    Set_Ma();
+                }
+                MessageBox.Show("Món ăn đã tồn tại trong thực đơn!");
             }
 
         }
@@ -65,7 +69,7 @@ namespace QLNH
             txtMaMa.Text = (dataGridView1.Rows.Count + 1).ToString();
         }
 
-        private void BtLuu_Click(object sender, EventArgs e)
+        private void BtThem_Click(object sender, EventArgs e)
         {
             Add();
         }
