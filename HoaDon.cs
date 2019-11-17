@@ -169,7 +169,11 @@ namespace QLNH
         public void ThanhToan()
         {
             Data.Update("Ban", "TinhTrang = 'Trống'", "MaBan =" + maBan);
-            Data.Update("HoaDon", "ThoiGianThanhToan ='" + DateTime.Now + "'", "MaHD =" + maHD);
+
+            if (this.tongTien != 0)
+                Data.Update("HoaDon", "ThoiGianThanhToan ='" + DateTime.Now + "'", "MaHD =" + maHD);
+            else
+                Data.Delete("HoaDon", "MaHD =" + maHD);
         }
     }
 }

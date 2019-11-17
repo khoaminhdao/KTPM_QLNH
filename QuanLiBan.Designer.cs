@@ -35,7 +35,7 @@
             this.btSua = new System.Windows.Forms.Button();
             this.buThoat = new System.Windows.Forms.Button();
             this.btXoa = new System.Windows.Forms.Button();
-            this.btLuu = new System.Windows.Forms.Button();
+            this.btThem = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtMaBan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,7 +57,7 @@
             this.grbttnv.Controls.Add(this.btSua);
             this.grbttnv.Controls.Add(this.buThoat);
             this.grbttnv.Controls.Add(this.btXoa);
-            this.grbttnv.Controls.Add(this.btLuu);
+            this.grbttnv.Controls.Add(this.btThem);
             this.grbttnv.Controls.Add(this.label4);
             this.grbttnv.Controls.Add(this.txtMaBan);
             this.grbttnv.Controls.Add(this.label2);
@@ -157,16 +157,16 @@
             this.btXoa.UseVisualStyleBackColor = true;
             this.btXoa.Click += new System.EventHandler(this.BtXoa_Click);
             // 
-            // btLuu
+            // btThem
             // 
-            this.btLuu.Location = new System.Drawing.Point(110, 63);
-            this.btLuu.Margin = new System.Windows.Forms.Padding(2);
-            this.btLuu.Name = "btLuu";
-            this.btLuu.Size = new System.Drawing.Size(64, 38);
-            this.btLuu.TabIndex = 3;
-            this.btLuu.Text = "Thêm";
-            this.btLuu.UseVisualStyleBackColor = true;
-            this.btLuu.Click += new System.EventHandler(this.BtThem_Click);
+            this.btThem.Location = new System.Drawing.Point(110, 63);
+            this.btThem.Margin = new System.Windows.Forms.Padding(2);
+            this.btThem.Name = "btThem";
+            this.btThem.Size = new System.Drawing.Size(64, 38);
+            this.btThem.TabIndex = 3;
+            this.btThem.Text = "Thêm";
+            this.btThem.UseVisualStyleBackColor = true;
+            this.btThem.Click += new System.EventHandler(this.BtThem_Click);
             // 
             // label4
             // 
@@ -265,7 +265,7 @@
         private System.Windows.Forms.Button btSua;
         private System.Windows.Forms.Button buThoat;
         private System.Windows.Forms.Button btXoa;
-        private System.Windows.Forms.Button btLuu;
+        private System.Windows.Forms.Button btThem;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtMaBan;
         private System.Windows.Forms.Label label2;

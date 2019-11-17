@@ -113,12 +113,15 @@ namespace QLNH
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            btLuu.Enabled = false;
             DataGridViewRow dr = dataGridView1.CurrentRow;
-            dr.Selected = true;
-            txtMaMa.Text = dr.Cells[0].Value.ToString();
-            txtTenMa.Text = dr.Cells[1].Value.ToString();
-            numDonGia.Value = decimal.Parse(dr.Cells[2].Value.ToString())/1000;
+            if (dr != null)
+            {
+                btLuu.Enabled = false;
+                dr.Selected = true;
+                txtMaMa.Text = dr.Cells[0].Value.ToString();
+                txtTenMa.Text = dr.Cells[1].Value.ToString();
+                numDonGia.Value = decimal.Parse(dr.Cells[2].Value.ToString()) / 1000;
+            }
         }
     }
     

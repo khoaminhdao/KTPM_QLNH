@@ -30,22 +30,26 @@ namespace QLNH
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.CurrentRow.Selected = true;
-            DataTable temp = new DataTable();
-            temp.Columns.Add("TenMA", typeof(string));
-            temp.Columns.Add("SoLuong", typeof(Int32));
-            temp.Columns.Add("DonGia", typeof(double));
-            temp.Columns.Add("ThanhTien", typeof(double));
+            DataGridViewRow d = dataGridView1.CurrentRow;
+            if (d != null)
+            {
+                d.Selected = true;
+                DataTable temp = new DataTable();
+                temp.Columns.Add("TenMA", typeof(string));
+                temp.Columns.Add("SoLuong", typeof(Int32));
+                temp.Columns.Add("DonGia", typeof(double));
+                temp.Columns.Add("ThanhTien", typeof(double));
 
-            DataTable ds = Data.Load("CTHD", "TenMA, SoLuong, DonGia, ThanhTien", "MaHD =" + dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            foreach (DataRow dr in ds.Rows)
-              temp.ImportRow(dr);
+                DataTable ds = Data.Load("CTHD", "TenMA, SoLuong, DonGia, ThanhTien", "MaHD =" + dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                foreach (DataRow dr in ds.Rows)
+                    temp.ImportRow(dr);
 
-            dataGridView2.DataSource = temp;
-            dataGridView2.Columns[0].HeaderText = "Tên Món Ăn";
-            dataGridView2.Columns[1].HeaderText = "Số Lượng";
-            dataGridView2.Columns[2].HeaderText = "Đơn Giá";
-            dataGridView2.Columns[3].HeaderText = "Thành Tiền";
+                dataGridView2.DataSource = temp;
+                dataGridView2.Columns[0].HeaderText = "Tên Món Ăn";
+                dataGridView2.Columns[1].HeaderText = "Số Lượng";
+                dataGridView2.Columns[2].HeaderText = "Đơn Giá";
+                dataGridView2.Columns[3].HeaderText = "Thành Tiền";
+            }
         }
     }
 }

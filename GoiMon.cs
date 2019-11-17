@@ -63,6 +63,7 @@ namespace QLNH
             txtMaHD.Text = HoaDon.Set_Ma();
             DSB();
             btThem.Enabled = true;
+            btTT.Enabled = true;
         }
 
         private void CurrentCellChanged(object sender, EventArgs e)
@@ -113,7 +114,6 @@ namespace QLNH
                     else
                         break;
                 }
-                btTT.Enabled = true;
                
             }
 
@@ -168,6 +168,7 @@ namespace QLNH
                 hd.RemoveAt(stt);
                 tabControl1.TabPages.RemoveAt(stt);
                 MessageBox.Show("Thanh toán thành công");
+                txtMaHD.Text = HoaDon.Set_Ma();
                 DSB();
                 if (tabControl1.TabPages.Count == 0)
                 {

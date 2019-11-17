@@ -144,14 +144,16 @@ namespace QLNH
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
-            datetime.Value = DateTime.Parse(dr.Cells[3].Value.ToString());
-            txtMaNv.Text = dr.Cells[0].Value.ToString();
-            txtTenNv.Text = dr.Cells[1].Value + " " + dr.Cells[2].Value;
-            cbChucVu.Text = dr.Cells[4].Value.ToString();
-            cbTrinhDo.Text = dr.Cells[5].Value.ToString();
-            cbGioiTinh.Text = dr.Cells[6].Value.ToString();
-            txtQuocTich.Text = dr.Cells[7].Value.ToString();
-
+            if (dr != null)
+            {
+                datetime.Value = DateTime.Parse(dr.Cells[3].Value.ToString());
+                txtMaNv.Text = dr.Cells[0].Value.ToString();
+                txtTenNv.Text = dr.Cells[1].Value + " " + dr.Cells[2].Value;
+                cbChucVu.Text = dr.Cells[4].Value.ToString();
+                cbTrinhDo.Text = dr.Cells[5].Value.ToString();
+                cbGioiTinh.Text = dr.Cells[6].Value.ToString();
+                txtQuocTich.Text = dr.Cells[7].Value.ToString();
+            }
             btThem.Enabled = false;
         }
     }

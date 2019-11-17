@@ -59,7 +59,7 @@ namespace QLNH
         { 
             Data.Update("Ban", "SucChua = " + numSucChua.Value, "MaBan = " + txtMaBan.Text);
             Set_Ma();
-            btLuu.Enabled = true;
+            btThem.Enabled = true;
         }
 
         private void BtThoat_Click(object sender, EventArgs e)
@@ -81,22 +81,25 @@ namespace QLNH
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow dr = dataGridView1.CurrentRow;
-            dr.Selected = true;
-            txtMaBan.Text = dr.Cells[0].Value.ToString();
-            numSucChua.Value = decimal.Parse(dr.Cells[1].Value.ToString());
-            
-            if (dr.Cells[2].Value.ToString() == "Đang Sử Dụng")
-                btSua.Enabled = btXoa.Enabled = false;
-            else
-                btSua.Enabled = btXoa.Enabled = true;
+            if (dr != null)
+            {
+                dr.Selected = true;
+                txtMaBan.Text = dr.Cells[0].Value.ToString();
+                numSucChua.Value = decimal.Parse(dr.Cells[1].Value.ToString());
 
-            dataGridView2.DataSource = Ban.Ctdb(txtMaBan.Text);
-            dataGridView2.Columns[0].HeaderText = "Tên";
-            dataGridView2.Columns[1].HeaderText = "Số Điện Thoại";
-            dataGridView2.Columns[2].HeaderText = "Thời Gian";
-            dataGridView2.Columns[3].HeaderText = "Số Người";
+                if (dr.Cells[2].Value.ToString() == "Đang Sử Dụng")
+                    btSua.Enabled = btXoa.Enabled = false;
+                else
+                    btSua.Enabled = btXoa.Enabled = true;
 
-            btLuu.Enabled = false;
+                dataGridView2.DataSource = Ban.Ctdb(txtMaBan.Text);
+                dataGridView2.Columns[0].HeaderText = "Tên";
+                dataGridView2.Columns[1].HeaderText = "Số Điện Thoại";
+                dataGridView2.Columns[2].HeaderText = "Thời Gian";
+                dataGridView2.Columns[3].HeaderText = "Số Người";
+
+                btThem.Enabled = false;
+            }
         }
 
     }
