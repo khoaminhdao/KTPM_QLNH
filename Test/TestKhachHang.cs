@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    class TestKhachHang
+    [TestClass]
+    public class TestKhachHang
     {
         public TestContext TestContext { get; set; }
         private KhachHang kh;

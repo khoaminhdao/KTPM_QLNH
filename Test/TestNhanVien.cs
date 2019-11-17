@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Test
 {
-    class TestNhanVien
+    [TestClass]
+    public class TestNhanVien
     {
 
         [TestInitialize]
@@ -22,17 +23,17 @@ namespace Test
         {
             Assert.AreEqual("1", NhanVien.GetMaNV());
         }
-
+        [TestMethod]
         public void TestGetTen()
         {
             Assert.AreEqual("Bắc", NhanVien.GetTen());
         }
-
+        [TestMethod]
         public void TestGetCV()
         {
             Assert.AreEqual("Cửa hàng trưởng", NhanVien.GetCV());
         }
-
+        [TestMethod]
         public void TestLogin()
         {
             Assert.IsTrue(NhanVien.CheckLogin("bac1", "123"));
